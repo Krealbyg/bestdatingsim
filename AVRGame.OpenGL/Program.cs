@@ -8,7 +8,7 @@ namespace AVRGame.OpenGL
         [STAThread]
         static void Main()
         {
-            using (var game = new AVRGame.NetStandardLibrary.Game())
+            using (var game = new AVRGame.NetStandardLibrary.FieryTale())
                 game.Run();
         }
     }
