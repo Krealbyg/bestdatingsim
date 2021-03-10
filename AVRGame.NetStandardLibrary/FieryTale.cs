@@ -98,13 +98,14 @@ namespace AVRGame.NetStandardLibrary
             }
 
             oldState = newState;
-            objectManager.Update(gameTime);
-
+            
             if (gameMoment == 6 && soundMoment == 0)
             {
                 drip.Play(volume: 0.2f, 0.0f, 0.0f);
                 soundMoment = soundMoment + 1;
             }
+
+            objectManager.Update(gameTime);
         }
 
         /// <summary>
