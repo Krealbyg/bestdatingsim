@@ -10,13 +10,13 @@ namespace AVRGame.NetStandardLibrary
 {
     //To add: 
     //Levelmanager and levels DONE!!!!!
-    //Buttons
+    //Buttons DONE!!!!!
     //Choices
     //Voice over?
     //Anime Waifus (most important)
     //Actual Story (pretty important)
     
-    //Circumventing some protection levels
+    //Cheeky circumvention of the protection level on SpriteBatch
     public class BetterSpriteBatch : SpriteBatch
     {
         public BetterSpriteBatch(GraphicsDevice graphicsDevice) : base(graphicsDevice)
@@ -35,9 +35,10 @@ namespace AVRGame.NetStandardLibrary
         
         MouseState oldState;
 
-        //Variables
+        //Universal variables
         public int gameMoment;
         public int soundMoment;
+        public int choiceMoment;
      
         public FieryTale() : base()
         {
@@ -55,6 +56,8 @@ namespace AVRGame.NetStandardLibrary
             graphics.PreferredBackBufferHeight = windowHeight;
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
+
+            //loading the levels
             Level1 level1 = new Level1(this);
             Components.Add(level1);
         }
@@ -86,9 +89,9 @@ namespace AVRGame.NetStandardLibrary
             //mouse input
             MouseState newState = Mouse.GetState();
             
-            if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released)
+            if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released && choiceMoment == 0)
             {
-                gameMoment = gameMoment + 1;
+                gameMoment++;
             }
 
             oldState = newState;

@@ -13,8 +13,10 @@ namespace AVRGame.NetStandardLibrary
 {
     public class Level1 : DrawableGameComponent
     {
-        public int windowWidth = 1280, windowHeight = 720;
         private FieryTale fieryTale;
+
+        //lists
+        private List<Button> buttons;
         
         //Fonts
         private SpriteFont Names;
@@ -49,17 +51,46 @@ namespace AVRGame.NetStandardLibrary
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
 
+            //buttons
+            var button1 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 324),
+                ButtonText = "DRIP",
+            };
+
+            button1.Click += Button1_Click;
+
+            //filling lists
+            buttons = new List<Button>()
+            {
+                button1,
+            };
+
             base.LoadContent();
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 7)
+            {
+                drip.Play(volume: 0.2f, 0.0f, 0.0f);
+                fieryTale.choiceMoment = 0;
+                fieryTale.gameMoment++;
+            }
         }
 
         public override void Update(GameTime gameTime)
         {
-
+            //soundeffects
             if (fieryTale.gameMoment == 6 && fieryTale.soundMoment == 0)
             {
                 drip.Play(volume: 0.2f, 0.0f, 0.0f);
-                fieryTale.soundMoment = fieryTale.soundMoment + 1;
+                fieryTale.soundMoment++;
             }
+
+            foreach (var button in buttons)
+                button.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -67,8 +98,11 @@ namespace AVRGame.NetStandardLibrary
         public override void Draw(GameTime gameTime)
         {
             fieryTale.spriteBatch.Begin();
+
+            //Permanent
             fieryTale.spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
             fieryTale.spriteBatch.Draw(textbox, new Rectangle(0, 520, 1280, 200), Color.Black * 0.6f);
+            //Scenes
             if (fieryTale.gameMoment == 0)
             {
                 fieryTale.spriteBatch.DrawString(Names, "You are Ren Amamiya, leader of the Phantom Thieves.", new Vector2(10, 580), Color.White);
@@ -106,6 +140,17 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.White);
                 fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
                 fieryTale.spriteBatch.DrawString(Talking, "Goku", new Vector2(10, 580), Color.White);
+            }
+
+            if (fieryTale.gameMoment == 7)
+            {
+                foreach (var button in buttons)
+                    button.Draw(gameTime);
+                fieryTale.choiceMoment = 1;
+            }
+            if (fieryTale.gameMoment == 8)
+            {
+                fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.White);
             }
             fieryTale.spriteBatch.End();
         }
