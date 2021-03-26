@@ -79,7 +79,7 @@ namespace AVRGame.NetStandardLibrary
             if (fieryTale.gameMoment == 7)//only recognises the click during gamemoment 7 otherwise could be clicked at all times
             {
                 drip.Play(volume: 0.1f, 0.0f, 0.0f);
-                fieryTale.choiceMoment = 0;
+                fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
             }
         }
@@ -155,7 +155,7 @@ namespace AVRGame.NetStandardLibrary
             {
                 foreach (var button in buttons)
                     button.Draw(gameTime);
-                fieryTale.choiceMoment = 1;
+                fieryTale.choiceMoment = true;
             }
             if (fieryTale.gameMoment == 8)
             {
