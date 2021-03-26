@@ -36,9 +36,9 @@ namespace AVRGame.NetStandardLibrary
         MouseState oldState;
 
         //Universal variables
-        public int gameMoment;
-        public int soundMoment;
-        public int choiceMoment;
+        public int gameMoment;//decides the text that shows
+        public int soundMoment;//decides which sound should be played
+        public int choiceMoment;//notes if there is a choice on screen or not
      
         public FieryTale() : base()
         {
@@ -89,7 +89,7 @@ namespace AVRGame.NetStandardLibrary
             //mouse input
             MouseState newState = Mouse.GetState();
             
-            if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released && choiceMoment == 0)
+            if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released && choiceMoment == 0 && newState.Y >= 520)//only once per click (no holding) and while no choices on screen and while hovering over the text bar.
             {
                 gameMoment++;
             }

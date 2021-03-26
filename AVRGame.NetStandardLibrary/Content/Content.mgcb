@@ -81,6 +81,12 @@
 /processorParam:TextureFormat=Compressed
 /build:Talking.spritefont
 
+#begin Teleportsound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Teleportsound.wav
+
 #begin WhiteRectangle.jpg
 /importer:TextureImporter
 /processor:TextureProcessor

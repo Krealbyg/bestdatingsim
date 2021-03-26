@@ -30,7 +30,8 @@ namespace AVRGame.NetStandardLibrary
 
         //Sounds
         private SoundEffect drip;
-        public Level1(FieryTale fieryTale) : base(fieryTale)
+        private SoundEffect teleport;
+        public Level1(FieryTale fieryTale) : base(fieryTale)//constructor, inherit some stuff from main file (like spritebatch)
         {
             this.fieryTale = fieryTale;
         }
@@ -48,6 +49,7 @@ namespace AVRGame.NetStandardLibrary
             background = fieryTale.Content.Load<Texture2D>("Hell");
             textbox = fieryTale.Content.Load<Texture2D>("BlackRectangle");
             drip = fieryTale.Content.Load<SoundEffect>("DripSound");
+            teleport = fieryTale.Content.Load<SoundEffect>("Teleportsound");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
 
@@ -56,8 +58,10 @@ namespace AVRGame.NetStandardLibrary
             {
                 ButtonPosition = new Vector2(0, 324),
                 ButtonText = "DRIP",
+                PenColour = Color.Red,
             };
 
+            //adds button click events
             button1.Click += Button1_Click;
 
             //filling lists
@@ -70,11 +74,11 @@ namespace AVRGame.NetStandardLibrary
 
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)//click event for button1
         {
-            if (fieryTale.gameMoment == 7)
+            if (fieryTale.gameMoment == 7)//only recognises the click during gamemoment 7 otherwise could be clicked at all times
             {
-                drip.Play(volume: 0.2f, 0.0f, 0.0f);
+                drip.Play(volume: 0.1f, 0.0f, 0.0f);
                 fieryTale.choiceMoment = 0;
                 fieryTale.gameMoment++;
             }
@@ -85,11 +89,16 @@ namespace AVRGame.NetStandardLibrary
             //soundeffects
             if (fieryTale.gameMoment == 6 && fieryTale.soundMoment == 0)
             {
-                drip.Play(volume: 0.2f, 0.0f, 0.0f);
+                drip.Play(volume: 0.1f, 0.0f, 0.0f);//deafened me on high volume
+                fieryTale.soundMoment++;//increased so the sound doesn't loop forever
+            }
+            if (fieryTale.gameMoment == 9 && fieryTale.soundMoment == 1)
+            {
+                teleport.Play(volume: 0.15f, 0.0f, 0.0f);//same as ^
                 fieryTale.soundMoment++;
             }
 
-            foreach (var button in buttons)
+            foreach (var button in buttons)//updates all the buttons
                 button.Update(gameTime);
 
             base.Update(gameTime);
@@ -151,6 +160,8 @@ namespace AVRGame.NetStandardLibrary
             if (fieryTale.gameMoment == 8)
             {
                 fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.White);
+                fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
+                fieryTale.spriteBatch.DrawString(Talking, "I'll be going now, goodbye", new Vector2(10, 580), Color.White);
             }
             fieryTale.spriteBatch.End();
         }
