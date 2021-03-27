@@ -111,22 +111,25 @@ namespace AVRGame.NetStandardLibrary
 
         public override void Update(GameTime gameTime)
         {
-            //soundeffects
-            if (fieryTale.gameMoment == 6 && fieryTale.soundMoment == 0 && fieryTale.attackedSomeone == false)
+            if (fieryTale.currentLevel == 100 && fieryTale.attackedSomeone == false)
             {
-                drip.Play(volume: 0.1f, 0.0f, 0.0f);//deafened me on high volume
-                fieryTale.soundMoment++;//increased so the sound doesn't loop forever
-            }
-            if (fieryTale.gameMoment == 9 && fieryTale.soundMoment == 1 && fieryTale.attackedSomeone == false)
-            {
-                teleport.Play(volume: 0.15f, 0.0f, 0.0f);//same as ^
-                fieryTale.soundMoment++;
-            }
+                //soundeffects
+                if (fieryTale.gameMoment == 6 && fieryTale.soundMoment == 0)
+                {
+                    drip.Play(volume: 0.1f, 0.0f, 0.0f);//deafened me on high volume
+                    fieryTale.soundMoment++;//increased so the sound doesn't loop forever
+                }
+                if (fieryTale.gameMoment == 9 && fieryTale.soundMoment == 1)
+                {
+                    teleport.Play(volume: 0.15f, 0.0f, 0.0f);//same as ^
+                    fieryTale.soundMoment++;
+                }
 
-            foreach (var button in buttons)//updates all the buttons
-                button.Update(gameTime);
+                foreach (var button in buttons)//updates all the buttons
+                    button.Update(gameTime);
 
-            base.Update(gameTime);
+                base.Update(gameTime);
+            }
         }
 
         public override void Draw(GameTime gameTime)

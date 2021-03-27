@@ -24,11 +24,12 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D goku;
         private Texture2D background;
         private Texture2D textbox;
+        private Texture2D anna;
+        private Texture2D dorm;
 
         //Sounds
         private SoundEffect drip;
         private SoundEffect teleport;
-        private SoundEffect persona;
 
         public Day0(FieryTale fieryTale) : base(fieryTale)
         {
@@ -46,9 +47,10 @@ namespace AVRGame.NetStandardLibrary
             goku = fieryTale.Content.Load<Texture2D>("Drip_Goku");
             background = fieryTale.Content.Load<Texture2D>("Hell");
             textbox = fieryTale.Content.Load<Texture2D>("BlackRectangle");
+            anna = fieryTale.Content.Load<Texture2D>("Anna");
+            dorm = fieryTale.Content.Load<Texture2D>("Dorm");
             drip = fieryTale.Content.Load<SoundEffect>("DripSound");
             teleport = fieryTale.Content.Load<SoundEffect>("Teleportsound");
-            persona = fieryTale.Content.Load<SoundEffect>("Persona");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
 
@@ -57,12 +59,206 @@ namespace AVRGame.NetStandardLibrary
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+            if (fieryTale.currentLevel == 1 && fieryTale.attackedSomeone == false)//only when on this level and not gameover
+            {
+                //soundeffects
+                if (fieryTale.gameMoment == 6 && fieryTale.soundMoment == 0)
+                {
+                    drip.Play(volume: 0.1f, 0.0f, 0.0f);//deafened me on high volume
+                    fieryTale.soundMoment++;//increased so the sound doesn't loop forever
+                }
+                if (fieryTale.gameMoment == 8 && fieryTale.soundMoment == 1)
+                {
+                    teleport.Play(volume: 0.15f, 0.0f, 0.0f);//same as ^
+                    fieryTale.soundMoment++;
+                }
+                base.Update(gameTime);
+            }
         }
 
         public override void Draw(GameTime gameTime)
         {
-            base.Draw(gameTime);
+            if (fieryTale.currentLevel == 1 && fieryTale.attackedSomeone == false)//only when on this level and not gameover
+            {
+                fieryTale.spriteBatch.Begin();
+
+                //backgrounds
+                if (fieryTale.gameMoment <= 21)
+                {
+                    fieryTale.spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
+                }
+                else if (fieryTale.gameMoment > 21)
+                {
+                    fieryTale.spriteBatch.Draw(dorm, new Rectangle(0, 0, 1280, 760), Color.White);
+                }
+                
+                //Textbox
+                fieryTale.spriteBatch.Draw(textbox, new Rectangle(0, 520, 1280, 200), Color.Black * 0.6f);
+
+                //Scenes
+                if (fieryTale.gameMoment == 0)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "You are Ren Amamiya, leader of the Phantom Thieves.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 1)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "While crossing the streets of Shibuya, you were unceremoniously hit by a truck and died.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 2)
+                {
+                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1010, 300, 256, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Where the fuck am I?", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 3)
+                {
+                    fieryTale.spriteBatch.Draw(goku, new Rectangle(1010, 300, 256, 404), Color.Black);
+                    fieryTale.spriteBatch.DrawString(Names, "Mysterious voice:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "You have died. Welcome to Hell.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 4)
+                {
+                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1010, 300, 256, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Who are you? I will reveal your true form!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 5)
+                {
+                    fieryTale.spriteBatch.Draw(goku, new Rectangle(1010, 300, 256, 404), Color.Black);
+                    fieryTale.spriteBatch.DrawString(Names, "Mysterious voice:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "There is no need, for I am...", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 6)
+                {
+                    fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Goku!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 7)
+                {
+                    fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "You will be spending the beginning of your time in hell in Highschool, as a... test...", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 8)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Goku seems to notice something and disappears.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 9)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "You hear faint footsteps from behind you and turn around.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 10)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Demon girl:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Hey there! You must be new here.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 11)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Demon girl:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "My name is Anna Nishikinomiya, and I am the student council president of this high school.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 12)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "And who are you?", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 13)
+                {
+                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1010, 300, 256, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "My name is Ren Amamiya.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 14)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Heyyy Ren, well it seems that this is your first day in hell, lemme give you a tour of the area.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 15)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "You follow Anna around as she gives you a tour of the area.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 16)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "She first shows you all the classrooms.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 17)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "She then shows you around the library.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 18)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "She shows you around a small area of campus with shops,", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "restaurants, cafe's and other such things.", new Vector2(10, 610), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
+                }
+                if (fieryTale.gameMoment == 19)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "She then takes you to the dorms and shows you the dormroom you'll be staying in.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 20)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "This is where we part ways for today, see you around!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 21)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "You watch Anna leave for her own dormroom.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 22)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "You enter your dormroom and see it is meticulously furnished, but rather bland.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 23)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "You remember you're supposed to have a roommate but he seems to not be home.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 24)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "A wave of exhaustion washes over you.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 25)
+                {
+                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1010, 300, 256, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Dying and going to Hell is a lot more exhausting than I'd expect, I should get some sleep.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 26)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "You find the unoccupied bedroom and remember you have no change of clothes with you.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 27)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "But just as this thought crosses your mind, your clothes change in a flash of blue fire.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 28)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "It seems the rules of the Metaverse apply to Hell,", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "you don't even want to think about the implications of this.", new Vector2(10, 610), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
+                }
+                if (fieryTale.gameMoment == 29)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "You crash down on your bed and fall asleep.", new Vector2(10, 580), Color.White);
+                }
+                fieryTale.spriteBatch.End();
+            }
         }
     }
 }

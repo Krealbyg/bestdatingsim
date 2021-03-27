@@ -39,6 +39,8 @@ namespace AVRGame.NetStandardLibrary
         //songs
         private Song mementos;
         private Song piano;
+        private Song mask;
+        private Song hell;
 
         //Universal variables
         public int gameMoment;//decides the text that shows
@@ -74,6 +76,8 @@ namespace AVRGame.NetStandardLibrary
             Components.Add(testLevel);
             GameOver gameOver = new GameOver(this);
             Components.Add(gameOver);
+            Day0 day0 = new Day0(this);
+            Components.Add(day0);
         }
 
         /// <summary>
@@ -87,6 +91,8 @@ namespace AVRGame.NetStandardLibrary
             //music
             mementos = Content.Load<Song>("MementosSong");
             piano = Content.Load<Song>("VelvetRoomMusic");
+            mask = Content.Load<Song>("BeneathTheMask");
+            hell = Content.Load<Song>("HellSong");
             MediaPlayer.IsRepeating = true;//makes music repeat
         }
 
@@ -110,8 +116,24 @@ namespace AVRGame.NetStandardLibrary
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mementos);
-                MediaPlayer.Volume = 0.2f;
+                MediaPlayer.Volume = 0.15f;
                 songPlaying = true;
+            }
+
+            if (currentLevel == 1 && gameMoment <= 21 && songPlaying == false)
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(hell);
+                MediaPlayer.Volume = 0.05f;
+                songPlaying = true;
+            }
+
+            if (currentLevel == 1 && gameMoment > 21 && songPlaying == true)
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(mask);
+                MediaPlayer.Volume = 0.05f;
+                songPlaying = false;
             }
             
             if (attackedSomeone == true && songPlaying == false)//gameover song
@@ -121,10 +143,9 @@ namespace AVRGame.NetStandardLibrary
                 MediaPlayer.Volume = 0.4f;
                 songPlaying = true;
             }
-            
-            if (currentLevel != 0 && attackedSomeone == false && songPlaying == true)//stops playing music
+
+            if (MediaPlayer.State == MediaState.Stopped)
             {
-                MediaPlayer.Stop();
                 songPlaying = false;
             }
 

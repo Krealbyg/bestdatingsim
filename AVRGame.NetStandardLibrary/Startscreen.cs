@@ -69,6 +69,7 @@ namespace AVRGame.NetStandardLibrary
             {
                 fieryTale.currentLevel = 100;//number we will never get to normally
                 fieryTale.choiceMoment = false;//gives back control
+                MediaPlayer.Stop();//stops menu song
             }
         }
 
@@ -78,6 +79,7 @@ namespace AVRGame.NetStandardLibrary
             {
                 fieryTale.currentLevel = 1;//starts first level
                 fieryTale.choiceMoment = false;//gives back control
+                MediaPlayer.Stop();//stops menu song
             }
         }
 
