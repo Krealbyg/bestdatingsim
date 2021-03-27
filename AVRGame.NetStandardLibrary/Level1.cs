@@ -86,13 +86,14 @@ namespace AVRGame.NetStandardLibrary
 
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)//click event for button2
         {
-            if (fieryTale.gameMoment == 7)
+            if (fieryTale.gameMoment == 7)//only recognises the click during gamemoment 7 otherwise could be clicked at all times
             {
                 persona.Play(volume: 0.5f, 0.0f, 0.0f);
                 fieryTale.attackedSomeone = true;
                 fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
             }
         }
 
