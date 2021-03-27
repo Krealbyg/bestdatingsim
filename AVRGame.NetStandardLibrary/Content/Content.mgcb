@@ -105,6 +105,12 @@
 /processorParam:TextureFormat=Color
 /build:VelvetRoom.png
 
+#begin VelvetRoomMusic.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:VelvetRoomMusic.mp3
+
 #begin WhiteRectangle.jpg
 /importer:TextureImporter
 /processor:TextureProcessor

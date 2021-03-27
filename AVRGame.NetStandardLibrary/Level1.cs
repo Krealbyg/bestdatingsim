@@ -93,7 +93,8 @@ namespace AVRGame.NetStandardLibrary
                 persona.Play(volume: 0.5f, 0.0f, 0.0f);
                 fieryTale.attackedSomeone = true;
                 fieryTale.choiceMoment = false;
-                fieryTale.gameMoment++;
+                fieryTale.gameMoment = 0;
+                fieryTale.soundMoment = 0;
             }
         }
 
@@ -110,12 +111,12 @@ namespace AVRGame.NetStandardLibrary
         public override void Update(GameTime gameTime)
         {
             //soundeffects
-            if (fieryTale.gameMoment == 6 && fieryTale.soundMoment == 0)
+            if (fieryTale.gameMoment == 6 && fieryTale.soundMoment == 0 && fieryTale.attackedSomeone == false)
             {
                 drip.Play(volume: 0.1f, 0.0f, 0.0f);//deafened me on high volume
                 fieryTale.soundMoment++;//increased so the sound doesn't loop forever
             }
-            if (fieryTale.gameMoment == 9 && fieryTale.soundMoment == 1)
+            if (fieryTale.gameMoment == 9 && fieryTale.soundMoment == 1 && fieryTale.attackedSomeone == false)
             {
                 teleport.Play(volume: 0.15f, 0.0f, 0.0f);//same as ^
                 fieryTale.soundMoment++;
