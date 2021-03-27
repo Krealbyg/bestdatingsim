@@ -15,6 +15,9 @@ namespace AVRGame.NetStandardLibrary
     {
         private FieryTale fieryTale;
 
+        //List
+        private List<Button> buttons;//literally just for one button but whatever
+        
         //Fonts
         private SpriteFont Names;
         private SpriteFont Talking;
@@ -43,6 +46,7 @@ namespace AVRGame.NetStandardLibrary
 
         protected override void LoadContent()
         {
+            //loading textures, sounds and fonts
             ren = fieryTale.Content.Load<Texture2D>("Ren");
             goku = fieryTale.Content.Load<Texture2D>("Drip_Goku");
             background = fieryTale.Content.Load<Texture2D>("Hell");
@@ -54,7 +58,31 @@ namespace AVRGame.NetStandardLibrary
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
 
+            //button
+            var endlevel = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 329),
+                ButtonText = "Next day"
+            };
+
+            endlevel.Click += Endlevel_Click;
+
+            buttons = new List<Button>//puts the single button in the list
+            {
+                endlevel
+            };
+
             base.LoadContent();
+        }
+
+        private void Endlevel_Click(object sender, EventArgs e)//endlevel button event
+        {
+            if (fieryTale.gameMoment == 30)
+            {
+                fieryTale.currentLevel = 2;
+                fieryTale.gameMoment = 0;
+                MediaPlayer.Stop();
+            }
         }
 
         public override void Update(GameTime gameTime)
@@ -72,6 +100,10 @@ namespace AVRGame.NetStandardLibrary
                     teleport.Play(volume: 0.15f, 0.0f, 0.0f);//same as ^
                     fieryTale.soundMoment++;
                 }
+
+                foreach (var button in buttons)//updates the button
+                    button.Update(gameTime);
+
                 base.Update(gameTime);
             }
         }
@@ -83,11 +115,11 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.spriteBatch.Begin();
 
                 //backgrounds
-                if (fieryTale.gameMoment <= 21)
+                if (fieryTale.gameMoment <= 21)//hell background
                 {
                     fieryTale.spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
                 }
-                else if (fieryTale.gameMoment > 21)
+                else if (fieryTale.gameMoment > 21)//background change when going into dormroom
                 {
                     fieryTale.spriteBatch.Draw(dorm, new Rectangle(0, 0, 1280, 760), Color.White);
                 }
@@ -217,7 +249,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "You watch Anna leave for her own dormroom.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 22)
+                if (fieryTale.gameMoment == 22)//background and music change moment
                 {
                     fieryTale.spriteBatch.DrawString(Names, "You enter your dormroom and see it is meticulously furnished, but rather bland.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -256,6 +288,12 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 29)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "You crash down on your bed and fall asleep.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 30)
+                {
+                    foreach (var button in buttons)//draws the button
+                        button.Draw(gameTime);
+                    fieryTale.choiceMoment = true;//takes away control
                 }
                 fieryTale.spriteBatch.End();
             }
