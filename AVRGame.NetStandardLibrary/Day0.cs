@@ -34,7 +34,7 @@ namespace AVRGame.NetStandardLibrary
         private SoundEffect drip;
         private SoundEffect teleport;
 
-        public Day0(FieryTale fieryTale) : base(fieryTale)
+        public Day0(FieryTale fieryTale) : base(fieryTale)//constructor
         {
             this.fieryTale = fieryTale;
         }
@@ -79,9 +79,9 @@ namespace AVRGame.NetStandardLibrary
         {
             if (fieryTale.gameMoment == 30)
             {
-                fieryTale.currentLevel = 2;
-                fieryTale.gameMoment = 0;
-                MediaPlayer.Stop();
+                fieryTale.currentLevel = 2;//starts next level
+                fieryTale.gameMoment = 0;//resets the gameMoment count
+                MediaPlayer.Stop();//stops the chill music
             }
         }
 
@@ -117,7 +117,7 @@ namespace AVRGame.NetStandardLibrary
                 //backgrounds
                 if (fieryTale.gameMoment <= 21)//hell background
                 {
-                    fieryTale.spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
+                    fieryTale.spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);//screen width and height
                 }
                 else if (fieryTale.gameMoment > 21)//background change when going into dormroom
                 {
@@ -125,12 +125,12 @@ namespace AVRGame.NetStandardLibrary
                 }
                 
                 //Textbox
-                fieryTale.spriteBatch.Draw(textbox, new Rectangle(0, 520, 1280, 200), Color.Black * 0.6f);
+                fieryTale.spriteBatch.Draw(textbox, new Rectangle(0, 520, 1280, 200), Color.Black * 0.6f);//720 - 200 = 520, 1280 is screen width, 200 randomly decided
 
                 //Scenes
                 if (fieryTale.gameMoment == 0)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You are Ren Amamiya, leader of the Phantom Thieves.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "You are Ren Amamiya, leader of the Phantom Thieves.", new Vector2(10, 580), Color.White);//positions of text arbitrarily decided until it looked good
                 }
                 if (fieryTale.gameMoment == 1)
                 {
@@ -138,25 +138,25 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 2)
                 {
-                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1010, 300, 256, 404), Color.White);
+                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1024, 316, 256, 404), Color.White);//position calculated based on size, size based on original image
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Where the fuck am I?", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 3)
                 {
-                    fieryTale.spriteBatch.Draw(goku, new Rectangle(1010, 300, 256, 404), Color.Black);
+                    fieryTale.spriteBatch.Draw(goku, new Vector2(990, 305), Color.Black);//original image size fine (340 x 415), some extra space around goku so position couldn't be calculated and was eyeballed
                     fieryTale.spriteBatch.DrawString(Names, "Mysterious voice:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "You have died. Welcome to Hell.", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 4)
                 {
-                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1010, 300, 256, 404), Color.White);
+                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1024, 316, 256, 404), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Who are you? I will reveal your true form!", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 5)
                 {
-                    fieryTale.spriteBatch.Draw(goku, new Rectangle(1010, 300, 256, 404), Color.Black);
+                    fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.Black);
                     fieryTale.spriteBatch.DrawString(Names, "Mysterious voice:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "There is no need, for I am...", new Vector2(10, 580), Color.White);
                 }
@@ -182,7 +182,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 10)
                 {
-                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);//actually calculated this position based on size, size decided based on original image size
                     fieryTale.spriteBatch.DrawString(Names, "Demon girl:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Hey there! You must be new here.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
@@ -202,7 +202,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 13)
                 {
-                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1010, 300, 256, 404), Color.White);
+                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1024, 316, 256, 404), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "My name is Ren Amamiya.", new Vector2(10, 580), Color.White);
                 }
@@ -265,7 +265,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 25)
                 {
-                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1010, 300, 256, 404), Color.White);
+                    fieryTale.spriteBatch.Draw(ren, new Rectangle(1024, 316, 256, 404), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Dying and going to Hell is a lot more exhausting than I'd expect, I should get some sleep.", new Vector2(10, 580), Color.White);
                 }
@@ -289,7 +289,7 @@ namespace AVRGame.NetStandardLibrary
                 {
                     fieryTale.spriteBatch.DrawString(Names, "You crash down on your bed and fall asleep.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 30)
+                if (fieryTale.gameMoment == 30)//end of Day0, chance to keep listening to the chill music before moving on
                 {
                     foreach (var button in buttons)//draws the button
                         button.Draw(gameTime);

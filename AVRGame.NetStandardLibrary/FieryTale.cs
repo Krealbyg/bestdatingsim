@@ -9,13 +9,15 @@ using System.Collections.Generic;
 
 namespace AVRGame.NetStandardLibrary
 {
-    //To add: 
-    //Levelmanager and levels DONE!!!!!
-    //Buttons DONE!!!!!
-    //Choices
-    //Voice over?
-    //Anime Waifus (most important)
-    //Actual Story (pretty important)
+    //This game might show hints of my recent slight obsession with Persona games...
+    
+    /*To add: 
+    Levelmanager and levels DONE!!!!!
+    Buttons DONE!!!!!
+    Choices
+    Voice over?
+    Anime Waifus (most important)
+    Actual Story (pretty important)*/
     
     //Cheeky circumvention of the protection level on SpriteBatch
     public class BetterSpriteBatch : SpriteBatch
@@ -36,7 +38,7 @@ namespace AVRGame.NetStandardLibrary
         
         MouseState oldState;
 
-        //songs
+        //songs (decided to do music in main file instead of in the level files, thought this'd be better if centralized)
         private Song mementos;
         private Song piano;
         private Song mask;
@@ -48,7 +50,7 @@ namespace AVRGame.NetStandardLibrary
         public bool choiceMoment;//notes if there is a choice on screen or not
         public int currentLevel;//notes which level is currently active, level1 is currentLevel == 0
         public int gokuPoints;//Goku's opinion of Ren, changes based on choices made
-        public int goroPoints;//Goro's opinion of Ren, changes based on choices made, high enough points unlock secret romance ending
+        public int goroPoints;//Goro's opinion of Ren, changes based on choices made, high enough points unlock secret romance ending (because I demanded we make a Ren/Goro ending)
         public bool attackedSomeone;//notes if Ren has attacked someone with Arsène
         public bool songPlaying;//notes if there is currently a song playing
      
@@ -88,7 +90,7 @@ namespace AVRGame.NetStandardLibrary
         {
             spriteBatch = new BetterSpriteBatch(GraphicsDevice);
 
-            //music
+            //music (which has been shamelessly ripped from the Persona 5 Royal OST)
             mementos = Content.Load<Song>("MementosSong");
             piano = Content.Load<Song>("VelvetRoomMusic");
             mask = Content.Load<Song>("BeneathTheMask");
@@ -116,11 +118,11 @@ namespace AVRGame.NetStandardLibrary
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mementos);
-                MediaPlayer.Volume = 0.15f;
+                MediaPlayer.Volume = 0.1f;
                 songPlaying = true;
             }
 
-            if (currentLevel == 1 && gameMoment <= 21 && songPlaying == false)
+            if (currentLevel == 1 && gameMoment <= 21 && songPlaying == false)//main Hell song
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(hell);
@@ -128,11 +130,11 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (currentLevel == 1 && gameMoment > 21 && songPlaying == true)
+            if (currentLevel == 1 && gameMoment > 21 && songPlaying == true)//Ren's dormroom song
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mask);
-                MediaPlayer.Volume = 0.05f;
+                MediaPlayer.Volume = 0.1f;
                 songPlaying = false;
             }
             
@@ -144,7 +146,7 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (MediaPlayer.State == MediaState.Stopped)
+            if (MediaPlayer.State == MediaState.Stopped)//sets songPlaying to false when no song is playing
             {
                 songPlaying = false;
             }
