@@ -28,7 +28,6 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D background;
 
         //Sounds
-        private Song piano;
         private SoundEffect drip;
 
         public GameOver(FieryTale fieryTale) : base(fieryTale)//constructor, inherit some stuff from main file (like spritebatch)
@@ -49,10 +48,7 @@ namespace AVRGame.NetStandardLibrary
             background = fieryTale.Content.Load<Texture2D>("VelvetRoom");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
-            piano = fieryTale.Content.Load<Song>("VelvetRoomMusic");
             drip = fieryTale.Content.Load<SoundEffect>("DripSound");
-
-            MediaPlayer.Play(piano);//plays music
 
             var endbutton = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)//game exit button
             {
@@ -81,18 +77,6 @@ namespace AVRGame.NetStandardLibrary
 
         public override void Update(GameTime gameTime)
         {
-            if (fieryTale.attackedSomeone == false)//don't play music unless gameover
-            {
-                MediaPlayer.Pause();
-            }
-            else//starts playing when gameover
-            {
-                MediaPlayer.Resume();
-            }
-
-            MediaPlayer.IsRepeating = true;//makes music loop
-            MediaPlayer.Volume = 0.5f;//lowers volume
-
             if (fieryTale.gameMoment == 1 && fieryTale.soundMoment == 0 && fieryTale.attackedSomeone == true)//plays drip
             {
                 drip.Play(volume: 0.1f, 0.0f, 0.0f);//normal loudness

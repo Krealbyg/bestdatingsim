@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using GameMechanics;
 using System;
+using System.Collections.Generic;
 
 namespace AVRGame.NetStandardLibrary
 {
@@ -26,7 +27,7 @@ namespace AVRGame.NetStandardLibrary
     }
 
     public class FieryTale : GameMechanics.AVRGame
-    {
+    {   
         Random random = new Random();
         RasterizerState rasterizerState = new RasterizerState() { MultiSampleAntiAlias = true };
         public int windowWidth = 1280, windowHeight = 720;
@@ -35,17 +36,23 @@ namespace AVRGame.NetStandardLibrary
         
         MouseState oldState;
 
+        //songs
+        private Song mementos;
+        private Song piano;
+
         //Universal variables
         public int gameMoment;//decides the text that shows
         public int soundMoment;//decides which sound should be played
         public bool choiceMoment;//notes if there is a choice on screen or not
         public int currentLevel;//notes which level is currently active, level1 is currentLevel == 0
         public int gokuPoints;//Goku's opinion of Ren, changes based on choices made
+        public int goroPoints;//Goro's opinion of Ren, changes based on choices made, high enough points unlock secret romance ending
         public bool attackedSomeone;//notes if Ren has attacked someone with Arsène
+        public bool songPlaying;//notes if there is currently a song playing
      
         public FieryTale() : base()
         {
-
+            
         }
 
         /// <summary>
@@ -61,8 +68,10 @@ namespace AVRGame.NetStandardLibrary
             graphics.ApplyChanges();
 
             //loading the levels
-            Level1 level1 = new Level1(this);
-            Components.Add(level1);
+            Startscreen startscreen = new Startscreen(this);
+            Components.Add(startscreen);
+            Testlevel testLevel = new Testlevel(this);
+            Components.Add(testLevel);
             GameOver gameOver = new GameOver(this);
             Components.Add(gameOver);
         }
@@ -74,6 +83,11 @@ namespace AVRGame.NetStandardLibrary
         protected override void __LoadContent()
         {
             spriteBatch = new BetterSpriteBatch(GraphicsDevice);
+
+            //music
+            mementos = Content.Load<Song>("MementosSong");
+            piano = Content.Load<Song>("VelvetRoomMusic");
+            MediaPlayer.IsRepeating = true;//makes music repeat
         }
 
         /// <summary>
@@ -91,6 +105,29 @@ namespace AVRGame.NetStandardLibrary
         /// <param name="gameTime"></param>
         protected override void __Update(GameTime gameTime)
         {
+            //music
+            if (currentLevel == 0 && songPlaying == false)//main menu song
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(mementos);
+                MediaPlayer.Volume = 0.2f;
+                songPlaying = true;
+            }
+            
+            if (attackedSomeone == true && songPlaying == false)//gameover song
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(piano);
+                MediaPlayer.Volume = 0.4f;
+                songPlaying = true;
+            }
+            
+            if (currentLevel != 0 && attackedSomeone == false && songPlaying == true)//stops playing music
+            {
+                MediaPlayer.Stop();
+                songPlaying = false;
+            }
+
             //mouse input
             MouseState newState = Mouse.GetState();
             
@@ -115,7 +152,7 @@ namespace AVRGame.NetStandardLibrary
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin(rasterizerState: this.rasterizerState, transformMatrix: Camera.TransformMatrix);
-            
+
             //Draw the objects
             objectManager.Draw(spriteBatch, gameTime);
 
@@ -131,8 +168,7 @@ namespace AVRGame.NetStandardLibrary
         {
             spriteBatch.Begin(rasterizerState: this.rasterizerState);
 
-
-
+            
             spriteBatch.End();
         }
     }
