@@ -39,6 +39,9 @@ namespace AVRGame.NetStandardLibrary
         public int gameMoment;//decides the text that shows
         public int soundMoment;//decides which sound should be played
         public bool choiceMoment;//notes if there is a choice on screen or not
+        public int currentLevel;//notes which level is currently active, level1 is currentLevel == 0
+        public int gokuPoints;//Goku's opinion of Ren, changes based on choices made
+        public bool attackedSomeone;//notes if Ren has attacked someone with Arsène
      
         public FieryTale() : base()
         {
@@ -60,6 +63,8 @@ namespace AVRGame.NetStandardLibrary
             //loading the levels
             Level1 level1 = new Level1(this);
             Components.Add(level1);
+            GameOver gameOver = new GameOver(this);
+            Components.Add(gameOver);
         }
 
         /// <summary>
