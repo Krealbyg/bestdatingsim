@@ -57,7 +57,7 @@ namespace AVRGame.NetStandardLibrary
         public bool choiceMoment;//notes if there is a choice on screen or not
         public int currentLevel;//notes which level is currently active, level1 is currentLevel == 0
         public int gokuPoints;//Goku's opinion of Ren, changes based on choices made
-        public int goroPoints;//Goro's opinion of Ren, changes based on choices made, high enough points unlock secret romance ending (because I demanded we make a Ren/Goro ending)
+        public int goroPoints;//Goro's opinion of Ren, changes based on choices made, high enough points unlock secret romance ending (because I demanded we make a Ren x Goro ending)
         public bool attackedSomeone;//notes if Ren has attacked someone with Arsène
         public bool songPlaying;//notes if there is currently a song playing
      

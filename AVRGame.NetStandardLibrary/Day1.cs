@@ -17,6 +17,8 @@ namespace AVRGame.NetStandardLibrary
 
         private int whichtalk; //which person you decided to talk to
         private int talkoption;//which option you chose when talking to someone
+        private int gorooption;//only for goro
+        private int goromancechoice;//for the secret romance ending choice on this day
 
         //Lists (one for every choice moment)
         private List<Button> talkchoice;
@@ -24,6 +26,10 @@ namespace AVRGame.NetStandardLibrary
         private List<Button> bratchoice;
         private List<Button> jockchoice;
         private List<Button> emochoice;
+        private List<Button> gorochoice;
+        private List<Button> goromance;
+        private List<Button> endgame;
+        private List<Button> nextday;
 
         //Fonts
         private SpriteFont Names;
@@ -44,9 +50,17 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D classroom;
         private Texture2D sins;
 
+        //Goro expressions
+        private Texture2D goroneutral;
+        private Texture2D gorosmiling;
+        private Texture2D gorosad;
+        private Texture2D goroshocked;
+
         //Sounds
         private SoundEffect drip;
         private SoundEffect teleport;
+        private SoundEffect persona;
+        private Song combat;
 
         public Day1(FieryTale fieryTale) : base(fieryTale)//constructor
         {
@@ -73,9 +87,15 @@ namespace AVRGame.NetStandardLibrary
             yasutora = fieryTale.Content.Load<Texture2D>("Yasutora");
             kase = fieryTale.Content.Load<Texture2D>("Kase");
             sins = fieryTale.Content.Load<Texture2D>("Sinsleft");
+            goroneutral = fieryTale.Content.Load<Texture2D>("GoroNeutral");
+            gorosmiling = fieryTale.Content.Load<Texture2D>("GoroSmiling");
+            gorosad = fieryTale.Content.Load<Texture2D>("GoroSad");
+            goroshocked = fieryTale.Content.Load<Texture2D>("GoroShocked");
             classroom = fieryTale.Content.Load<Texture2D>("Classroom");
             drip = fieryTale.Content.Load<SoundEffect>("DripSound");
             teleport = fieryTale.Content.Load<SoundEffect>("Teleportsound");
+            persona = fieryTale.Content.Load<SoundEffect>("Persona");
+            combat = fieryTale.Content.Load<Song>("Combat");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
 
@@ -171,6 +191,42 @@ namespace AVRGame.NetStandardLibrary
                 ButtonText = "Speak up!"
             };
 
+            //when talking to Goro
+            var gorochoice1 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 150),
+                ButtonText = "Akechi!"
+            };
+            var gorochoice2 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 300),
+                ButtonText = "Persona!"
+            };
+
+            //Goro romance chance
+            var goromance1 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 150),
+                ButtonText = "So do I."
+            };
+            var goromance2= new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 300),
+                ButtonText = "Just friends?"
+            };
+
+            //Endbuttons
+            var endbutton = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)//game exit button
+            {
+                ButtonPosition = new Vector2(0, 279),
+                ButtonText = "End Game",
+            };
+            var nextlevel = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 279),
+                ButtonText = "Next Day"
+            };
+
             #endregion
 
             #region buttons choice event creation
@@ -200,6 +256,18 @@ namespace AVRGame.NetStandardLibrary
             emochoice1.Click += Emochoice1_Click;
             emochoice2.Click += Emochoice2_Click;
             emochoice3.Click += Emochoice3_Click;
+
+            //gorochoice
+            gorochoice1.Click += Gorochoice1_Click;
+            gorochoice2.Click += Gorochoice2_Click;
+
+            //goromance
+            goromance1.Click += Goromance1_Click;
+            goromance2.Click += Goromance2_Click;
+
+            //endbuttons
+            endbutton.Click += Endbutton_Click;
+            nextlevel.Click += Nextlevel_Click;
             #endregion
 
             #region filling lists
@@ -234,12 +302,102 @@ namespace AVRGame.NetStandardLibrary
                 emochoice2,
                 emochoice3
             };
+            gorochoice = new List<Button>
+            {
+                gorochoice1,
+                gorochoice2
+            };
+            goromance = new List<Button>
+            {
+                goromance1,
+                goromance2
+            };
+            endgame = new List<Button>
+            {
+                endbutton
+            };
+            nextday = new List<Button>
+            {
+                nextlevel
+            };
             #endregion
             base.LoadContent();
         }
 
-        #region button click events
+        
 
+
+
+        #region button click events
+        //endlevel
+        private void Nextlevel_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 61 && gorooption == 1)
+            {
+                fieryTale.currentLevel = 3;//starts next level
+                fieryTale.gameMoment = 0;//resets the gameMoment count
+                MediaPlayer.Stop();//stops the chill music
+                fieryTale.choiceMoment = false;
+            }
+        }
+
+        private void Endbutton_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 61 && gorooption == 2)
+            {
+                fieryTale.Exit();//exits game
+            }
+        }
+
+        //goromance
+        private void Goromance2_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 54 && gorooption == 1)
+            {
+                goromancechoice = 2;
+                fieryTale.goroPoints++;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Goromance1_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 54 && gorooption == 1)
+            {
+                goromancechoice = 1;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+        //goro
+        private void Gorochoice2_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 49)
+            {
+                gorooption = 2;
+                persona.Play();
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+                if (fieryTale.songPlaying == true)
+                {
+                    MediaPlayer.Stop();
+                    MediaPlayer.Play(combat);
+                    MediaPlayer.Volume = 0.1f;
+                    fieryTale.songPlaying = false;
+                }
+            }
+        }
+
+        private void Gorochoice1_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 49)
+            {
+                gorooption = 1;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
         //emo
         private void Emochoice3_Click(object sender, EventArgs e)
         {
@@ -409,6 +567,18 @@ namespace AVRGame.NetStandardLibrary
         {
             if (fieryTale.currentLevel == 2 && fieryTale.attackedSomeone == false)//only in this level and no gameover
             {
+                //soundeffect
+                if (fieryTale.gameMoment == 56 && fieryTale.soundMoment == 0 && gorooption == 2)
+                {
+                    drip.Play(volume: 0.1f, 0.0f, 0.0f);//loud on 100%
+                    fieryTale.soundMoment++;//so doesnt loop
+                }
+                if (fieryTale.gameMoment == 61 && fieryTale.soundMoment == 1 && gorooption == 2)
+                {
+                    drip.Play(volume: 1f, 0.0f, 0.0f);//loud on 100%
+                    fieryTale.soundMoment++;//so doesnt loop
+                }
+
 
                 //update the buttons
                 foreach (var button in talkchoice)
@@ -421,7 +591,15 @@ namespace AVRGame.NetStandardLibrary
                     button.Update(gameTime);
                 foreach (var button in emochoice)
                     button.Update(gameTime);
-               
+                foreach (var button in gorochoice)
+                    button.Update(gameTime);
+                foreach (var button in goromance)
+                    button.Update(gameTime);
+                foreach (var button in endgame)
+                    button.Update(gameTime);
+                foreach (var button in nextday)
+                    button.Update(gameTime);
+
                 base.Update(gameTime);
             }
         }
@@ -433,11 +611,11 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.spriteBatch.Begin();
                 
                 //backgrounds
-                if (fieryTale.gameMoment <= 4 || fieryTale.gameMoment > 45)
+                if (fieryTale.gameMoment <= 4 || fieryTale.gameMoment > 45)//dormroom
                 {
                     fieryTale.spriteBatch.Draw(dorm, new Rectangle(0, 0, 1280, 760), Color.White);
                 }
-                else if (fieryTale.gameMoment > 4 && fieryTale.gameMoment <= 45)
+                else if (fieryTale.gameMoment > 4 && fieryTale.gameMoment <= 45)//classroom
                 {
                     fieryTale.spriteBatch.Draw(classroom, new Rectangle(0, 0, 1280, 760), Color.White);
                 }
@@ -1326,13 +1504,201 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 45)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "I pay no attention to class. Afterwards I leave for my dormroom to hopefully meet my roommate.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I pay no attention to class. Afterwards I leave for my dormroom.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Hopefully I'll meet my roommate.", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 46)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "As I enter my dormroom I'm greeted by my roommate...", new Vector2(10, 580), Color.White);
                 }
-
+                if (fieryTale.gameMoment == 47)
+                {
+                    fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);//616 x 614
+                    fieryTale.spriteBatch.DrawString(Names, "Roommate:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Ah hello, you must be my new roommate. Nice to me-", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 48)
+                {
+                    fieryTale.spriteBatch.Draw(goroshocked, new Rectangle(1000, 340, 380, 380), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Ren?!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 49)
+                {
+                    foreach (var button in gorochoice)
+                        button.Draw(gameTime);
+                    fieryTale.choiceMoment = true;
+                }
+                if (fieryTale.gameMoment == 50)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(goroneutral, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "So, the great leader of the Phantom Thieves has died then...", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "I tear off my mask (glasses) and summon forth Arsene from the sea of my soul.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 51)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(goroneutral, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Hmmm, well I could imagine a worse roommate if I'm being honest.", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "Akechi quickly does the same, summoning forth Loki.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 52)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(goroneutral, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "You granted my wishes by rejecting Maruki's world, for that I am still grateful.", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "We engage in an intense duel and fight with no regard to ourselves or our surroundings.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 53)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(gorosad, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Yet, my mind sometimes wandered to what could've been... I believe we could've been great friends.", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "We wreak havoc and many innocents that stand between us fall.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 54)
+                {
+                    if (gorooption == 1)
+                    {
+                        foreach (var button in goromance)
+                            button.Draw(gameTime);
+                        fieryTale.choiceMoment = true;
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "The dorms are no more, only ruin remains. In the middle of it, we stand.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 55)
+                {
+                    if (gorooption == 1)
+                    {
+                        if (goromancechoice == 1)
+                        {
+                            fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "I'm glad you think so as well.", new Vector2(10, 580), Color.White);
+                        }
+                        else if (goromancechoice == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(goroshocked, new Rectangle(1000, 340, 380, 380), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "W-what are you insinuating?", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "As we both ready another attack, someone appears before us.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 56)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(goroneutral, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Anyway, perhaps this is the universe's weird way of giving us a second chance...", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "This ends here.", new Vector2(10, 580), Color.White);
+                        MediaPlayer.Stop();
+                    }
+                }
+                if (fieryTale.gameMoment == 57)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Whatever it is, let us make the best of it.", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "The both of you deserve proper punishment.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 58)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Agreed. Now then, how have you been? Anything of note happen since my death?", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "Goku stretches out his hand towards Akechi and in an instant he is atomised.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 59)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Well, let me think...", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "Goku turns his attention to me and I feel an intense sense of dread.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 60)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "Akechi and I spend some time catching up, then we both go to bed.", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "This is it, I've made a grave mistake...", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 61)
+                {
+                    if (gorooption == 1)
+                    {
+                        foreach (var button in nextday)
+                            button.Draw(gameTime);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "Gameover", new Vector2(10, 580), Color.White);
+                        foreach (var button in endgame)
+                            button.Draw(gameTime);
+                    }
+                    fieryTale.choiceMoment = true;
+                }
                 fieryTale.spriteBatch.End();
             }
         }
