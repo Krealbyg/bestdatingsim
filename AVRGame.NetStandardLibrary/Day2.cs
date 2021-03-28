@@ -41,6 +41,7 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D classroom;
         private Texture2D sins;
         private Texture2D mrcare;
+        private Texture2D bitch;
 
         //Goro expressions
         private Texture2D goroneutral;
@@ -808,7 +809,7 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 32)
                 {
                     foreach (var button in bitchchoice)
-                        button.Update(gameTime);
+                        button.Draw(gameTime);
                     fieryTale.choiceMoment = true;
                 }
                 if (fieryTale.gameMoment == 33)
