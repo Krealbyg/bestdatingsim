@@ -40,6 +40,7 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D shiki;
         private Texture2D sabel;
         private Texture2D yasutora;
+        private Texture2D kase;
 
         //Sounds
         private SoundEffect drip;
@@ -68,6 +69,7 @@ namespace AVRGame.NetStandardLibrary
             shiki = fieryTale.Content.Load<Texture2D>("Shiki");
             sabel = fieryTale.Content.Load<Texture2D>("Sabel");
             yasutora = fieryTale.Content.Load<Texture2D>("Yasutora");
+            kase = fieryTale.Content.Load<Texture2D>("Kase");
             drip = fieryTale.Content.Load<SoundEffect>("DripSound");
             teleport = fieryTale.Content.Load<SoundEffect>("Teleportsound");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
@@ -559,7 +561,7 @@ namespace AVRGame.NetStandardLibrary
                         }
                         else if (talkoption == 3)
                         {
-                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);//change sprite later
+                            fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);//666 x 1165
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "Hello classmate-san! My name is Kase Daiki, and who might you be?", new Vector2(10, 580), Color.White);
                         }
@@ -634,13 +636,13 @@ namespace AVRGame.NetStandardLibrary
                     {
                         if (talkoption == 1)
                         {
-                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "HI, I am Kase, nice to meet you Ren. Are you new here?", new Vector2(10, 580), Color.White);
                         }
                         else if (talkoption == 2)
                         {
-                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "Ehm how can I help you classmate-san?", new Vector2(10, 580), Color.White);
                         }
@@ -734,7 +736,7 @@ namespace AVRGame.NetStandardLibrary
                         }
                         else if (talkoption == 3)
                         {
-                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "Well, I wanted to share what I was reading to the new kid!", new Vector2(10, 580), Color.White);
                         }
@@ -809,13 +811,13 @@ namespace AVRGame.NetStandardLibrary
                     {
                         if (talkoption == 1)
                         {
-                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "You do not look like you are from here, no offence though.", new Vector2(10, 580), Color.White);
                         }
                         else if (talkoption == 2)
                         {
-                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "Classmate-san? You there?", new Vector2(10, 580), Color.White);
                         }
@@ -909,7 +911,7 @@ namespace AVRGame.NetStandardLibrary
                         }
                         else if (talkoption == 3)
                         {
-                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "[starts tearing up] Meanie!", new Vector2(10, 580), Color.White);
                         }
@@ -982,13 +984,13 @@ namespace AVRGame.NetStandardLibrary
                     {
                         if (talkoption == 1)
                         {
-                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "Well, I like to read and learn new things. Also love to collect small things.", new Vector2(10, 580), Color.White);
                         }
                         else if (talkoption == 2)
                         {
-                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "c-cl-classmate-san, please you are scaring me, could you tell me what’s wrong?", new Vector2(10, 580), Color.White);
                         }
@@ -1123,7 +1125,7 @@ namespace AVRGame.NetStandardLibrary
                         }
                         else if (talkoption == 2)
                         {
-                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "[sobbing] c-c-c-classmate-san p-p-please stop...", new Vector2(10, 580), Color.White);
                         }
