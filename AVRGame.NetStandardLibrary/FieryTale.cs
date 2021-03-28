@@ -18,6 +18,13 @@ namespace AVRGame.NetStandardLibrary
     Voice over?
     Anime Waifus (most important)
     Actual Story (pretty important)*/
+
+    /* Amount of buttons and which positions to give them:
+     * 1: 0 , 329
+     * 2: 0, 268 . 0, 380
+     * 3:
+     * 4: 0, 100 . 0, 200 . 0, 300 . 0, 400
+     */
     
     //Cheeky circumvention of the protection level on SpriteBatch
     public class BetterSpriteBatch : SpriteBatch
@@ -80,6 +87,8 @@ namespace AVRGame.NetStandardLibrary
             Components.Add(gameOver);
             Day0 day0 = new Day0(this);
             Components.Add(day0);
+            Day1 day1 = new Day1(this);
+            Components.Add(day1);
         }
 
         /// <summary>
