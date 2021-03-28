@@ -436,24 +436,20 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 13)
                 {
-                    if (obamaoption == 1)
-                    {
-                        fieryTale.spriteBatch.DrawString(Names, "The janitor gives me directions and I run off to class.", new Vector2(10, 580), Color.White);
-                    }
+
+                    fieryTale.spriteBatch.DrawString(Names, "The janitor gives me directions and I run off to class.", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 14)
                 {
-                    if (obamaoption == 1)
-                    {
-                        fieryTale.spriteBatch.DrawString(Names, "I am faster than expected and arrive at class slightly early.", new Vector2(10, 580), Color.White);
-                    }
+                    
+                    fieryTale.spriteBatch.DrawString(Names, "I am faster than expected and arrive at class slightly early.", new Vector2(10, 580), Color.White);
+                    
                 }
                 if (fieryTale.gameMoment == 15)
                 {
-                    if (obamaoption == 1)
-                    {
-                        fieryTale.spriteBatch.DrawString(Names, "Mr. Sins isn't busy, perhaps I could talk to him.", new Vector2(10, 580), Color.White);
-                    }
+                    
+                    fieryTale.spriteBatch.DrawString(Names, "Mr. Sins isn't busy, perhaps I could talk to him.", new Vector2(10, 580), Color.White);
+                   
                 }
                 if (fieryTale.gameMoment == 16)
                 {
@@ -490,7 +486,7 @@ namespace AVRGame.NetStandardLibrary
                 {
                     if (sinsoption == 1)
                     {
-                        fieryTale.gameMoment = 25;
+                        fieryTale.gameMoment = 26;
                     }
                     else if (sinsoption == 2)
                     {
@@ -564,7 +560,7 @@ namespace AVRGame.NetStandardLibrary
                     }
                     else if (sinsoption == 3)
                     {
-                        fieryTale.gameMoment = 25;
+                        fieryTale.gameMoment = 26;
                     }
                     else if (sinsoption == 4)
                     {
@@ -573,7 +569,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Talking, "No, I recognize you. You're hiding something... What is it you don't want us to know?", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 21)
+                if (fieryTale.gameMoment == 22)
                 {
                     if (sinsoption == 2)
                     {
@@ -588,11 +584,11 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Talking, "You better stop talking, Kid. Last warning.", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 22)
+                if (fieryTale.gameMoment == 23)
                 {
                     if (sinsoption == 2)
                     {
-                        fieryTale.gameMoment = 25;
+                        fieryTale.gameMoment = 26;
                     }
                     else if (sinsoption == 4)
                     {
@@ -601,7 +597,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Talking, "I REMEMBER NOW! You're quite the star online...", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 23)
+                if (fieryTale.gameMoment == 24)
                 {
                     if (sinsoption == 4)
                     {
@@ -610,7 +606,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Talking, "THAT IS ENOUGH! I told you to drop it, now drop it. Take. A. Seat.", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 24)
+                if (fieryTale.gameMoment == 25)
                 {
                     if (sinsoption == 4)
                     {
@@ -619,11 +615,11 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Talking, "Hit a soft spot I see... [I take a seat]", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 25)
+                if (fieryTale.gameMoment == 26)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Same old boring lesson as last time.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 26)
+                if (fieryTale.gameMoment == 27)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Mr. Sins ends the lesson and wishes us good luck on the next one.", new Vector2(10, 580), Color.White);
                 }
