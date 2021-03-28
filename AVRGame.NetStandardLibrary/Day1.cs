@@ -676,6 +676,7 @@ namespace AVRGame.NetStandardLibrary
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Quite the assortment of individuals, who will I talk to though?", new Vector2(10, 580), Color.White);
                 }
+                #region classmate convo
                 if (fieryTale.gameMoment == 12)
                 {
                     foreach (var button in talkchoice)
@@ -1368,6 +1369,7 @@ namespace AVRGame.NetStandardLibrary
                         }
                     }
                 }
+                #endregion
                 if (fieryTale.gameMoment == 24)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Soon after sitting down, my homeroom teacher enters the classroom.", new Vector2(10, 580), Color.White);
@@ -1516,9 +1518,10 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Ren?!", new Vector2(10, 580), Color.White);
                 }
+                #region end of level split paths
                 if (fieryTale.gameMoment == 49)
                 {
-                    foreach (var button in gorochoice)
+                    foreach (var button in gorochoice)//this is where rest of level splits
                         button.Draw(gameTime);
                     fieryTale.choiceMoment = true;
                 }
@@ -1578,7 +1581,7 @@ namespace AVRGame.NetStandardLibrary
                 {
                     if (gorooption == 1)
                     {
-                        foreach (var button in goromance)
+                        foreach (var button in goromance)//first chance for goropoint in whole game.
                             button.Draw(gameTime);
                         fieryTale.choiceMoment = true;
                     }
@@ -1692,6 +1695,7 @@ namespace AVRGame.NetStandardLibrary
                     }
                     fieryTale.choiceMoment = true;
                 }
+                #endregion
                 fieryTale.spriteBatch.End();
             }
         }

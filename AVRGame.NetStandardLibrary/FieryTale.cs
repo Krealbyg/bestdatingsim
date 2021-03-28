@@ -116,7 +116,7 @@ namespace AVRGame.NetStandardLibrary
         /// <param name="gameTime"></param>
         protected override void __Update(GameTime gameTime)
         {
-            //music
+            #region music
             if (currentLevel == 0 && songPlaying == false)//main menu song
             {
                 MediaPlayer.Stop();
@@ -148,7 +148,23 @@ namespace AVRGame.NetStandardLibrary
                 MediaPlayer.Volume = 0.1f;
                 songPlaying = true;
             }
-            
+
+            if (currentLevel == 3 && gameMoment <= 5 && songPlaying == false && attackedSomeone == false)//Ren's dormroom song again
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(mask);
+                MediaPlayer.Volume = 0.1f;
+                songPlaying = true;
+            }
+
+            if (currentLevel == 3 && gameMoment > 5 && songPlaying == true)//Outside song
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(hell);
+                MediaPlayer.Volume = 0.05f;
+                songPlaying = false;
+            }
+
             if (attackedSomeone == true && songPlaying == false)//gameover song
             {
                 MediaPlayer.Stop();
@@ -161,6 +177,7 @@ namespace AVRGame.NetStandardLibrary
             {
                 songPlaying = false;
             }
+            #endregion
 
             //mouse input
             MouseState newState = Mouse.GetState();

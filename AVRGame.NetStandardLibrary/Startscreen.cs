@@ -12,6 +12,7 @@ using GameMechanics;
 namespace AVRGame.NetStandardLibrary
 {
     //quick startscreen to either go to the test level or to start the real game
+    //maybe add nice Title to it at some point
     public class Startscreen : DrawableGameComponent
     {
         private FieryTale fieryTale;
