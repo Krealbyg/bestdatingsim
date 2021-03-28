@@ -891,6 +891,302 @@ namespace AVRGame.NetStandardLibrary
                         }
                     }
                 }
+                if (fieryTale.gameMoment == 19)
+                {
+                    if (whichtalk == 1)//nerd
+                    {
+                        if (talkoption == 1)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "I guess that is fair, can you tell me a bit about yourself?", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "[starts tearing up] Meanie!", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 2)//brat
+                    {
+                        if (talkoption == 1)
+                        {
+                            fieryTale.spriteBatch.DrawString(Names, "She waves you away. You take a seat by the window", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Alright then, thank you for wasting my time. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 3)//jock
+                    {
+                        if (talkoption == 1)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Alright fine, good luck bathing in your own narcissism. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "You are below me and you will tell me your name this instant!", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 4)//emo
+                    {
+                        if (talkoption == 1)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Okay, take care Sabel. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "There is nothing hard about it, speak up.", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                }
+                if (fieryTale.gameMoment == 20)
+                {
+                    if (whichtalk == 1)//nerd
+                    {
+                        if (talkoption == 1)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Well, I like to read and learn new things. Also love to collect small things.", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "c-cl-classmate-san, please you are scaring me, could you tell me what’s wrong?", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.spriteBatch.DrawString(Names, "You leave her be. You take a seat by the window", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 2)//brat
+                    {
+                        if (talkoption == 1)
+                        {
+                            fieryTale.gameMoment = 24;
+                        }
+                        else if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(shiki, new Rectangle(950, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Brat:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "HEY WEIRDO, I am talking to you, do you even know who I am? I am Shiki Batakan, and I am above you,", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "now if you can leave that would be greatly appreciated.", new Vector2(10, 600), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.gameMoment = 24;
+                        }
+                    }
+                    else if (whichtalk == 3)//jock
+                    {
+                        if (talkoption == 1)
+                        {
+                            fieryTale.gameMoment = 24;
+                        }
+                        else if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "3...2...1...", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "I will do no such thing, now fuck off. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 4)//emo
+                    {
+                        if (talkoption == 1)
+                        {
+                            fieryTale.gameMoment = 24;
+                        }
+                        else if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(sabel, new Rectangle(980, 270, 300, 450), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Emo:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.spriteBatch.Draw(sabel, new Rectangle(980, 270, 300, 450), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Emo:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "No Ren-sama, please stop pushing so much.", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                }
+                if (fieryTale.gameMoment == 21)
+                {
+                    if (whichtalk == 1)//nerd
+                    {
+                        if (talkoption == 1)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Well, that is nice I suppose, I will see you later. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.gameMoment = 24;
+                        }
+                    }
+                    else if (whichtalk == 2)//brat
+                    { 
+                        if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 3)//jock
+                    {
+                        if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.gameMoment = 24;
+                        }
+                    }
+                    else if (whichtalk == 4)//emo
+                    {   
+                        if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "... [You feel this is going nowhere, you take a seat by the window]", new Vector2(10, 580), Color.White);
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "No wonder you are sitting alone. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                }
+                if (fieryTale.gameMoment == 22)
+                {
+                    if (whichtalk == 1)//nerd
+                    {
+                        if (talkoption == 1)
+                        {
+                            fieryTale.gameMoment = 24;
+                        }
+                        else if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "[sobbing] c-c-c-classmate-san p-p-please stop...", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 2)//brat
+                    {
+                        if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(shiki, new Rectangle(950, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Brat:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Okay, I am done  with you, weirdo. [She turns away]", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 3)//jock
+                    {
+                        if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.DrawString(Names, "The Jock tries to punch you, but you effortlessly dodge it. Having embarrassed him enough,", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "you leave and take a seat by the window", new Vector2(10, 610), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 4)//emo
+                    {
+                        if (talkoption == 2)
+                        {
+                            fieryTale.gameMoment = 24;
+                        }
+                        else if (talkoption == 3)
+                        {
+                            fieryTale.gameMoment = 24;
+                        }
+                    }
+                }
+                if (fieryTale.gameMoment == 23)
+                {
+                    if (whichtalk == 1)//nerd
+                    {
+                        if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "... [You've tortured the poor girl enough, you take a seat by the window]", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 2)//brat
+                    {
+                        if (talkoption == 2)
+                        {
+                            fieryTale.spriteBatch.DrawString(Names, "You take your leave and take a seat by the window.", new Vector2(10, 580), Color.White);
+                        }
+                    }
+                    else if (whichtalk == 3)//jock
+                    {
+                        if (talkoption == 2)
+                        {
+                            fieryTale.gameMoment = 24;
+                        }
+                    }
+                }
+                if (fieryTale.gameMoment == 24)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Soon after sitting down, your homeroom teacher enters the classroom.", new Vector2(10, 580), Color.White);
+                }
 
                 fieryTale.spriteBatch.End();
             }
