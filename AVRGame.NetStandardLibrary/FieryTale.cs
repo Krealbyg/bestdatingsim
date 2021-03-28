@@ -10,19 +10,11 @@ using System.Collections.Generic;
 namespace AVRGame.NetStandardLibrary
 {
     //This game might show hints of my recent slight obsession with Persona games...
-    
-    /*To add: 
-    Levelmanager and levels DONE!!!!!
-    Buttons DONE!!!!!
-    Choices
-    Voice over?
-    Anime Waifus (most important)
-    Actual Story (pretty important)*/
 
     /* Amount of buttons and which positions to give them:
      * 1: 0 , 329
      * 2: 0, 268 . 0, 380
-     * 3:
+     * 3: 0, 125 . 0, 250 . 0, 375
      * 4: 0, 100 . 0, 200 . 0, 300 . 0, 400
      */
     

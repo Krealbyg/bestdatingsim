@@ -210,6 +210,7 @@ namespace AVRGame.NetStandardLibrary
         {
             if (fieryTale.gameMoment == 7)
             {
+                persona.Play();
                 obamaoption = 4;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
@@ -252,7 +253,7 @@ namespace AVRGame.NetStandardLibrary
             {
                 if (fieryTale.gameMoment == 10 && obamaoption == 4 && fieryTale.soundMoment == 0)
                 {
-                    punishment.Play();//plays sound
+                    punishment.Play(volume: 0.75f, 0.0f, 0.0f);//plays sound
                     fieryTale.soundMoment++;//stops looping
                 }
                 
