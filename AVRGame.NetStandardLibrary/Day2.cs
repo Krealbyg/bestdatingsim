@@ -200,7 +200,7 @@ namespace AVRGame.NetStandardLibrary
         {
             if (fieryTale.gameMoment == 16)
             {
-                obamaoption = 4;
+                sinsoption = 1;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
             }
