@@ -179,7 +179,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 9)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You hear faint footsteps from behind you and turn around.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I hear faint footsteps from behind me and turn around.", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 10)
                 {
@@ -215,28 +215,28 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 15)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You follow Anna around as she gives you a tour of the area.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I follow Anna around as she gives me a tour of the area.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 16)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "She first shows you all the classrooms.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "She first shows me all the classrooms.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 17)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "She then shows you around the library.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "She then shows me around the library.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 18)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "She shows you around a small area of campus with shops,", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "She shows me around a small area of campus with shops,", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "restaurants, cafe's and other such things.", new Vector2(10, 610), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
                 }
                 if (fieryTale.gameMoment == 19)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "She then takes you to the dorms and shows you the dormroom you'll be staying in.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "She then takes me to the dorms and shows me the dormroom I'll be staying in.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 20)
@@ -247,22 +247,22 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 21)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You watch Anna leave for her own dormroom.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I watch Anna leave for her own dormroom.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 22)//background and music change moment
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You enter your dormroom and see it is meticulously furnished, but rather bland.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I enter my dormroom and see it is meticulously furnished, but rather bland.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 23)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You remember you're supposed to have a roommate but he seems to not be home.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I remember I'm supposed to have a roommate but he seems to not be home.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 24)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "A wave of exhaustion washes over you.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "A wave of exhaustion washes over me.", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 25)
                 {
@@ -272,23 +272,23 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 26)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You find the unoccupied bedroom and remember you have no change of clothes with you.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I find the unoccupied bedroom and remember I have no change of clothes with me.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 27)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "But just as this thought crosses your mind, your clothes change in a flash of blue fire.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "But just as this thought crosses my mind, my clothes change in a flash of blue fire.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 28)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "It seems the rules of the Metaverse apply to Hell,", new Vector2(10, 580), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, "you don't even want to think about the implications of this.", new Vector2(10, 610), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I don't even want to think about the implications of this.", new Vector2(10, 610), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
                 }
                 if (fieryTale.gameMoment == 29)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You crash down on your bed and fall asleep.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I crash down on my bed and fall asleep.", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 30)//end of Day0, chance to keep listening to the chill music before moving on
                 {

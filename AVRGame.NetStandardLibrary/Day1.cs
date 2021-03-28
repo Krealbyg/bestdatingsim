@@ -42,6 +42,7 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D yasutora;
         private Texture2D kase;
         private Texture2D classroom;
+        private Texture2D sins;
 
         //Sounds
         private SoundEffect drip;
@@ -71,6 +72,7 @@ namespace AVRGame.NetStandardLibrary
             sabel = fieryTale.Content.Load<Texture2D>("Sabel");
             yasutora = fieryTale.Content.Load<Texture2D>("Yasutora");
             kase = fieryTale.Content.Load<Texture2D>("Kase");
+            sins = fieryTale.Content.Load<Texture2D>("Sinsleft");
             classroom = fieryTale.Content.Load<Texture2D>("Classroom");
             drip = fieryTale.Content.Load<SoundEffect>("DripSound");
             teleport = fieryTale.Content.Load<SoundEffect>("Teleportsound");
@@ -431,11 +433,11 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.spriteBatch.Begin();
                 
                 //backgrounds
-                if (fieryTale.gameMoment <= 4)
+                if (fieryTale.gameMoment <= 4 || fieryTale.gameMoment > 45)
                 {
                     fieryTale.spriteBatch.Draw(dorm, new Rectangle(0, 0, 1280, 760), Color.White);
                 }
-                else if (fieryTale.gameMoment > 4)
+                else if (fieryTale.gameMoment > 4 && fieryTale.gameMoment <= 45)
                 {
                     fieryTale.spriteBatch.Draw(classroom, new Rectangle(0, 0, 1280, 760), Color.White);
                 }
@@ -446,17 +448,17 @@ namespace AVRGame.NetStandardLibrary
                 //Scenes
                 if (fieryTale.gameMoment == 0)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You've woken up for your first day of school... in Hell.", new Vector2(10, 580), Color.White);//positions of text arbitrarily decided until it looked good
+                    fieryTale.spriteBatch.DrawString(Names, "I've woken up for my first day of school... in Hell.", new Vector2(10, 580), Color.White);//positions of text arbitrarily decided until it looked good
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 1)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You decide you should probably wear some normal clothes to school.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I decide I should probably wear some normal clothes to school.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 2)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "In a flash of blue fire your clothes change into what your usual outfit.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "In a flash of blue fire my clothes change into my usual outfit.", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 3)
                 {
@@ -466,22 +468,22 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 4)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You get ready and then set off for homeroom.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I get ready and then set off for homeroom.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 5)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "You seem to have arrived a bit early and decide to introduce yourself to a classmate.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I seem to have arrived a bit early and decide to introduce myself to a classmate.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 6)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "A couple individuals catch your eye.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "A couple individuals catch my eye.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 7)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "At the front of the class, you see a nerdy looking girl.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "At the front of the class, I see a nerdy looking girl.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 8)
@@ -491,17 +493,17 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 9)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "On the other side of the room you see a buff jock.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "On the other side of the room I see a buff jock.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 10)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "All the way at the back near the window you see an emo.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "All the way at the back near the window I see an emo.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 11)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "Quite the assortment of individuals, who will you talk to though?", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Quite the assortment of individuals, who will I talk to though?", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 12)
                 {
@@ -513,19 +515,19 @@ namespace AVRGame.NetStandardLibrary
                 {
                     if (whichtalk == 1)//nerd
                     {
-                        fieryTale.spriteBatch.DrawString(Names, "You walk up to the nerd.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "I walk up to the nerd.", new Vector2(10, 580), Color.White);
                     }
                     else if (whichtalk == 2)//brat
                     {
-                        fieryTale.spriteBatch.DrawString(Names, "You walk up to the brat.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "I walk up to the brat.", new Vector2(10, 580), Color.White);
                     }
                     else if (whichtalk == 3)//jock
                     {
-                        fieryTale.spriteBatch.DrawString(Names, "You walk up to the jock.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "I walk up to the jock.", new Vector2(10, 580), Color.White);
                     }
                     else if (whichtalk == 4)//emo
                     {
-                        fieryTale.spriteBatch.DrawString(Names, "You walk up to the emo.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "I walk up to the emo.", new Vector2(10, 580), Color.White);
                     }
                 }
                 if (fieryTale.gameMoment == 14)
@@ -668,7 +670,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(shiki, new Rectangle(950, 316, 380, 404), Color.White);//1125 x 1141
                             fieryTale.spriteBatch.DrawString(Names, "Brat:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "[She glares at you] Sigh, it is Shiki if you must know, now please get out of my face,", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "[She glares at me] Sigh, it is Shiki if you must know, now please get out of my face,", new Vector2(10, 580), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "you are disturbing my aura.", new Vector2(10, 600), Color.White);
                         }
                         else if (talkoption == 2)
@@ -930,7 +932,7 @@ namespace AVRGame.NetStandardLibrary
                     {
                         if (talkoption == 1)
                         {
-                            fieryTale.spriteBatch.DrawString(Names, "She waves you away. You take a seat by the window", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "She waves me away. I take a seat by the window", new Vector2(10, 580), Color.White);
                         }
                         else if (talkoption == 2)
                         {
@@ -942,7 +944,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "Alright then, thank you for wasting my time. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Alright then, thank you for wasting my time. [I take a seat by the window]", new Vector2(10, 580), Color.White);
                         }
                     }
                     else if (whichtalk == 3)//jock
@@ -951,7 +953,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "Alright fine, good luck bathing in your own narcissism. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Alright fine, good luck bathing in your own narcissism. [I take a seat by the window]", new Vector2(10, 580), Color.White);
                         }
                         else if (talkoption == 2)
                         {
@@ -1006,7 +1008,7 @@ namespace AVRGame.NetStandardLibrary
                         }
                         else if (talkoption == 3)
                         {
-                            fieryTale.spriteBatch.DrawString(Names, "You leave her be. You take a seat by the window", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "I leave her be. I take a seat by the window", new Vector2(10, 580), Color.White);
                         }
                     }
                     else if (whichtalk == 2)//brat
@@ -1043,7 +1045,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "I will do no such thing, now fuck off. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "I will do no such thing, now fuck off. [I take a seat by the window]", new Vector2(10, 580), Color.White);
                         }
                     }
                     else if (whichtalk == 4)//emo
@@ -1074,7 +1076,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "Well, that is nice I suppose, I will see you later. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Well, that is nice I suppose, I will see you later. [I take a seat by the window]", new Vector2(10, 580), Color.White);
                         }
                         else if (talkoption == 2)
                         {
@@ -1115,13 +1117,13 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "... [You feel this is going nowhere, you take a seat by the window]", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "... [I feel like this is going nowhere, I take a seat by the window]", new Vector2(10, 580), Color.White);
                         }
                         else if (talkoption == 3)
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "No wonder you are sitting alone. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "No wonder you are sitting alone. [I take a seat by the window]", new Vector2(10, 580), Color.White);
                         }
                     }
                 }
@@ -1153,8 +1155,8 @@ namespace AVRGame.NetStandardLibrary
                     {
                         if (talkoption == 2)
                         {
-                            fieryTale.spriteBatch.DrawString(Names, "The Jock tries to punch you, but you effortlessly dodge it. Having embarrassed him enough,", new Vector2(10, 580), Color.White);
-                            fieryTale.spriteBatch.DrawString(Names, "you leave and take a seat by the window", new Vector2(10, 610), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "The Jock tries to punch me, but I effortlessly dodge it. Having embarrassed him enough,", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "I leave and take a seat by the window", new Vector2(10, 610), Color.White);
                         }
                     }
                     else if (whichtalk == 4)//emo
@@ -1177,14 +1179,14 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "... [You've tortured the poor girl enough, you take a seat by the window]", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "... [I've tortured the poor girl enough, I take a seat by the window]", new Vector2(10, 580), Color.White);
                         }
                     }
                     else if (whichtalk == 2)//brat
                     {
                         if (talkoption == 2)
                         {
-                            fieryTale.spriteBatch.DrawString(Names, "You take your leave and take a seat by the window.", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, "I take my leave and take a seat by the window.", new Vector2(10, 580), Color.White);
                         }
                     }
                     else if (whichtalk == 3)//jock
@@ -1197,7 +1199,138 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 24)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "Soon after sitting down, your homeroom teacher enters the classroom.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Soon after sitting down, my homeroom teacher enters the classroom.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 25)
+                {
+                    fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);//524 x 695
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Hello my name is Mister Sins, but you can also call me just Mister or Sins.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 26)
+                {
+                    fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Let's start with a small introduction round. We'll start in the front and work our way backwards.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 27)
+                {
+                    fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Let's see... you go first. [he's pointing at the nerd]", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 28)
+                {
+                    fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Kase:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Hello, my name is Kase Daiki, I love to read and collect things.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 29)
+                {
+                    fieryTale.spriteBatch.Draw(shiki, new Rectangle(950, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Brat:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "[whispering] pfff what a nerd.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 30)
+                {
+                    fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Next up, the lady diagonally behind Kase-chan.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 31)
+                {
+                    fieryTale.spriteBatch.Draw(shiki, new Rectangle(950, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Brat:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "That would be me you are talking about. I expected a greater introduction, but alas this will have to do.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 32)
+                {
+                    fieryTale.spriteBatch.Draw(shiki, new Rectangle(950, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Shiki:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "My name is Shiki Batakan, I am more famous than any of you will ever be!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 33)
+                {
+                    fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Yes yes, very interesting. Moving on to the boy with the glasses by the window. [That would be me]", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 34)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "My name is Ren Amamiya. I enjoy playing billiards and darts.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 35)
+                {
+                    fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Those aren't even real sports you loser!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 36)
+                {
+                    fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Alright, the loudmouth is next.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 37)
+                {
+                    fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Hmpf fine. I am Yasutora Sado, I play real sports and get all them bitches.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 38)
+                {
+                    fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Yeah yeah, sure you do. Finally, the person all the way in the back by the window.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 39)
+                {
+                    fieryTale.spriteBatch.Draw(sabel, new Rectangle(980, 270, 300, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Sabel:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Hello, my name is Sabel Ammerasou, I like reading manga and hanging with friends.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 40)
+                {
+                    fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "HAHAHA what a fucking loser!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 41)
+                {
+                    fieryTale.spriteBatch.Draw(shiki, new Rectangle(950, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Shiki:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "haha imagine being such a loser!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 42)
+                {
+                    fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Kase:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Come on guys cut him some slack...", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 43)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 44)
+                {
+                    fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "ENOUGH! I will not tolerate this kind of behaviour in my classroom. Now calm down and let's start the lesson.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 45)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I pay no attention to class. Afterwards I leave for my dormroom to hopefully meet my roommate.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 46)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "As I enter my dormroom I'm greeted by my roommate...", new Vector2(10, 580), Color.White);
                 }
 
                 fieryTale.spriteBatch.End();
