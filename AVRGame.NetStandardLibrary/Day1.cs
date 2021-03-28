@@ -36,12 +36,9 @@ namespace AVRGame.NetStandardLibrary
         private SpriteFont Talking;
 
         //Textures
-        private Texture2D ren;
         private Texture2D rennormal;
         private Texture2D goku;
-        private Texture2D background;
         private Texture2D textbox;
-        private Texture2D anna;
         private Texture2D dorm;
         private Texture2D shiki;
         private Texture2D sabel;
@@ -58,7 +55,6 @@ namespace AVRGame.NetStandardLibrary
 
         //Sounds
         private SoundEffect drip;
-        private SoundEffect teleport;
         private SoundEffect persona;
         private Song combat;
 
@@ -75,12 +71,9 @@ namespace AVRGame.NetStandardLibrary
         protected override void LoadContent()
         {
             //you know the drill
-            ren = fieryTale.Content.Load<Texture2D>("Ren");
             rennormal = fieryTale.Content.Load<Texture2D>("RenNormal");
             goku = fieryTale.Content.Load<Texture2D>("Drip_Goku");
-            background = fieryTale.Content.Load<Texture2D>("Hell");
             textbox = fieryTale.Content.Load<Texture2D>("BlackRectangle");
-            anna = fieryTale.Content.Load<Texture2D>("Anna");
             dorm = fieryTale.Content.Load<Texture2D>("Dorm");
             shiki = fieryTale.Content.Load<Texture2D>("Shiki");
             sabel = fieryTale.Content.Load<Texture2D>("Sabel");
@@ -92,8 +85,7 @@ namespace AVRGame.NetStandardLibrary
             gorosad = fieryTale.Content.Load<Texture2D>("GoroSad");
             goroshocked = fieryTale.Content.Load<Texture2D>("GoroShocked");
             classroom = fieryTale.Content.Load<Texture2D>("Classroom");
-            drip = fieryTale.Content.Load<SoundEffect>("DripSound");
-            teleport = fieryTale.Content.Load<SoundEffect>("Teleportsound");
+            drip = fieryTale.Content.Load<SoundEffect>("DripSound");                                                                                                                               
             persona = fieryTale.Content.Load<SoundEffect>("Persona");
             combat = fieryTale.Content.Load<Song>("Combat");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
@@ -336,6 +328,7 @@ namespace AVRGame.NetStandardLibrary
             {
                 fieryTale.currentLevel = 3;//starts next level
                 fieryTale.gameMoment = 0;//resets the gameMoment count
+                fieryTale.soundMoment = 0;//resets soundMoment
                 MediaPlayer.Stop();//stops the chill music
                 fieryTale.choiceMoment = false;
             }
@@ -575,7 +568,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 61 && fieryTale.soundMoment == 1 && gorooption == 2)
                 {
-                    drip.Play(volume: 1f, 0.0f, 0.0f);//loud on 100%
+                    drip.Play(volume: 1f, 0.0f, 0.0f);
                     fieryTale.soundMoment++;//so doesnt loop
                 }
 

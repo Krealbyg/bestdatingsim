@@ -81,6 +81,7 @@ namespace AVRGame.NetStandardLibrary
             {
                 fieryTale.currentLevel = 2;//starts next level
                 fieryTale.gameMoment = 0;//resets the gameMoment count
+                fieryTale.soundMoment = 0;//resets soundMoment
                 MediaPlayer.Stop();//stops the chill music
                 fieryTale.choiceMoment = false;
             }

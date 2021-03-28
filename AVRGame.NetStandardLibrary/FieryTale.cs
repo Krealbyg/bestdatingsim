@@ -89,6 +89,8 @@ namespace AVRGame.NetStandardLibrary
             Components.Add(day0);
             Day1 day1 = new Day1(this);
             Components.Add(day1);
+            Day2 day2 = new Day2(this);
+            Components.Add(day2);
         }
 
         /// <summary>

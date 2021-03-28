@@ -169,6 +169,12 @@
 /processorParam:TextureFormat=Color
 /build:Kase.png
 
+#begin MagatsuIzanagi.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:MagatsuIzanagi.wav
+
 #begin MainMenu.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -187,6 +193,18 @@
 /processorParam:Quality=Best
 /build:MementosSong.mp3
 
+#begin MrCare.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MrCare.png
+
 #begin Names.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -199,6 +217,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Persona.wav
+
+#begin ProperPunishment.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:ProperPunishment.wav
 
 #begin Ren.png
 /importer:TextureImporter
