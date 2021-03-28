@@ -146,6 +146,14 @@ namespace AVRGame.NetStandardLibrary
                 MediaPlayer.Volume = 0.1f;
                 songPlaying = false;
             }
+
+            if (currentLevel == 2 && gameMoment <= 4 && songPlaying == false)
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(mask);
+                MediaPlayer.Volume = 0.1f;
+                songPlaying = true;
+            }
             
             if (attackedSomeone == true && songPlaying == false)//gameover song
             {

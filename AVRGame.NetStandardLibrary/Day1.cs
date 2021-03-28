@@ -41,6 +41,7 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D sabel;
         private Texture2D yasutora;
         private Texture2D kase;
+        private Texture2D classroom;
 
         //Sounds
         private SoundEffect drip;
@@ -70,6 +71,7 @@ namespace AVRGame.NetStandardLibrary
             sabel = fieryTale.Content.Load<Texture2D>("Sabel");
             yasutora = fieryTale.Content.Load<Texture2D>("Yasutora");
             kase = fieryTale.Content.Load<Texture2D>("Kase");
+            classroom = fieryTale.Content.Load<Texture2D>("Classroom");
             drip = fieryTale.Content.Load<SoundEffect>("DripSound");
             teleport = fieryTale.Content.Load<SoundEffect>("Teleportsound");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
@@ -429,7 +431,14 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.spriteBatch.Begin();
                 
                 //backgrounds
-                
+                if (fieryTale.gameMoment <= 4)
+                {
+                    fieryTale.spriteBatch.Draw(dorm, new Rectangle(0, 0, 1280, 760), Color.White);
+                }
+                else if (fieryTale.gameMoment > 4)
+                {
+                    fieryTale.spriteBatch.Draw(classroom, new Rectangle(0, 0, 1280, 760), Color.White);
+                }
 
                 //Textbox
                 fieryTale.spriteBatch.Draw(textbox, new Rectangle(0, 520, 1280, 200), Color.Black * 0.6f);//720 - 200 = 520, 1280 is screen width, 200 randomly decided
@@ -856,7 +865,8 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "I do not care for who you are, you punk. So get out of the sight of Yasutora Sado, the strongest high schooler there is!", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "I do not care for who you are, you punk. So get out of the sight of Yasutora Sado,", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "the strongest high schooler there is!", new Vector2(10, 600), Color.White);
                         }
                         else if (talkoption == 2)
                         {
@@ -889,7 +899,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(sabel, new Rectangle(980, 270, 300, 450), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Emo:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "EEP! Sorry but I can’t...", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "EEP! Sorry, but I can't...", new Vector2(10, 580), Color.White);
                         }
                     }
                 }
