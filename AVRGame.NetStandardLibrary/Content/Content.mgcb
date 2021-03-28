@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:Anna.png
 
+#begin Asterius.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Asterius.wav
+
 #begin BeneathTheMask.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -60,6 +66,12 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:Combat.mp3
+
+#begin Die.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Die.wav
 
 #begin Dorm.png
 /importer:TextureImporter

@@ -16,11 +16,14 @@ namespace AVRGame.NetStandardLibrary
         FieryTale fieryTale;
 
         private int obamaoption;//for the choice with janitor obama care
-        private int sinsoption;
+        private int sinsoption;//for when talking to sins
+        private int bitchoption;//for when talking to bitch teacher
 
         //Lists for choices
         private List<Button> obamachoice;
         private List<Button> sinschoice;
+        private List<Button> talkchoice;
+        private List<Button> bitchchoice;
 
         //Fonts
         private SpriteFont Names;
@@ -47,7 +50,9 @@ namespace AVRGame.NetStandardLibrary
 
         //sounds
         private SoundEffect persona;
+        private SoundEffect asterius;
         private SoundEffect punishment;
+        private SoundEffect die;
 
         public Day2(FieryTale fieryTale) : base(fieryTale)
         {
@@ -81,6 +86,8 @@ namespace AVRGame.NetStandardLibrary
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
             persona = fieryTale.Content.Load<SoundEffect>("MagatsuIzanagi");
             punishment = fieryTale.Content.Load<SoundEffect>("ProperPunishment");
+            asterius = fieryTale.Content.Load<SoundEffect>("Asterius");
+            die = fieryTale.Content.Load<SoundEffect>("Die");
 
             #region buttons
 
@@ -127,6 +134,50 @@ namespace AVRGame.NetStandardLibrary
                 ButtonPosition = new Vector2(0, 400),
                 ButtonText = "Wait, I know you..."
             };
+
+            //betweenlessontalk aka illusion of choice
+            var talkchoice1 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 100),
+                ButtonText = "Sabel"
+            };
+            var talkchoice2 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 200),
+                ButtonText = "Kase"
+            };
+            var talkchoice3 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 300),
+                ButtonText = "Yasutora"
+            };
+            var talkchoice4 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 400),
+                ButtonText = "Shiki"
+            };
+
+            //talking to the bitch
+            var bitchchoice1 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 100),
+                ButtonText = "Persona!"
+            };
+            var bitchchoice2 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 200),
+                ButtonText = "..."
+            };
+            var bitchchoice3 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 300),
+                ButtonText = "Obey"
+            };
+            var bitchchoice4 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 400),
+                ButtonText = "Don't speak to me like that"
+            };
             #endregion
 
             #region button choice event creation
@@ -141,6 +192,15 @@ namespace AVRGame.NetStandardLibrary
             sinschoice3.Click += Sinschoice3_Click;
             sinschoice4.Click += Sinschoice4_Click;
 
+            talkchoice1.Click += Talkchoice1_Click;
+            talkchoice2.Click += Talkchoice2_Click;
+            talkchoice3.Click += Talkchoice3_Click;
+            talkchoice4.Click += Talkchoice4_Click;
+
+            bitchchoice1.Click += Bitchchoice1_Click;
+            bitchchoice2.Click += Bitchchoice2_Click;
+            bitchchoice3.Click += Bitchchoice3_Click;
+            bitchchoice4.Click += Bitchchoice4_Click;
             #endregion
 
             #region filling lists
@@ -161,9 +221,101 @@ namespace AVRGame.NetStandardLibrary
                 sinschoice4
             };
 
+            talkchoice = new List<Button>
+            {
+                talkchoice1,
+                talkchoice2,
+                talkchoice3,
+                talkchoice4
+            };
+
+            bitchchoice = new List<Button>
+            {
+                bitchchoice1,
+                bitchchoice2,
+                bitchchoice3,
+                bitchchoice4
+            };
             #endregion
 
             base.LoadContent();
+        }
+
+        private void Bitchchoice4_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 32)
+            {
+                bitchoption = 4;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Bitchchoice3_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 32)
+            {
+                bitchoption = 3;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Bitchchoice2_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 32)
+            {
+                bitchoption = 2;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Bitchchoice1_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 32)
+            {
+                bitchoption = 1;
+                asterius.Play();
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Talkchoice4_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 29)
+            {
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Talkchoice3_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 29)
+            {
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Talkchoice2_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 29)
+            {
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Talkchoice1_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 29)
+            {
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
         }
 
         private void Sinschoice4_Click(object sender, EventArgs e)
@@ -256,12 +408,22 @@ namespace AVRGame.NetStandardLibrary
                     punishment.Play(volume: 0.75f, 0.0f, 0.0f);//plays sound
                     fieryTale.soundMoment++;//stops looping
                 }
+                if (fieryTale.gameMoment == 34 && bitchoption == 1 && fieryTale.soundMoment <= 1)
+                {
+                    die.Play();
+                    fieryTale.soundMoment = 2;
+                }
                 
                 //update buttons
                 foreach (var button in obamachoice)
                     button.Update(gameTime);
                 foreach (var button in sinschoice)
                     button.Update(gameTime);
+                foreach (var button in talkchoice)
+                    button.Update(gameTime);
+                foreach (var button in bitchchoice)
+                    button.Update(gameTime);
+
 
                 base.Update(gameTime);
             }
@@ -622,6 +784,84 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 27)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Mr. Sins ends the lesson and wishes us good luck on the next one.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 28)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "This seems to be a window to talk to some classmates. But who?", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 29)
+                {
+                    foreach (var button in talkchoice)
+                        button.Draw(gameTime);
+                    fieryTale.choiceMoment = true;
+                }
+                if (fieryTale.gameMoment == 30)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "As I walk towards my classmate, our teacher comes walking in.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 31)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);//umbridge here
+                    fieryTale.spriteBatch.DrawString(Names, "Teacher:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Young man, how dare you be absent from your seat? SIT DOWN RIGHT NOW!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 32)
+                {
+                    foreach (var button in bitchchoice)
+                        button.Update(gameTime);
+                    fieryTale.choiceMoment = true;
+                }
+                if (fieryTale.gameMoment == 33)
+                {
+                    if (bitchoption == 1)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "I rip off my mask (glasses) and call forth Asterius from the sea of my soul.", new Vector2(10, 580), Color.White);
+                    }
+                    else if (bitchoption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                    }
+                    else if (bitchoption == 3)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Sorry Miss. [I sit back down]", new Vector2(10, 580), Color.White);
+                    }
+                    else if (bitchoption == 4)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Who are you to talk to me like that?", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 34)
+                {
+                    if (bitchoption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Die! Die! DIE!", new Vector2(10, 580), Color.White);
+                    }
+                    else if (bitchoption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
+                    }
+                    else if (bitchoption == 3)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Sorry Miss. [I sit back down]", new Vector2(10, 580), Color.White);
+                    }
+                    else if (bitchoption == 4)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Who are you to talk to me like that?", new Vector2(10, 580), Color.White);
+                    }
                 }
                 fieryTale.spriteBatch.End();
             }
