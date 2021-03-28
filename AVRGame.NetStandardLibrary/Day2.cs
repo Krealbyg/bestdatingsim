@@ -55,8 +55,10 @@ namespace AVRGame.NetStandardLibrary
         //sounds
         private SoundEffect persona;
         private SoundEffect asterius;
+        private SoundEffect tsukuyomi;
         private SoundEffect punishment;
         private SoundEffect die;
+        private SoundEffect showtime;
 
         public Day2(FieryTale fieryTale) : base(fieryTale)
         {
@@ -94,6 +96,8 @@ namespace AVRGame.NetStandardLibrary
             punishment = fieryTale.Content.Load<SoundEffect>("ProperPunishment");
             asterius = fieryTale.Content.Load<SoundEffect>("Asterius");
             die = fieryTale.Content.Load<SoundEffect>("Die");
+            tsukuyomi = fieryTale.Content.Load<SoundEffect>("Tsukuyomi");
+            showtime = fieryTale.Content.Load<SoundEffect>("Showtime");
 
             #region buttons
 
@@ -304,6 +308,7 @@ namespace AVRGame.NetStandardLibrary
             if (fieryTale.gameMoment == 48)
             {
                 jockoption = 1;
+                tsukuyomi.Play();
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
             }
@@ -486,7 +491,12 @@ namespace AVRGame.NetStandardLibrary
                     die.Play();
                     fieryTale.soundMoment = 2;
                 }
-                
+                if (fieryTale.gameMoment == 51 && jockoption == 1 && fieryTale.soundMoment <= 2)
+                {
+                    showtime.Play();
+                    fieryTale.soundMoment = 3;
+                }
+
                 //update buttons
                 foreach (var button in obamachoice)
                     button.Update(gameTime);
@@ -1073,6 +1083,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "You're gonna make it for me, understand?", new Vector2(10, 580), Color.White);
                 }
+                #region jock convo
                 if (fieryTale.gameMoment == 48)
                 {
                     foreach (var button in jockchoice)
@@ -1083,7 +1094,7 @@ namespace AVRGame.NetStandardLibrary
                 {
                     if (jockoption == 1)
                     {
-                        fieryTale.spriteBatch.DrawString(Names, "I rip off my mask (glasses) and call forth Asterius from the sea of my soul.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "I rip off my mask (glasses) and call forth Tsukuyomi from the sea of my soul.", new Vector2(10, 580), Color.White);
                     }
                     else if (jockoption == 2)
                     {
@@ -1099,6 +1110,99 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Talking, "Look mate, I'm not making the homework twice, but you can copy the answers from me.", new Vector2(10, 580), Color.White);
                     }
                 }
+                if (fieryTale.gameMoment == 50)
+                {
+                    if (jockoption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "W-w-wow, c-calm down man I was just j-j-joking! N-no need to s-s-summon weird c-c-creatures man c-come on!", new Vector2(10, 580), Color.White);
+                    }
+                    else if (jockoption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "What makes you think you've got a choice? You are making this for me, I d-demand it!", new Vector2(10, 580), Color.White);
+                    }
+                    else if (jockoption == 3)
+                    {
+                        fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "What makes you think you've got a cho- wait, you'll let me copy it?", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 51)
+                {
+                    if (jockoption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "It's showtime!", new Vector2(10, 580), Color.White);
+                    }
+                    else if (jockoption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Did you just stutter? Are you going to cry, because I said no? Or let me guess, someone stole your sweetroll?", new Vector2(10, 580), Color.White);
+                    }
+                    else if (jockoption == 3)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Yeah sure, don't see why not to be honest.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 52)
+                {
+                    if (jockoption == 1)
+                    {
+                        MediaPlayer.Stop();
+                        fieryTale.attackedSomeone = true;
+                        fieryTale.gameMoment = 0;
+                        fieryTale.soundMoment = 0;
+                    }
+                    else if (jockoption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "No, I am not crying or s-stuttering. You should be obeying me...", new Vector2(10, 580), Color.White);
+                    }
+                    else if (jockoption == 3)
+                    {
+                        fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Wow, this is the nicest thing someone as ever done for me. Why just let me copy it?", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 53)
+                {
+                    if (jockoption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Okay, I'm done here. Next time you try this, don't shake in your boots like this. Goodbye now. [I leave]", new Vector2(10, 580), Color.White);
+                    }
+                    else if (jockoption == 3)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Well it's no hassle to me and, honestly, you don't seem so bad.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 54)
+                {
+                    if (jockoption == 2)
+                    {
+                        fieryTale.gameMoment = 55;
+                    }
+                    else if (jockoption == 3)
+                    {
+                        fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "[holding back tears] Thanks man, I-I should go, see you. [We part ways]", new Vector2(10, 580), Color.White);
+                    }
+                }
+                #endregion
 
                 fieryTale.spriteBatch.End();
             }

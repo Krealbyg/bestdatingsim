@@ -296,6 +296,12 @@
 /processorParam:TextureFormat=Color
 /build:Shiki.png
 
+#begin Showtime.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Showtime.wav
+
 #begin Sinsleft.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -320,6 +326,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Teleportsound.wav
+
+#begin Tsukuyomi.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Tsukuyomi.wav
 
 #begin VelvetRoom.png
 /importer:TextureImporter
