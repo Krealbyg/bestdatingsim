@@ -840,7 +840,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(shiki, new Rectangle(950, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Brat:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "You are really weirding me out, don’t you belong with weird and silent back there?", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "You are really weirding me out, don't you belong with weird and silent back there?", new Vector2(10, 580), Color.White);
                         }
                         else if (talkoption == 3)
                         {
@@ -889,7 +889,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(sabel, new Rectangle(980, 270, 300, 450), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Emo:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "EEP! Sorry but I can’t...", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "EEP! Sorry, but I can't...", new Vector2(10, 580), Color.White);
                         }
                     }
                 }
@@ -992,7 +992,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "c-cl-classmate-san, please you are scaring me, could you tell me what’s wrong?", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "c-cl-classmate-san, please you are scaring me, could you tell me what's wrong?", new Vector2(10, 580), Color.White);
                         }
                         else if (talkoption == 3)
                         {
