@@ -316,10 +316,6 @@ namespace AVRGame.NetStandardLibrary
             base.LoadContent();
         }
 
-        
-
-
-
         #region button click events
         //endlevel
         private void Nextlevel_Click(object sender, EventArgs e)

@@ -667,7 +667,7 @@ namespace AVRGame.NetStandardLibrary
 
                 if (fieryTale.gameMoment == 0)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "I'm woken up by my alarm.", new Vector2(10, 580), Color.White);//positions of text arbitrarily decided until it looked good
+                    fieryTale.spriteBatch.DrawString(Names, "I'm woken up by my alarm.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 1)
@@ -1358,10 +1358,12 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 57)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "The rest of my classes are uneventfull.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 58)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "After my last class, I decide to get some takeout to take with me to my dormroom.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 59)
                 {
@@ -1462,10 +1464,12 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 65)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Akechi and I have a pleasant conversation over dinner.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 66)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "We then continue conversing over games of chess far into the night.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 67)
                 {

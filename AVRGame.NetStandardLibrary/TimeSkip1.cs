@@ -79,6 +79,12 @@ namespace AVRGame.NetStandardLibrary
         {
             if (fieryTale.currentLevel == 4 && fieryTale.attackedSomeone == false)
             {
+                if (fieryTale.gameMoment == 2 && fieryTale.soundMoment == 0)
+                {
+                    drip.Play(volume: 0.1f, 0.0f, 0.0f);
+                    fieryTale.soundMoment++;
+                }
+                
                 foreach (var button in button)
                     button.Update(gameTime);
 
