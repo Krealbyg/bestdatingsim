@@ -149,7 +149,7 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (currentLevel == 3 && gameMoment <= 5 && songPlaying == false && attackedSomeone == false)//Ren's dormroom song again
+            if (currentLevel == 3 && gameMoment <= 5 && songPlaying == false && attackedSomeone == false || currentLevel == 3 && gameMoment > 57 && songPlaying == false && attackedSomeone == false)//Ren's dormroom song again
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mask);
@@ -157,7 +157,7 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (currentLevel == 3 && gameMoment > 5 && songPlaying == true)//Outside song
+            if (currentLevel == 3 && gameMoment > 5 && gameMoment <= 57 && songPlaying == true)//Outside song
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(hell);
