@@ -18,6 +18,7 @@ namespace AVRGame.NetStandardLibrary
         private FieryTale fieryTale;
 
         private bool levelselect;
+        private bool time;
 
         //lists
         private List<Button> buttons;
@@ -216,11 +217,23 @@ namespace AVRGame.NetStandardLibrary
         #endregion
 
         public override void Update(GameTime gameTime)
-        {   
+        {
+            //little timer for level select screen
+            float timer = (float)gameTime.TotalGameTime.Seconds;
+            if (levelselect == true && time == false)
+            {
+                timer = 0;
+                time = true;
+            }
+
             foreach (var button in buttons)//updates all the buttons
                 button.Update(gameTime);
-            foreach (var button in levels)//updates all the buttons
-                button.Update(gameTime);
+
+            if (timer > 1)//makes it so cant accidentally instantly click a level after clicking level select button.
+            {
+                foreach (var button in levels)//updates all the buttons
+                    button.Update(gameTime);
+            }
 
             base.Update(gameTime);
         }
