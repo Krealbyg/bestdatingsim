@@ -17,9 +17,14 @@ namespace AVRGame.NetStandardLibrary
 
         //variables
         private int halloption;//for the hallway choice
+        private int jockoption;//for the jock choice
+        private int gorooption;//for talking to goro
 
         //lists
         private List<Button> hallchoice;
+        private List<Button> jockchoice;
+        private List<Button> gorochoice;
+        private List<Button> nextday;
 
         //Fonts
         private SpriteFont Names;
@@ -27,6 +32,7 @@ namespace AVRGame.NetStandardLibrary
 
         //textures
         private Texture2D rennormal;
+        private Texture2D anna;
         private Texture2D textbox;
         private Texture2D dorm;
         private Texture2D yasutora;
@@ -38,10 +44,12 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D mrcare;
         private Texture2D bitch;
         private Texture2D hallway;
+        private Texture2D principal;
 
         //Goro expressions
         private Texture2D goroneutral;
         private Texture2D gorosmiling;
+        private Texture2D goroshocked;
         private Texture2D gorococky;
 
         //sounds
@@ -64,25 +72,28 @@ namespace AVRGame.NetStandardLibrary
             rennormal = fieryTale.Content.Load<Texture2D>("RenNormal");
             textbox = fieryTale.Content.Load<Texture2D>("BlackRectangle");
             dorm = fieryTale.Content.Load<Texture2D>("Dorm");
+            anna = fieryTale.Content.Load<Texture2D>("Anna");
             yasutora = fieryTale.Content.Load<Texture2D>("Yasutora");
             shiki = fieryTale.Content.Load<Texture2D>("Shiki");
             sabel = fieryTale.Content.Load<Texture2D>("Sabel");
             sins = fieryTale.Content.Load<Texture2D>("Sinsleft");
             goroneutral = fieryTale.Content.Load<Texture2D>("GoroNeutral");
             gorosmiling = fieryTale.Content.Load<Texture2D>("GoroSmiling");
+            goroshocked = fieryTale.Content.Load<Texture2D>("GoroShocked");
             gorococky = fieryTale.Content.Load<Texture2D>("GoroCocky");
             classroom = fieryTale.Content.Load<Texture2D>("Classroom");
             mrcare = fieryTale.Content.Load<Texture2D>("MrCare");
             bitch = fieryTale.Content.Load<Texture2D>("BITCH");
             hell = fieryTale.Content.Load<Texture2D>("Hell");
             hallway = fieryTale.Content.Load<Texture2D>("Hallway");
+            principal = fieryTale.Content.Load<Texture2D>("Principal");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
             mizanagi = fieryTale.Content.Load<SoundEffect>("MagatsuIzanagi");
             punishment = fieryTale.Content.Load<SoundEffect>("ProperPunishment");
 
             #region buttons
-
+            //hallway
             var hallchoice1 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
             {
                 ButtonPosition = new Vector2(0, 100),
@@ -104,6 +115,37 @@ namespace AVRGame.NetStandardLibrary
                 ButtonText = "Nothing"
             };
 
+            //jock
+            var jockchoice1 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 268),
+                ButtonText = "Talk to him"
+            };
+            var jockchoice2 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 380),
+                ButtonText = "Don't talk to him"
+            };
+
+            //goro
+            var gorochoice1 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 268),
+                ButtonText = "Yes"
+            };
+            var gorochoice2 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 380),
+                ButtonText = "No"
+            };
+
+            //endday
+            var nextlevel = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 279),
+                ButtonText = "Next Day"
+            };
+
             #endregion
 
             #region button choice event creation
@@ -112,6 +154,14 @@ namespace AVRGame.NetStandardLibrary
             hallchoice2.Click += Hallchoice2_Click;
             hallchoice3.Click += Hallchoice3_Click;
             hallchoice4.Click += Hallchoice4_Click;
+
+            jockchoice1.Click += Jockchoice1_Click;
+            jockchoice2.Click += Jockchoice2_Click;
+
+            gorochoice1.Click += Gorochoice1_Click;
+            gorochoice2.Click += Gorochoice2_Click;
+
+            nextlevel.Click += Nextlevel_Click;
 
             #endregion
 
@@ -125,11 +175,85 @@ namespace AVRGame.NetStandardLibrary
                 hallchoice4
             };
 
+            jockchoice = new List<Button>
+            {
+                jockchoice1,
+                jockchoice2
+            };
+
+            gorochoice = new List<Button>
+            {
+                gorochoice1,
+                gorochoice2
+            };
+
+            nextday = new List<Button>
+            {
+                nextlevel
+            };
+
             #endregion
 
             base.LoadContent();
         }
 
+        #region button click events
+        private void Nextlevel_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 81)
+            {
+                fieryTale.currentLevel = 6;//starts next level
+                fieryTale.gameMoment = 0;//resets the gameMoment count
+                fieryTale.soundMoment = 0;//resets soundMoment
+                MediaPlayer.Stop();//stops the chill music
+                fieryTale.choiceMoment = false;
+            }
+        }
+
+        //goro
+        private void Gorochoice2_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 71)
+            {
+                gorooption = 2;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Gorochoice1_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 71)
+            {
+                gorooption = 1;
+                fieryTale.goroPoints++;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        //jock
+        private void Jockchoice2_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 38)
+            {
+                jockoption = 2;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Jockchoice1_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 38)
+            {
+                jockoption = 1;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        //hallway
         private void Hallchoice4_Click(object sender, EventArgs e)
         {
             if (fieryTale.gameMoment == 15)
@@ -170,6 +294,7 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.gameMoment++;
             }
         }
+        #endregion
 
         public override void Update(GameTime gameTime)
         {
@@ -183,7 +308,13 @@ namespace AVRGame.NetStandardLibrary
                 
                 foreach (var button in hallchoice)
                     button.Update(gameTime);
-                
+                foreach (var button in jockchoice)
+                    button.Update(gameTime);
+                foreach (var button in gorochoice)
+                    button.Update(gameTime);
+                foreach (var button in nextday)
+                    button.Update(gameTime);
+
                 base.Update(gameTime);
             }
         }
@@ -195,15 +326,15 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.spriteBatch.Begin();
 
                 //backgrounds
-                if (fieryTale.gameMoment <= 4)
+                if (fieryTale.gameMoment <= 4 || fieryTale.gameMoment > 66)
                 {
                     fieryTale.spriteBatch.Draw(dorm, new Rectangle(0, 0, 1280, 760), Color.White);
                 }
-                else if (fieryTale.gameMoment > 4 && fieryTale.gameMoment <= 24)
+                else if (fieryTale.gameMoment > 4 && fieryTale.gameMoment <= 24 || fieryTale.gameMoment > 50 && fieryTale.gameMoment <= 66)
                 {
                     fieryTale.spriteBatch.Draw(hallway, new Rectangle(0, 0, 1280, 720), Color.White);
                 }
-                else if (fieryTale.gameMoment > 24)
+                else if (fieryTale.gameMoment > 24 && fieryTale.gameMoment <= 50)
                 {
                     fieryTale.spriteBatch.Draw(classroom, new Rectangle(0, 0, 1280, 760), Color.White);
                 }
@@ -472,6 +603,381 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 25)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I sit down at my place and wait for homeroom to start.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 26)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins comes walking in.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 27)
+                {
+                    fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Alright quiet down class, we're beginning the lesson.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 28)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Another man enters the classroom.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 29)
+                {
+                    fieryTale.spriteBatch.Draw(principal, new Rectangle(950, 240, 360, 600), Color.White);//360 x 600
+                    fieryTale.spriteBatch.DrawString(Names, "Carter:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Good day children. I am the principal of this fine school, Principal Carter.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 30)
+                {
+                    fieryTale.spriteBatch.Draw(principal, new Rectangle(950, 240, 360, 600), Color.White);//360 x 600
+                    fieryTale.spriteBatch.DrawString(Names, "Carter:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Mr Sins, would it be alright if I took Yasutora outside for a little chat?", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 31)
+                {
+                    fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Yes, of course. Try to have him back by the end of the lesson for homework.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 32)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Yasutora stands up, he seems to be sweating.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 33)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "He and Carter leave the room.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 34)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "The rest of the lesson is quite uneventful.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 35)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Near the end, Yasutora returns.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 36)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Mr Sins gives us our homework and dismisses class.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 37)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Yasutora seems troubled, perhaps I should talk to him.", new Vector2(10, 580), Color.White);
+                }
+                #region jock convo
+                if (fieryTale.gameMoment == 38)
+                {
+                    foreach (var button in jockchoice)
+                        button.Draw(gameTime);
+                    fieryTale.choiceMoment = true;
+                }
+                if (fieryTale.gameMoment == 39)
+                {
+                    if (jockoption == 1)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "I walk over to Yasutora.", new Vector2(10, 580), Color.White);
+                    }
+                    else if (jockoption == 2)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "I decide it's none of by business.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 40)
+                {
+                    if (jockoption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Hey man, what was that about?", new Vector2(10, 580), Color.White);
+                    }
+                    else if (jockoption == 2)
+                    {
+                        fieryTale.gameMoment = 47;
+                    }
+                }
+                if (fieryTale.gameMoment == 41)
+                {
+                    if (jockoption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "That's none of your business!", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 42)
+                {
+                    if (jockoption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Calm down man, just asking. You look upset.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 43)
+                {
+                    if (jockoption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Well... I'm close to being expelled for how I treat others, but I can't help it.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 44)
+                {
+                    if (jockoption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "That's rough buddy. Take care alright?", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 45)
+                {
+                    if (jockoption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Thank. And don't tell anyone about this!", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 46)
+                {
+                    if (jockoption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "I won't, don't worry. [I sit back down]", new Vector2(10, 580), Color.White);
+                    }
+                }
+                #endregion
+                if (fieryTale.gameMoment == 47)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Class resumes, same old boring crap as usual.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 48)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "It's times like this I really miss Morgana...", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 49)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I spend the rest of class thinking about the friends I left behind.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 50)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "After my last class I grab my stuff and leave the classroom.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 51)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "As I walk out into the corridor I am ambushed by someone yelling my name.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 52)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "REN! REN! OVER HERE!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 53)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Who's yell- oh Nishikinomiya-senpai, it's you. what's up?", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 54)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Heyyy Ren! You can just call me Anna if you want.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 55)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "I wanted to ask you something, urgently.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 56)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Alright, spill it.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 57)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Well you might not know this, but tomorrow is free day from school.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 58)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "So you have some time to just hang around on campus a bit.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 59)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "We aren't allowed to leave campus though.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 60)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Anyway, that's not important, sorry I got sidetracked.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 61)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "I wanted to ask... You wanna hang out tomorrow? It'll be fun!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 62)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Well I don't have any plans so I suppo-", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 63)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "REALLY?! YES! I'll come pick you up at your dormroom tomorrow!", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 64)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "I'll come pick you up at your dormroom tomorrow! Somewhere in the early afternoon.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
+                }
+                if (fieryTale.gameMoment == 65)
+                {
+                    fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "See you then, Ren~!", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 66)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I watch as Anna skips off happily, apparently I've just made plans.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 67)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I return to my dormroom.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 68)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Akechi is sitting in our living room, studying.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 69)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Hey Akechi, you got any plans for tomorrow?", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 70)
+                {
+                    fieryTale.spriteBatch.Draw(gorococky, new Rectangle(1000, 340, 380, 380), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Why, did you want to ask me on a date?", new Vector2(10, 580), Color.White);
+                }
+                #region Goro convo
+                if (fieryTale.gameMoment == 71)
+                {
+                    foreach (var button in gorochoice)//chance for goropoint
+                        button.Draw(gameTime);
+                    fieryTale.choiceMoment = true;
+                }
+                if (fieryTale.gameMoment == 72)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Well I was thinking about it, but if you have plans...", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "No, just interested.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 73)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(goroshocked, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "O-oh, well I'm afraid I've got a prior appointment.", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(goroneutral, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Well if you got to know: Yes I have plans, that is all you're getting.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 74)
+                {
+                    if (gorooption == 1)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Shame, another time then. Wanna get dinner?", new Vector2(10, 580), Color.White);
+                    }
+                    else if (gorooption == 2)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Hmmm, very well I won't ask further. Wanna get dinner?", new Vector2(10, 580), Color.White);
+                    }
+                }
+                #endregion
+                if (fieryTale.gameMoment == 75)
+                {
+                    fieryTale.spriteBatch.Draw(goroneutral, new Rectangle(1000, 340, 380, 380), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Yes, let's go, I'm starving.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 76)
+                {
+                    fieryTale.spriteBatch.Draw(goroneutral, new Rectangle(1000, 340, 380, 380), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Oh, and Ren...", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 77)
+                {
+                    fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "You can call me Goro.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 78)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I go out for dinner with Goro.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 79)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Afterwards we return to our dormroom and play some chess.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 80)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Goro and I eventually go to our seperate rooms and I go to bed.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 81)
+                {
+                    foreach (var button in nextday)
+                        button.Draw(gameTime);
+                    fieryTale.choiceMoment = true;
                 }
 
                 fieryTale.spriteBatch.End();

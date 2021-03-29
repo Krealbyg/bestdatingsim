@@ -1170,7 +1170,7 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 41)
                 {
                     fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Hey four eyes, get over here!", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 42)
@@ -1182,7 +1182,7 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 43)
                 {
                     fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Hey glasses, I'm talking to you!", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 44)
@@ -1194,21 +1194,21 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 45)
                 {
                     fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Yeah, you. The other nerd with glasses already left.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
                 }
                 if (fieryTale.gameMoment == 46)
                 {
                     fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Now listen. As you know Ms. Bitch gave us a shit ton of homework and...", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
                 }
                 if (fieryTale.gameMoment == 47)
                 {
                     fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "You're gonna make it for me, understand?", new Vector2(10, 580), Color.White);
                 }
                 #region jock convo
@@ -1243,19 +1243,19 @@ namespace AVRGame.NetStandardLibrary
                     if (jockoption == 1)
                     {
                         fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "W-w-wow, c-calm down man I was just j-j-joking! N-no need to s-s-summon weird c-c-creatures man c-come on!", new Vector2(10, 580), Color.White);
                     }
                     else if (jockoption == 2)
                     {
                         fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "What makes you think you've got a choice? You are making this for me, I d-demand it!", new Vector2(10, 580), Color.White);
                     }
                     else if (jockoption == 3)
                     {
                         fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "What makes you think you've got a cho- wait, you'll let me copy it?", new Vector2(10, 580), Color.White);
                     }
                 }
@@ -1292,13 +1292,13 @@ namespace AVRGame.NetStandardLibrary
                     else if (jockoption == 2)
                     {
                         fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "No, I am not crying or s-stuttering. You should be obeying me...", new Vector2(10, 580), Color.White);
                     }
                     else if (jockoption == 3)
                     {
                         fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "Wow, this is the nicest thing someone as ever done for me. Why just let me copy it?", new Vector2(10, 580), Color.White);
                     }
                 }
@@ -1326,7 +1326,7 @@ namespace AVRGame.NetStandardLibrary
                     else if (jockoption == 3)
                     {
                         fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
-                        fieryTale.spriteBatch.DrawString(Names, "Jock:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "[holding back tears] Thanks man, I-I should go, see you. [We part ways]", new Vector2(10, 580), Color.White);
                     }
                 }
