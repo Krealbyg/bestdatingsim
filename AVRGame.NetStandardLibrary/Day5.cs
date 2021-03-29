@@ -37,6 +37,7 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D sins;
         private Texture2D mrcare;
         private Texture2D bitch;
+        private Texture2D hallway;
 
         //Goro expressions
         private Texture2D goroneutral;
@@ -74,6 +75,7 @@ namespace AVRGame.NetStandardLibrary
             mrcare = fieryTale.Content.Load<Texture2D>("MrCare");
             bitch = fieryTale.Content.Load<Texture2D>("BITCH");
             hell = fieryTale.Content.Load<Texture2D>("Hell");
+            hallway = fieryTale.Content.Load<Texture2D>("Hallway");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
             mizanagi = fieryTale.Content.Load<SoundEffect>("MagatsuIzanagi");
@@ -196,6 +198,14 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment <= 4)
                 {
                     fieryTale.spriteBatch.Draw(dorm, new Rectangle(0, 0, 1280, 760), Color.White);
+                }
+                else if (fieryTale.gameMoment > 4 && fieryTale.gameMoment <= 24)
+                {
+                    fieryTale.spriteBatch.Draw(hallway, new Rectangle(0, 0, 1280, 720), Color.White);
+                }
+                else if (fieryTale.gameMoment > 24)
+                {
+                    fieryTale.spriteBatch.Draw(classroom, new Rectangle(0, 0, 1280, 760), Color.White);
                 }
 
 
@@ -333,7 +343,7 @@ namespace AVRGame.NetStandardLibrary
                     }
                     else if (halloption == 4)
                     {
-                        fieryTale.gameMoment = 24;
+                        fieryTale.gameMoment = 25;
                     }
                 }
                 if (fieryTale.gameMoment == 18)
@@ -395,13 +405,11 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "I step off of Sabel and push Shiki away.", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 20)
+                if (fieryTale.gameMoment == 21)
                 {
                     if (halloption == 1)
                     {
-                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
-                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                        fieryTale.spriteBatch.DrawString(Talking, "You deserve proper punishment.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Shiki tries to hind behind Sabel. She seems to have pissed her pants.", new Vector2(10, 580), Color.White);
                     }
                     else if (halloption == 2)
                     {
@@ -416,14 +424,13 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Talking, "You dare speak to me? Now get out of my sight, both of you!", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 21)
+                if (fieryTale.gameMoment == 22)
                 {
                     if (halloption == 1)
                     {
-                        MediaPlayer.Stop();
-                        fieryTale.attackedSomeone = true;
-                        fieryTale.gameMoment = 0;
-                        fieryTale.soundMoment = 0;
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "You deserve proper punishment.", new Vector2(10, 580), Color.White);
                     }
                     else if (halloption == 2)
                     {
@@ -434,9 +441,16 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "I leave for homeroom.", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 22)
+                if (fieryTale.gameMoment == 23)
                 {
-                    if (halloption == 2)
+                    if (halloption == 1)
+                    {
+                        MediaPlayer.Stop();
+                        fieryTale.attackedSomeone = true;
+                        fieryTale.gameMoment = 0;
+                        fieryTale.soundMoment = 0;
+                    }
+                    else if (halloption == 2)
                     {
                         fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -444,10 +458,10 @@ namespace AVRGame.NetStandardLibrary
                     }
                     else if (halloption == 3)
                     {
-                        fieryTale.gameMoment = 24;
+                        fieryTale.gameMoment = 25;
                     }
                 }
-                if (fieryTale.gameMoment == 23)
+                if (fieryTale.gameMoment == 24)
                 {
                     if (halloption == 2)
                     {
@@ -455,7 +469,7 @@ namespace AVRGame.NetStandardLibrary
                     }
                 }
                 #endregion
-                if (fieryTale.gameMoment == 24)
+                if (fieryTale.gameMoment == 25)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I sit down at my place and wait for homeroom to start.", new Vector2(10, 580), Color.White);
                 }
