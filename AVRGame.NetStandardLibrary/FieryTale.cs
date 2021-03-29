@@ -177,6 +177,14 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
+            if (currentLevel == 5 && gameMoment <= 4 && songPlaying == false && attackedSomeone == false)//Ren's dormroom song again
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(mask);
+                MediaPlayer.Volume = 0.1f;
+                songPlaying = true;
+            }
+
             if (attackedSomeone == true && songPlaying == false)//velvetroom song
             {
                 MediaPlayer.Stop();

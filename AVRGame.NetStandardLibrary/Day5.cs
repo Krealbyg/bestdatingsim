@@ -134,6 +134,7 @@ namespace AVRGame.NetStandardLibrary
             {
                 halloption = 4;
                 fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
             }
         }
 
@@ -143,6 +144,7 @@ namespace AVRGame.NetStandardLibrary
             {
                 halloption = 3;
                 fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
             }
         }
 
@@ -152,6 +154,7 @@ namespace AVRGame.NetStandardLibrary
             {
                 halloption = 2;
                 fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
             }
         }
 
@@ -162,6 +165,7 @@ namespace AVRGame.NetStandardLibrary
                 halloption = 1;
                 mizanagi.Play();
                 fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
             }
         }
 
@@ -189,7 +193,10 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.spriteBatch.Begin();
 
                 //backgrounds
-
+                if (fieryTale.gameMoment <= 4)
+                {
+                    fieryTale.spriteBatch.Draw(dorm, new Rectangle(0, 0, 1280, 760), Color.White);
+                }
 
 
                 //textbox
@@ -225,7 +232,6 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 5)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I run into two of my classmates on the way there.", new Vector2(10, 580), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 6)
                 {
