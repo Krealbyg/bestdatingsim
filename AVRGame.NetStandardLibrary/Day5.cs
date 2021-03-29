@@ -175,7 +175,7 @@ namespace AVRGame.NetStandardLibrary
         {
             if (fieryTale.currentLevel == 5 && fieryTale.attackedSomeone == false)
             {
-                if (fieryTale.gameMoment == 22 && fieryTale.soundMoment == 0)
+                if (fieryTale.gameMoment == 22 && fieryTale.soundMoment == 0 && halloption == 1)
                 {
                     punishment.Play();
                     fieryTale.soundMoment++;
