@@ -45,6 +45,7 @@ namespace AVRGame.NetStandardLibrary
 
         //sounds
         private SoundEffect mizanagi;
+        private SoundEffect punishment;
 
         public Day5(FieryTale fieryTale) : base(fieryTale)
         {
@@ -76,6 +77,7 @@ namespace AVRGame.NetStandardLibrary
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
             mizanagi = fieryTale.Content.Load<SoundEffect>("MagatsuIzanagi");
+            punishment = fieryTale.Content.Load<SoundEffect>("ProperPunishment");
 
             #region buttons
 
@@ -167,6 +169,12 @@ namespace AVRGame.NetStandardLibrary
         {
             if (fieryTale.currentLevel == 5 && fieryTale.attackedSomeone == false)
             {
+                if (fieryTale.gameMoment == 20 && fieryTale.soundMoment == 0)
+                {
+                    punishment.Play();
+                    fieryTale.soundMoment++;
+                }
+                
                 foreach (var button in hallchoice)
                     button.Update(gameTime);
                 

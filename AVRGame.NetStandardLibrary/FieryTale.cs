@@ -85,6 +85,8 @@ namespace AVRGame.NetStandardLibrary
             Components.Add(day2);
             TimeSkip1 timeSkip1 = new TimeSkip1(this);
             Components.Add(timeSkip1);
+            Day5 day5 = new Day5(this);
+            Components.Add(day5);
         }
 
         /// <summary>
