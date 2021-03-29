@@ -165,7 +165,15 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = false;
             }
 
-            if (attackedSomeone == true && songPlaying == false)//gameover song
+            if (currentLevel == 4 && songPlaying == false)//velvetroom song
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(piano);
+                MediaPlayer.Volume = 0.4f;
+                songPlaying = true;
+            }
+
+            if (attackedSomeone == true && songPlaying == false)//velvetroom song
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(piano);
