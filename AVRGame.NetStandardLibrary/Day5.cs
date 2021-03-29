@@ -175,7 +175,7 @@ namespace AVRGame.NetStandardLibrary
         {
             if (fieryTale.currentLevel == 5 && fieryTale.attackedSomeone == false)
             {
-                if (fieryTale.gameMoment == 20 && fieryTale.soundMoment == 0)
+                if (fieryTale.gameMoment == 22 && fieryTale.soundMoment == 0)
                 {
                     punishment.Play();
                     fieryTale.soundMoment++;
@@ -430,7 +430,7 @@ namespace AVRGame.NetStandardLibrary
                     {
                         fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                        fieryTale.spriteBatch.DrawString(Talking, "You deserve proper punishment.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "You need proper punishment.", new Vector2(10, 580), Color.White);
                     }
                     else if (halloption == 2)
                     {
