@@ -92,8 +92,6 @@ namespace AVRGame.NetStandardLibrary
             }
         }
 
-        
-
         public override void Draw(GameTime gameTime)
         {
             if (fieryTale.currentLevel == 4 && fieryTale.attackedSomeone == false)

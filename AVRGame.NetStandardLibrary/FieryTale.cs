@@ -17,7 +17,7 @@ namespace AVRGame.NetStandardLibrary
      * 3: 0, 125 . 0, 250 . 0, 375
      * 4: 0, 100 . 0, 200 . 0, 300 . 0, 400
      */
-    
+
     //Cheeky circumvention of the protection level on SpriteBatch
     public class BetterSpriteBatch : SpriteBatch
     {

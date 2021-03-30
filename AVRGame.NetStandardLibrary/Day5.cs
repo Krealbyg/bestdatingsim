@@ -38,11 +38,8 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D yasutora;
         private Texture2D shiki;
         private Texture2D sabel;
-        private Texture2D hell;
         private Texture2D classroom;
         private Texture2D sins;
-        private Texture2D mrcare;
-        private Texture2D bitch;
         private Texture2D hallway;
         private Texture2D principal;
 
@@ -82,9 +79,6 @@ namespace AVRGame.NetStandardLibrary
             goroshocked = fieryTale.Content.Load<Texture2D>("GoroShocked");
             gorococky = fieryTale.Content.Load<Texture2D>("GoroCocky");
             classroom = fieryTale.Content.Load<Texture2D>("Classroom");
-            mrcare = fieryTale.Content.Load<Texture2D>("MrCare");
-            bitch = fieryTale.Content.Load<Texture2D>("BITCH");
-            hell = fieryTale.Content.Load<Texture2D>("Hell");
             hallway = fieryTale.Content.Load<Texture2D>("Hallway");
             principal = fieryTale.Content.Load<Texture2D>("Principal");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
@@ -738,7 +732,7 @@ namespace AVRGame.NetStandardLibrary
                     {
                         fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
-                        fieryTale.spriteBatch.DrawString(Talking, "Thank. And don't tell anyone about this!", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Thanks. And don't tell anyone about this!", new Vector2(10, 580), Color.White);
                     }
                 }
                 if (fieryTale.gameMoment == 46)
