@@ -207,7 +207,6 @@ namespace AVRGame.NetStandardLibrary
             if (fieryTale.gameMoment == 47 && dateoption == 1)
             {
                 fightoption = 2;
-                ariadne.Play();
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
             }
@@ -288,7 +287,12 @@ namespace AVRGame.NetStandardLibrary
             if (fieryTale.currentLevel == 6 && fieryTale.attackedSomeone == false)
             {
                 //sounds
-                if(fieryTale.gameMoment == 55 && fieryTale.soundMoment == 0 && dateoption == 1 && fightoption == 2)
+                if (fieryTale.gameMoment == 51 && fieryTale.soundMoment == 0 && dateoption == 1 && fightoption == 2)
+                {
+                    ariadne.Play();
+                    fieryTale.soundMoment++;
+                }
+                if (fieryTale.gameMoment == 55 && fieryTale.soundMoment == 1 && dateoption == 1 && fightoption == 2)
                 {
                     guidance.Play();
                     fieryTale.soundMoment++;
