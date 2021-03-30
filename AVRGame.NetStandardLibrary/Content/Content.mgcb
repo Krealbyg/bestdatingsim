@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:Anna.png
 
+#begin Ariadne.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Ariadne.wav
+
 #begin Asterius.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -174,6 +180,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:GoroSmiling.png
+
+#begin Guidance.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Guidance.wav
 
 #begin Hallway.png
 /importer:TextureImporter

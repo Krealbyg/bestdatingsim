@@ -52,6 +52,10 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D goroshocked;
         private Texture2D gorococky;
 
+        //sounds
+        private SoundEffect ariadne;
+        private SoundEffect guidance;
+
         public Day6(FieryTale fieryTale) : base(fieryTale)
         {
             this.fieryTale = fieryTale;
@@ -85,6 +89,8 @@ namespace AVRGame.NetStandardLibrary
             hallway = fieryTale.Content.Load<Texture2D>("Hallway");
             principal = fieryTale.Content.Load<Texture2D>("Principal");
             library = fieryTale.Content.Load<Texture2D>("Library");
+            ariadne = fieryTale.Content.Load<SoundEffect>("Ariadne");
+            guidance = fieryTale.Content.Load<SoundEffect>("Guidance");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
 
@@ -201,6 +207,7 @@ namespace AVRGame.NetStandardLibrary
             if (fieryTale.gameMoment == 47 && dateoption == 1)
             {
                 fightoption = 2;
+                ariadne.Play();
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
             }
@@ -280,6 +287,13 @@ namespace AVRGame.NetStandardLibrary
         {
             if (fieryTale.currentLevel == 6 && fieryTale.attackedSomeone == false)
             {
+                //sounds
+                if(fieryTale.gameMoment == 55 && fieryTale.soundMoment == 0 && dateoption == 1 && fightoption == 2)
+                {
+                    guidance.Play();
+                    fieryTale.soundMoment++;
+                }
+                
                 foreach (var button in datechoice)
                     button.Update(gameTime);
                 foreach (var button in libchoice)
@@ -1240,7 +1254,10 @@ namespace AVRGame.NetStandardLibrary
                 #endregion
                 if (dateoption == 2)
                 {
-
+                    if (fieryTale.gameMoment == 26)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "W", new Vector2(10, 580), Color.White);
+                    }
                 }
 
 
