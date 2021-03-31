@@ -68,7 +68,7 @@ namespace AVRGame.NetStandardLibrary
 
         protected override void LoadContent()
         {
-            //I fucking love Goro. Still straight tho
+            //God, I fucking love Goro. Still straight tho
             rennormal = fieryTale.Content.Load<Texture2D>("RenNormal");
             textbox = fieryTale.Content.Load<Texture2D>("BlackRectangle");
             dorm = fieryTale.Content.Load<Texture2D>("Dorm");
