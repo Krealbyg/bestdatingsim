@@ -68,7 +68,7 @@ namespace AVRGame.NetStandardLibrary
 
         private void Nextlevel_Click(object sender, EventArgs e)
         {
-            if (fieryTale.gameMoment == 17)
+            if (fieryTale.gameMoment == 16)
             {
                 fieryTale.currentLevel = 8;//starts next level
                 fieryTale.gameMoment = 0;//resets the gameMoment count
@@ -148,15 +148,9 @@ namespace AVRGame.NetStandardLibrary
                 {
                     fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
-                    fieryTale.spriteBatch.DrawString(Talking, "Though that all your classmates are fond of you.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Though not all your classmates are fond of you.", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 8)
-                {
-                    fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
-                    fieryTale.spriteBatch.DrawString(Talking, "Your bond with Goro is getting stronger by the day as well.", new Vector2(10, 580), Color.White);
-                }
-                if (fieryTale.gameMoment == 9)
                 {
                     if (fieryTale.goroPoints > 3)
                     {
@@ -171,56 +165,56 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Talking, "Your bond with Goro is growing stronger by the day.", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 10)
+                if (fieryTale.gameMoment == 9)
                 {
 
                     fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "However, over the course of these, you notice someone stalking you.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 11)
+                if (fieryTale.gameMoment == 10)
                 {
 
                     fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Your stalker, is Anna, the student council president.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 12)
+                if (fieryTale.gameMoment == 11)
                 {
 
                     fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "You'd like to think you noticed her because of your superior senses.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 13)
+                if (fieryTale.gameMoment == 12)
                 {
 
                     fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Senses sharped by your time as the leader of the Phantom Thieves.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 14)
+                if (fieryTale.gameMoment == 13)
                 {
 
                     fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "But no, she's just really shit at being sneaky.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 15)
+                if (fieryTale.gameMoment == 14)
                 {
 
                     fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Today is the 10th day of school.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 16)
+                if (fieryTale.gameMoment == 15)
                 {
 
                     fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "This is where our story continues. Good luck, try to stay out of trouble.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 17)
+                if (fieryTale.gameMoment == 16)
                 {
                     foreach (var button in nextday)
                         button.Draw(gameTime);
