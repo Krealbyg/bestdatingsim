@@ -673,7 +673,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Quite the assortment of individuals, who will I talk to though?", new Vector2(10, 580), Color.White);
                 }
                 #region classmate convo
-                if (fieryTale.gameMoment == 12)
+                if (fieryTale.gameMoment == 12)//first choice
                 {
                     foreach (var button in talkchoice)
                         button.Draw(gameTime);
@@ -698,7 +698,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "I walk up to the emo.", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 14)
+                if (fieryTale.gameMoment == 14)//honestly, this part was hell. So many fucking choices.
                 {
                     if (whichtalk == 1)//nerd
                     {
@@ -722,7 +722,7 @@ namespace AVRGame.NetStandardLibrary
                     }
                     fieryTale.choiceMoment = true;
                 }
-                if (fieryTale.gameMoment == 15)
+                if (fieryTale.gameMoment == 15)//here the first instance of the "..." running gag starts. Ren is a silent protagonist in the game, only speaking when you make a choice. This is a little nod to that. Also the "..." option appears in Persona 5 as well sometimes.
                 {
                     if (whichtalk == 1)//nerd
                     {
@@ -819,7 +819,7 @@ namespace AVRGame.NetStandardLibrary
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "HI, I am Kase, nice to meet you Ren. Are you new here?", new Vector2(10, 580), Color.White);
                         }
-                        else if (talkoption == 2)
+                        else if (talkoption == 2)//wanted to use japanese suffixes, because the game is very much inspired by japanese game (Persona) and we've taken a lot of ideas from anime as well.
                         {
                             fieryTale.spriteBatch.Draw(kase, new Rectangle(960, 220, 380, 680), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
@@ -834,7 +834,7 @@ namespace AVRGame.NetStandardLibrary
                     }
                     else if (whichtalk == 2)//brat
                     {
-                        if (talkoption == 1)
+                        if (talkoption == 1)//anything in "[]" are little comments Ren makes while someone else is talking.
                         {
                             fieryTale.spriteBatch.Draw(shiki, new Rectangle(950, 316, 380, 404), Color.White);//1125 x 1141
                             fieryTale.spriteBatch.DrawString(Names, "Brat:", new Vector2(10, 540), Color.White);
@@ -889,7 +889,7 @@ namespace AVRGame.NetStandardLibrary
                             fieryTale.spriteBatch.DrawString(Names, "Emo:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
                         }
-                        else if (talkoption == 3)
+                        else if (talkoption == 3)//-sama is very official
                         {
                             fieryTale.spriteBatch.Draw(sabel, new Rectangle(980, 270, 300, 450), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Emo:", new Vector2(10, 540), Color.White);
@@ -922,7 +922,7 @@ namespace AVRGame.NetStandardLibrary
                     }
                     else if (whichtalk == 2)//brat
                     {
-                        if (talkoption == 1)
+                        if (talkoption == 1)//sassy
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -1000,7 +1000,7 @@ namespace AVRGame.NetStandardLibrary
                             fieryTale.spriteBatch.DrawString(Names, "Nerd:", new Vector2(10, 540), Color.White);
                             fieryTale.spriteBatch.DrawString(Talking, "Classmate-san? You there?", new Vector2(10, 580), Color.White);
                         }
-                        else if (talkoption == 3)
+                        else if (talkoption == 3)//harsh
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -1142,7 +1142,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "Okay, take care Sabel. [You take a seat by the window]", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Okay, take care Sabel. [I take a seat by the window]", new Vector2(10, 580), Color.White);
                         }
                         else if (talkoption == 2)
                         {
@@ -1316,12 +1316,12 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(shiki, new Rectangle(950, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Brat:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "Okay, I am done  with you, weirdo. [She turns away]", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "Okay, I am done with you, weirdo. [She turns away]", new Vector2(10, 580), Color.White);
                         }
                     }
                     else if (whichtalk == 3)//jock
                     {
-                        if (talkoption == 2)
+                        if (talkoption == 2)//This is Ren after the main events of Persona 5, he's an excellent fighter.
                         {
                             fieryTale.spriteBatch.DrawString(Names, "The Jock tries to punch me, but I effortlessly dodge it. Having embarrassed him enough,", new Vector2(10, 580), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "I leave and take a seat by the window", new Vector2(10, 610), Color.White);
@@ -1343,7 +1343,7 @@ namespace AVRGame.NetStandardLibrary
                 {
                     if (whichtalk == 1)//nerd
                     {
-                        if (talkoption == 2)
+                        if (talkoption == 2)//goodguy Ren
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -1370,7 +1370,7 @@ namespace AVRGame.NetStandardLibrary
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Soon after sitting down, my homeroom teacher enters the classroom.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 25)
+                if (fieryTale.gameMoment == 25)//This guy might look familiar...
                 {
                     fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);//524 x 695
                     fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
@@ -1427,7 +1427,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Yes yes, very interesting. Moving on to the boy with the glasses by the window. [That would be me]", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 34)
+                if (fieryTale.gameMoment == 34)//activities you can do in Persona 5 Royal
                 {
                     fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -1508,7 +1508,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Roommate:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Ah hello, you must be my new roommate. Nice to me-", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 48)
+                if (fieryTale.gameMoment == 48)//Goro Akechi is a character from Persona 5. He's Ren's rival, semi-friend, teammate for some time, and there's quite a bit of romantic tension between them.
                 {
                     fieryTale.spriteBatch.Draw(goroshocked, new Rectangle(1000, 340, 380, 380), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
@@ -1529,7 +1529,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "So, the great leader of the Phantom Thieves has died then...", new Vector2(10, 580), Color.White);
                     }
-                    else if (gorooption == 2)
+                    else if (gorooption == 2)//first chance to summon a persona, thought it appropriate that Ren would summon his main one
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I tear off my mask (glasses) and summon forth Arsene from the sea of my soul.", new Vector2(10, 580), Color.White);
                     }
@@ -1542,14 +1542,14 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "Hmmm, well I could imagine a worse roommate if I'm being honest.", new Vector2(10, 580), Color.White);
                     }
-                    else if (gorooption == 2)
+                    else if (gorooption == 2)//Goro is also a Persona user, quite a powerful one actually.
                     {
                         fieryTale.spriteBatch.DrawString(Names, "Akechi quickly does the same, summoning forth Loki.", new Vector2(10, 580), Color.White);
                     }
                 }
                 if (fieryTale.gameMoment == 52)
                 {
-                    if (gorooption == 1)
+                    if (gorooption == 1)//Reference to Persona 5 Royal's true ending
                     {
                         fieryTale.spriteBatch.Draw(goroneutral, new Rectangle(1000, 340, 380, 380), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
@@ -1562,7 +1562,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 53)
                 {
-                    if (gorooption == 1)
+                    if (gorooption == 1)//Goro states something like this in Persona 5 as well
                     {
                         fieryTale.spriteBatch.Draw(gorosad, new Rectangle(1000, 340, 380, 380), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
@@ -1616,7 +1616,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "Anyway, perhaps this is the universe's weird way of giving us a second chance...", new Vector2(10, 580), Color.White);
                     }
-                    else if (gorooption == 2)
+                    else if (gorooption == 2)//goku comes in to ruin the fun
                     {
                         fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
@@ -1647,7 +1647,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "Agreed. Now then, how have you been? Anything of note happen since my death?", new Vector2(10, 580), Color.White);
                     }
-                    else if (gorooption == 2)
+                    else if (gorooption == 2)//Goku is like Dr Manhattan at the end of Watchmen
                     {
                         fieryTale.spriteBatch.DrawString(Names, "Goku stretches out his hand towards Akechi and in an instant he is atomised.", new Vector2(10, 580), Color.White);
                     }

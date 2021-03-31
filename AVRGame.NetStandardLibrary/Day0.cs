@@ -130,7 +130,7 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.spriteBatch.Draw(textbox, new Rectangle(0, 520, 1280, 200), Color.Black * 0.6f);//720 - 200 = 520, 1280 is screen width, 200 randomly decided
 
                 //Scenes
-                if (fieryTale.gameMoment == 0)
+                if (fieryTale.gameMoment == 0)//Ren was originally only there for the Testlevel, but then forced him to be the main character
                 {
                     fieryTale.spriteBatch.DrawString(Names, "You are Ren Amamiya, leader of the Phantom Thieves.", new Vector2(10, 580), Color.White);//positions of text arbitrarily decided until it looked good
                 }
@@ -150,7 +150,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Mysterious voice:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "You have died. Welcome to Hell.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 4)
+                if (fieryTale.gameMoment == 4)//reference to Persona 5
                 {
                     fieryTale.spriteBatch.Draw(ren, new Rectangle(1024, 316, 256, 404), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -162,7 +162,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Mysterious voice:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "There is no need, for I am...", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 6)
+                if (fieryTale.gameMoment == 6)//Goku was originally also only there for the Testlevel, but Jordy liked my idea and we added him to main game.
                 {
                     fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
@@ -208,7 +208,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "My name is Ren Amamiya.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 14)
+                if (fieryTale.gameMoment == 14)//beginning of the thristing by Anna.
                 {
                     fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
@@ -251,7 +251,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "I watch Anna leave for her own dormroom.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 22)//background and music change moment
+                if (fieryTale.gameMoment == 22)//background and music change moment, first of many
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I enter my dormroom and see it is meticulously furnished, but rather bland.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -276,12 +276,12 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "I find the unoccupied bedroom and remember I have no change of clothes with me.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 27)
+                if (fieryTale.gameMoment == 27)//little nod to Persona as well, also fire
                 {
                     fieryTale.spriteBatch.DrawString(Names, "But just as this thought crosses my mind, my clothes change in a flash of blue fire.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 28)
+                if (fieryTale.gameMoment == 28)//again, Persona reference
                 {
                     fieryTale.spriteBatch.DrawString(Names, "It seems the rules of the Metaverse apply to Hell,", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "I don't even want to think about the implications of this.", new Vector2(10, 610), Color.White);

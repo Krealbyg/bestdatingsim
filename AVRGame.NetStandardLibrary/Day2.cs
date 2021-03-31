@@ -665,6 +665,7 @@ namespace AVRGame.NetStandardLibrary
                 //Textbox
                 fieryTale.spriteBatch.Draw(textbox, new Rectangle(0, 520, 1280, 200), Color.Black * 0.6f);//720 - 200 = 520, 1280 is screen width, 200 randomly decided
 
+                //scenes
                 if (fieryTale.gameMoment == 0)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I'm woken up by my alarm.", new Vector2(10, 580), Color.White);
@@ -730,12 +731,12 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
                     }
-                    else if (obamaoption == 4)
+                    else if (obamaoption == 4)//Second chance for persona summoning. This time a persona with a special voice line.
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I tear off my mask (glasses) and summon forth Magatsu Izanagi from the sea of my soul.", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 9)
+                if (fieryTale.gameMoment == 9)//the name Mr Care comes from a meme about Obama's last name.
                 {
                     if (obamaoption == 1)
                     {
@@ -782,7 +783,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
                     }
-                    else if (obamaoption == 4)
+                    else if (obamaoption == 4)//love this line
                     {
                         fieryTale.spriteBatch.DrawString(Names, "You need proper punishment.", new Vector2(10, 580), Color.White);
                     }
@@ -803,7 +804,7 @@ namespace AVRGame.NetStandardLibrary
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I quickly run to class.", new Vector2(10, 580), Color.White);
                     }
-                    else if (obamaoption == 4)
+                    else if (obamaoption == 4)//gameover
                     {
                         MediaPlayer.Stop();
                         fieryTale.attackedSomeone = true;
@@ -854,7 +855,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 17)
                 {
-                    if (sinsoption == 1)
+                    if (sinsoption == 1)//just skips entire convo
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I decide not to.", new Vector2(10, 580), Color.White);
                     }
@@ -870,7 +871,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "...", new Vector2(10, 580), Color.White);
                     }
-                    else if (sinsoption == 4)
+                    else if (sinsoption == 4)//oh oh
                     {
                         fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -925,7 +926,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 20)
                 {
-                    if (sinsoption == 2)
+                    if (sinsoption == 2)//yes we did look this shit up...
                     {
                         fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
@@ -966,7 +967,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 22)
                 {
-                    if (sinsoption == 2)
+                    if (sinsoption == 2)//little star wars reference
                     {
                         fieryTale.spriteBatch.Draw(sins, new Rectangle(950, 240, 380, 480), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Mr Sins:", new Vector2(10, 540), Color.White);
@@ -1048,7 +1049,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 33)
                 {
-                    if (bitchoption == 1)
+                    if (bitchoption == 1)//only chose this persona for the voice line Ren does later
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I rip off my mask (glasses) and call forth Asterius from the sea of my soul.", new Vector2(10, 580), Color.White);
                     }
@@ -1098,7 +1099,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 35)
                 {
-                    if (bitchoption == 1)
+                    if (bitchoption == 1)//Epic
                     {
                         fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -1167,7 +1168,7 @@ namespace AVRGame.NetStandardLibrary
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I pack my stuff, but before I'm able to leave I hear someone shouting.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 41)
+                if (fieryTale.gameMoment == 41)//Ren doesn't actually need glasses, they're fake.
                 {
                     fieryTale.spriteBatch.Draw(yasutora, new Rectangle(980, 295, 300, 425), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Yasutora:", new Vector2(10, 540), Color.White);
@@ -1220,11 +1221,11 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 49)
                 {
-                    if (jockoption == 1)
+                    if (jockoption == 1)//this persona was chosen on a whim.
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I rip off my mask (glasses) and call forth Tsukuyomi from the sea of my soul.", new Vector2(10, 580), Color.White);
                     }
-                    else if (jockoption == 2)
+                    else if (jockoption == 2)//insult by Jordy
                     {
                         fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -1261,7 +1262,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 51)
                 {
-                    if (jockoption == 1)
+                    if (jockoption == 1)//pretty cool line as well
                     {
                         fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -1360,7 +1361,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "The rest of my classes are uneventfull.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 58)
+                if (fieryTale.gameMoment == 58)//good roommate Ren
                 {
                     fieryTale.spriteBatch.DrawString(Names, "After my last class, I decide to get some takeout to take with me to my dormroom.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -1378,7 +1379,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 61)
                 {
-                    if (homeoption == 1)
+                    if (homeoption == 1)//nod to Persona 5, actually. Also funny
                     {
                         fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -1441,7 +1442,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 64)
                 {
-                    if (homeoption == 1)
+                    if (homeoption == 1)//cheeky
                     {
                         fieryTale.spriteBatch.Draw(gorococky, new Rectangle(1000, 340, 380, 380), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Akechi:", new Vector2(10, 540), Color.White);
@@ -1466,7 +1467,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Akechi and I have a pleasant conversation over dinner.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 66)
+                if (fieryTale.gameMoment == 66)//they play chess in P5R when choosing the "bad" true ending.
                 {
                     fieryTale.spriteBatch.DrawString(Names, "We then continue conversing over games of chess far into the night.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);

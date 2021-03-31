@@ -49,6 +49,7 @@ namespace AVRGame.NetStandardLibrary
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
 
+            //button stuff
             var nextlevel = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
             {
                 ButtonPosition = new Vector2(0, 279),
@@ -103,11 +104,11 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.spriteBatch.Draw(textbox, new Rectangle(0, 520, 1280, 200), Color.Black * 0.6f);
 
                 //events
-                if (fieryTale.gameMoment == 0)
+                if (fieryTale.gameMoment == 0)//Persona reference
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I seem to be back in the Velvet Room.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 1)
+                if (fieryTale.gameMoment == 1)//Igor sort of owns the velvetroom and Lavenza is Ren's attendant
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Igor or Lavenza are nowhere to be found however...", new Vector2(10, 580), Color.White);
                 }
@@ -135,7 +136,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "The next couple days are quite uneventful.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 6)
+                if (fieryTale.gameMoment == 6)//Goku throwing shade
                 {
                     fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);

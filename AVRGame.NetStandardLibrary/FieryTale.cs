@@ -10,6 +10,8 @@ using System.Collections.Generic;
 namespace AVRGame.NetStandardLibrary
 {
     //This game might show hints of my recent slight obsession with Persona games...
+    //All comments made my Liam btw
+    //Also pretty much all code made by me... No hard feelings to my mates tho, I do this with love. I'm actually going to study gametech, so I guess this is practice.
 
     /* Amount of buttons and which positions to give them:
      * 1: 0 , 329
@@ -102,7 +104,7 @@ namespace AVRGame.NetStandardLibrary
             //music (which has been shamelessly ripped from the Persona 5 Royal OST)
             mementos = Content.Load<Song>("MementosSong");
             piano = Content.Load<Song>("VelvetRoomMusic");
-            mask = Content.Load<Song>("BeneathTheMask");
+            mask = Content.Load<Song>("BeneathTheMask");//love this song
             hell = Content.Load<Song>("HellSong");
             MediaPlayer.IsRepeating = true;//makes music repeat
         }
@@ -131,7 +133,7 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (currentLevel == 1 && gameMoment <= 21 && songPlaying == false)//main Hell song
+            if (currentLevel == 1 && gameMoment <= 21 && songPlaying == false)//Hell song
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(hell);
@@ -139,7 +141,7 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (currentLevel == 1 && gameMoment > 21 && songPlaying == true)//Ren's dormroom song
+            if (currentLevel == 1 && gameMoment > 21 && songPlaying == true)//Main chill theme
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mask);
@@ -147,7 +149,7 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = false;
             }
 
-            if (currentLevel == 2 && gameMoment <= 4 && songPlaying == false)//Ren's dormroom song again
+            if (currentLevel == 2 && gameMoment <= 4 && songPlaying == false)//Main chill theme
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mask);
@@ -155,7 +157,7 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (currentLevel == 3 && gameMoment <= 5 && songPlaying == false && attackedSomeone == false || currentLevel == 3 && gameMoment > 57 && songPlaying == false && attackedSomeone == false)//Ren's dormroom song again
+            if (currentLevel == 3 && gameMoment <= 5 && songPlaying == false && attackedSomeone == false || currentLevel == 3 && gameMoment > 57 && songPlaying == false && attackedSomeone == false)//Main chill theme
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mask);
@@ -163,7 +165,7 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (currentLevel == 3 && gameMoment > 5 && gameMoment <= 57 && songPlaying == true)//Outside song
+            if (currentLevel == 3 && gameMoment > 5 && gameMoment <= 57 && songPlaying == true)//Hell song
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(hell);
@@ -179,7 +181,7 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (currentLevel == 5 && gameMoment <= 4 && songPlaying == false && attackedSomeone == false)//Ren's dormroom song again
+            if (currentLevel == 5 && gameMoment <= 4 && songPlaying == false && attackedSomeone == false)//Main chill theme
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mask);
@@ -187,11 +189,19 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (currentLevel == 6 && gameMoment <= 25 && songPlaying == false && attackedSomeone == false)//Ren's dormroom song again
+            if (currentLevel == 6 && gameMoment <= 25 && songPlaying == false && attackedSomeone == false)//Main chill theme
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mask);
                 MediaPlayer.Volume = 0.1f;
+                songPlaying = true;
+            }
+
+            if (currentLevel == 7 && songPlaying == false)//velvetroom song
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(piano);
+                MediaPlayer.Volume = 0.4f;
                 songPlaying = true;
             }
 
