@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace AVRGame.NetStandardLibrary
 {
     //This game might show hints of my recent slight obsession with Persona games...
-    //All comments made my Liam btw
+    //All comments made by Liam btw
     //Also pretty much all code made by me... No hard feelings to my mates tho, I do this with love. I'm actually going to study gametech, so I guess this is practice.
 
     /* Amount of buttons and which positions to give them:
@@ -91,6 +91,8 @@ namespace AVRGame.NetStandardLibrary
             Components.Add(day5);
             Day6 day6 = new Day6(this);
             Components.Add(day6);
+            TimeSkip2 timeSkip2 = new TimeSkip2(this);
+            Components.Add(timeSkip2);
         }
 
         /// <summary>
