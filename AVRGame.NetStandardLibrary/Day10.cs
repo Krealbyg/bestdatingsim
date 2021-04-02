@@ -240,12 +240,12 @@ namespace AVRGame.NetStandardLibrary
         {
             if (fieryTale.currentLevel == 8 && fieryTale.attackedSomeone == false)
             {
-                if(fieryTale.gameMoment == 31 && fieryTale.soundMoment == 0)
+                if(fieryTale.gameMoment == 31 && fieryTale.soundMoment == 0 && simpoption == 1)
                 {
                     thanatos.Play();
                     fieryTale.soundMoment++;
                 }
-                if (fieryTale.gameMoment == 33 && fieryTale.soundMoment == 1)
+                if (fieryTale.gameMoment == 33 && fieryTale.soundMoment == 1 && simpoption == 1)
                 {
                     endit.Play();
                     fieryTale.soundMoment++;
@@ -709,9 +709,9 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Talking, "I will make you mine! I have one more trick up my sleeve, just you wait.", new Vector2(10, 580), Color.White);
                     }
                 }
-                if (fieryTale.gameMoment == 31)//This persona is pretty cool
+                if (fieryTale.gameMoment == 31)
                 {
-                    if (simpoption == 1)
+                    if (simpoption == 1)//This persona is pretty cool
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I rip off my glasses and summon forth Thanatos from the sea of my soul.", new Vector2(10, 580), Color.White);
                     }
