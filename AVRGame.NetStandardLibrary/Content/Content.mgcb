@@ -133,6 +133,12 @@
 /processorParam:Quality=Best
 /build:DripSound.wav
 
+#begin EndIt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:EndIt.wav
+
 #begin GoroCocky.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -434,6 +440,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Teleportsound.wav
+
+#begin Thanatos.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Thanatos.wav
 
 #begin Tsukuyomi.wav
 /importer:WavImporter

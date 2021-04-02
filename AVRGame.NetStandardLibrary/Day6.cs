@@ -230,6 +230,7 @@ namespace AVRGame.NetStandardLibrary
         }
 
         #region click events
+        //next level
         private void Nextlevel_Click(object sender, EventArgs e)
         {
             if (fieryTale.gameMoment == 85)
@@ -242,6 +243,7 @@ namespace AVRGame.NetStandardLibrary
             }
         }
 
+        //maid
         private void Maidchoice3_Click(object sender, EventArgs e)
         {
             if (fieryTale.gameMoment == 41 && dateoption == 2)
@@ -273,6 +275,7 @@ namespace AVRGame.NetStandardLibrary
             }
         }
 
+        //fight
         private void Fightchoice3_Click(object sender, EventArgs e)
         {
             if (fieryTale.gameMoment == 47 && dateoption == 1)
@@ -303,6 +306,7 @@ namespace AVRGame.NetStandardLibrary
             }
         }
 
+        //lib talk
         private void Libchoice3_Click(object sender, EventArgs e)
         {
             if (fieryTale.gameMoment == 30 && dateoption == 1)
@@ -333,6 +337,7 @@ namespace AVRGame.NetStandardLibrary
             }
         }
 
+        //which date
         private void Datechoice3_Click(object sender, EventArgs e)
         {
             if (fieryTale.gameMoment == 22)

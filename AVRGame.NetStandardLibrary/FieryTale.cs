@@ -46,13 +46,13 @@ namespace AVRGame.NetStandardLibrary
         private Song hell;
 
         //Universal variables
-        public int gameMoment;//decides the text that shows
+        public int gameMoment;//decides the text that shows among other things, pretty much the most important variable
         public int soundMoment;//decides which sound should be played
         public bool choiceMoment;//notes if there is a choice on screen or not
-        public int currentLevel;//notes which level is currently active, level1 is currentLevel == 0
+        public int currentLevel;//notes which level is currently active.
         public int gokuPoints;//Goku's opinion of Ren, changes based on choices made
         public int goroPoints;//Goro's opinion of Ren, changes based on choices made, high enough points unlock secret romance ending (because I demanded we make a Ren x Goro ending)
-        public bool attackedSomeone;//notes if Ren has attacked someone with Arsène
+        public bool attackedSomeone;//notes if Ren has attacked someone with his Persona
         public bool songPlaying;//notes if there is currently a song playing
      
         public FieryTale() : base()
@@ -207,6 +207,22 @@ namespace AVRGame.NetStandardLibrary
                 MediaPlayer.Play(piano);
                 MediaPlayer.Volume = 0.4f;
                 songPlaying = true;
+            }
+
+            if (currentLevel == 8 && gameMoment <= 5 && songPlaying == false && attackedSomeone == false)//Main chill theme
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(mask);
+                MediaPlayer.Volume = 0.1f;
+                songPlaying = true;
+            }
+
+            if (currentLevel == 8 && gameMoment > 5 && songPlaying == true && attackedSomeone == false)//Hell theme
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(hell);
+                MediaPlayer.Volume = 0.1f;
+                songPlaying = false;
             }
 
             if (attackedSomeone == true && songPlaying == false)//velvetroom song
