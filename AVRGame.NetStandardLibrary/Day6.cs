@@ -526,7 +526,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Talking, "Heyyy Ren, how have you been?", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
                 }
-                if (fieryTale.gameMoment == 16)
+                if (fieryTale.gameMoment == 16)//Nya is the Japanese version of meow. Can be said to sound cutesy. Sometimes used to describe a specific type of person as well. Go to urbandictionary for more.
                 {
                     fieryTale.spriteBatch.Draw(anna, new Rectangle(1080, 270, 200, 450), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
@@ -2296,7 +2296,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 84)
                 {
-                    if (fieryTale.goroPoints > 3)
+                    if (fieryTale.goroPoints > 3)//sad boy hours
                     {
                         fieryTale.spriteBatch.DrawString(Names, "Afterwards we, sadly, head to our own rooms.", new Vector2(10, 580), Color.White);
                     }

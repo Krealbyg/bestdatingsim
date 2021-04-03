@@ -209,7 +209,7 @@ namespace AVRGame.NetStandardLibrary
                 songPlaying = true;
             }
 
-            if (currentLevel == 8 && gameMoment <= 5 && songPlaying == false && attackedSomeone == false)//Main chill theme
+            if (currentLevel == 8 && gameMoment <= 5 && songPlaying == false && attackedSomeone == false || currentLevel == 8 && gameMoment == 104 && songPlaying == false && attackedSomeone == false)//Main chill theme
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mask);

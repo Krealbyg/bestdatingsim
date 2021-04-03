@@ -283,6 +283,18 @@
 /processorParam:Quality=Best
 /build:HellSong.mp3
 
+#begin izanagi.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:izanagi.wav
+
+#begin Kaguya.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Kaguya.wav
+
 #begin Kase.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -428,6 +440,12 @@
 /processorParam:Quality=Best
 /build:Showtime.wav
 
+#begin Silence.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Silence.wav
+
 #begin Sinsleft.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -439,6 +457,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sinsleft.png
+
+#begin slash.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:slash.wav
 
 #begin Talking.spritefont
 /importer:FontDescriptionImporter
@@ -452,6 +476,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Teleportsound.wav
+
+#begin Tempest.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Tempest.wav
 
 #begin Thanatos.wav
 /importer:WavImporter
