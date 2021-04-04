@@ -44,19 +44,14 @@ namespace AVRGame.NetStandardLibrary
         private Texture2D dorm;
         private Texture2D hell;
         private Texture2D sins;
-        private Texture2D yasutora;
-        private Texture2D kase;
         private Texture2D sabel;
-        private Texture2D mrcare;
         private Texture2D hallway;
 
         //Goro expressions
         private Texture2D goroneutral;
         private Texture2D gorosmiling;
         private Texture2D gorosad;
-        private Texture2D gorococky;
         private Texture2D goronaked;
-        private Texture2D gorowink;
 
         //sound
         private SoundEffect thanatos;
@@ -87,17 +82,12 @@ namespace AVRGame.NetStandardLibrary
             hell = fieryTale.Content.Load<Texture2D>("Hell");
             anna = fieryTale.Content.Load<Texture2D>("Anna");
             cheem = fieryTale.Content.Load<Texture2D>("Cheem");
-            yasutora = fieryTale.Content.Load<Texture2D>("Yasutora");
-            kase = fieryTale.Content.Load<Texture2D>("Kase");
             sabel = fieryTale.Content.Load<Texture2D>("Sabel");
             sins = fieryTale.Content.Load<Texture2D>("Sinsleft");
             goroneutral = fieryTale.Content.Load<Texture2D>("GoroNeutral");
             gorosmiling = fieryTale.Content.Load<Texture2D>("GoroSmiling");
             gorosad = fieryTale.Content.Load<Texture2D>("GoroSad");
-            gorococky = fieryTale.Content.Load<Texture2D>("GoroCocky");
             goronaked = fieryTale.Content.Load<Texture2D>("GoroNaked");
-            gorowink = fieryTale.Content.Load<Texture2D>("GoroWink");
-            mrcare = fieryTale.Content.Load<Texture2D>("MrCare");
             hallway = fieryTale.Content.Load<Texture2D>("Hallway");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
@@ -367,6 +357,7 @@ namespace AVRGame.NetStandardLibrary
                 MediaPlayer.Stop();
                 MediaPlayer.Play(sweet);
                 MediaPlayer.Volume = 0.1f;
+                fieryTale.goroRomance = true;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
             }
@@ -381,6 +372,7 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.goroPoints++;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -392,6 +384,7 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.goroPoints++;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -404,8 +397,10 @@ namespace AVRGame.NetStandardLibrary
                 MediaPlayer.Play(sweet);
                 MediaPlayer.Volume = 0.1f;
                 fieryTale.goroPoints = -100;
+                fieryTale.annaRomance = true;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -427,6 +422,7 @@ namespace AVRGame.NetStandardLibrary
                 gunoption = 3;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -437,6 +433,7 @@ namespace AVRGame.NetStandardLibrary
                 gunoption = 2;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -489,6 +486,7 @@ namespace AVRGame.NetStandardLibrary
                 shooteroption = 2;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -510,6 +508,7 @@ namespace AVRGame.NetStandardLibrary
                 simpoption = 4;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -530,6 +529,7 @@ namespace AVRGame.NetStandardLibrary
                 simpoption = 2;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -551,6 +551,7 @@ namespace AVRGame.NetStandardLibrary
                 spyoption = 3;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -571,6 +572,7 @@ namespace AVRGame.NetStandardLibrary
                 spyoption = 1;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
         #endregion
@@ -2341,7 +2343,6 @@ namespace AVRGame.NetStandardLibrary
                     if (kissoption == 2)
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I lay in bed wishing Anna was with me. I fall asleep.", new Vector2(10, 580), Color.White);
-                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                     }
                     else
                     {
@@ -2673,12 +2674,12 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 142)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "His eyes flutter to a close.", new Vector2(10, 580), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 143)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I lay there, just revelling in Goro's warmth, so happy to finally be in his arms.", new Vector2(10, 580), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 144)//fucking hell this was difficult to write, because I've never had/felt anything like this, yet wanted to make it semi-realistic.
                 {

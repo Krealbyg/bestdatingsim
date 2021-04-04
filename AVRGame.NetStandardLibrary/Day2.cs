@@ -391,6 +391,7 @@ namespace AVRGame.NetStandardLibrary
                 jocktoption = 2;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -401,6 +402,7 @@ namespace AVRGame.NetStandardLibrary
                 jocktoption = 1;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -444,6 +446,7 @@ namespace AVRGame.NetStandardLibrary
                 bitchoption = 4;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -454,6 +457,7 @@ namespace AVRGame.NetStandardLibrary
                 bitchoption = 3;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -543,6 +547,7 @@ namespace AVRGame.NetStandardLibrary
                 sinsoption = 2;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -585,6 +590,7 @@ namespace AVRGame.NetStandardLibrary
                 obamaoption = 2;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -595,6 +601,7 @@ namespace AVRGame.NetStandardLibrary
                 obamaoption = 1;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
         #endregion

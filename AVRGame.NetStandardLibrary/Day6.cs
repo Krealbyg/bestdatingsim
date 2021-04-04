@@ -261,6 +261,7 @@ namespace AVRGame.NetStandardLibrary
                 maidoption = 2;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -272,6 +273,7 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.goroPoints++;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -303,6 +305,7 @@ namespace AVRGame.NetStandardLibrary
                 fightoption = 1;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 

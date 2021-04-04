@@ -50,10 +50,13 @@ namespace AVRGame.NetStandardLibrary
         public int soundMoment;//decides which sound should be played
         public bool choiceMoment;//notes if there is a choice on screen or not
         public int currentLevel;//notes which level is currently active.
-        public int gokuPoints;//Goku's opinion of Ren, changes based on choices made
+        public int gokuPoints;//Goku's opinion of Ren, changes based on choices made +11 is max, -10 is min
         public int goroPoints;//Goro's opinion of Ren, changes based on choices made, high enough points unlock secret romance ending (because I demanded we make a Ren x Goro ending)
         public bool attackedSomeone;//notes if Ren has attacked someone with his Persona
         public bool songPlaying;//notes if there is currently a song playing
+        public bool annaRomance;//notes if you've finished the Anna romance
+        public bool goroRomance;//notes if you've finished the Goro romance
+        public int ending;//which ending you're getting based on goku points
      
         public FieryTale() : base()
         {
@@ -236,6 +239,19 @@ namespace AVRGame.NetStandardLibrary
             if (MediaPlayer.State == MediaState.Stopped)//sets songPlaying to false when no song is playing
             {
                 songPlaying = false;
+            }
+
+            if (gokuPoints > 5)//Good ending
+            {
+                ending = 1;
+            }
+            else if (gokuPoints < -5)//Bad ending
+            {
+                ending = 2;
+            }
+            else//neutral ending
+            {
+                ending = 3;
             }
             #endregion
 

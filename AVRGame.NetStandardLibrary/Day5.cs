@@ -265,6 +265,7 @@ namespace AVRGame.NetStandardLibrary
                 halloption = 3;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -275,6 +276,7 @@ namespace AVRGame.NetStandardLibrary
                 halloption = 2;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 

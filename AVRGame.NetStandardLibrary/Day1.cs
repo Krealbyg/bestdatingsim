@@ -395,6 +395,7 @@ namespace AVRGame.NetStandardLibrary
                 talkoption = 3;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -415,6 +416,7 @@ namespace AVRGame.NetStandardLibrary
                 talkoption = 1;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -426,6 +428,7 @@ namespace AVRGame.NetStandardLibrary
                 talkoption = 3;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -446,6 +449,7 @@ namespace AVRGame.NetStandardLibrary
                 talkoption = 1;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -457,6 +461,7 @@ namespace AVRGame.NetStandardLibrary
                 talkoption = 3;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -477,6 +482,7 @@ namespace AVRGame.NetStandardLibrary
                 talkoption = 1;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
@@ -488,6 +494,7 @@ namespace AVRGame.NetStandardLibrary
                 talkoption = 3;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints--;
             }
         }
 
@@ -508,6 +515,7 @@ namespace AVRGame.NetStandardLibrary
                 talkoption = 1;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
+                fieryTale.gokuPoints++;
             }
         }
 
