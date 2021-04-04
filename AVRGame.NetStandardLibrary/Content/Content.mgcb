@@ -187,6 +187,18 @@
 /processorParam:TextureFormat=Color
 /build:Goromaid2.png
 
+#begin GoroNaked.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GoroNaked.png
+
 #begin GoroNeutral.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -463,6 +475,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:slash.wav
+
+#begin Sweet.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sweet.mp3
 
 #begin Talking.spritefont
 /importer:FontDescriptionImporter

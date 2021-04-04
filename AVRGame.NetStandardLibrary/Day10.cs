@@ -29,6 +29,7 @@ namespace AVRGame.NetStandardLibrary
         private List<Button> shotchoice;
         private List<Button> gunchoice;
         private List<Button> kisschoice;
+        private List<Button> hugchoice;
         private List<Button> nextday;
 
         //Fonts
@@ -52,9 +53,9 @@ namespace AVRGame.NetStandardLibrary
         //Goro expressions
         private Texture2D goroneutral;
         private Texture2D gorosmiling;
+        private Texture2D gorosad;
         private Texture2D gorococky;
-        private Texture2D goromaid;
-        private Texture2D goromaid2;
+        private Texture2D goronaked;
         private Texture2D gorowink;
 
         //sound
@@ -65,6 +66,7 @@ namespace AVRGame.NetStandardLibrary
         private SoundEffect slash;
         private SoundEffect kaguya;
         private Song combat;
+        private Song sweet;
 
         public Day10(FieryTale fieryTale) : base(fieryTale)
         {
@@ -91,9 +93,9 @@ namespace AVRGame.NetStandardLibrary
             sins = fieryTale.Content.Load<Texture2D>("Sinsleft");
             goroneutral = fieryTale.Content.Load<Texture2D>("GoroNeutral");
             gorosmiling = fieryTale.Content.Load<Texture2D>("GoroSmiling");
+            gorosad = fieryTale.Content.Load<Texture2D>("GoroSad");
             gorococky = fieryTale.Content.Load<Texture2D>("GoroCocky");
-            goromaid = fieryTale.Content.Load<Texture2D>("Goromaid");
-            goromaid2 = fieryTale.Content.Load<Texture2D>("Goromaid2");
+            goronaked = fieryTale.Content.Load<Texture2D>("GoroNaked");
             gorowink = fieryTale.Content.Load<Texture2D>("GoroWink");
             mrcare = fieryTale.Content.Load<Texture2D>("MrCare");
             hallway = fieryTale.Content.Load<Texture2D>("Hallway");
@@ -106,6 +108,7 @@ namespace AVRGame.NetStandardLibrary
             kaguya = fieryTale.Content.Load<SoundEffect>("Kaguya");
             silence = fieryTale.Content.Load<SoundEffect>("Silence");
             combat = fieryTale.Content.Load<Song>("Combat");
+            sweet = fieryTale.Content.Load<Song>("Sweet");
 
             #region buttons
             //spy choice
@@ -216,6 +219,19 @@ namespace AVRGame.NetStandardLibrary
                 ButtonText = "Hug"
             };
 
+            //hug choice
+            var hugchoice1 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 268),//360(center of screen) - 20 - 72(button height)
+                ButtonText = "Accept",
+            };
+
+            var hugchoice2 = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 380),//360(center of screen) + 20
+                ButtonText = "Reject",
+            };
+
             //endday
             var nextlevel = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
             {
@@ -250,6 +266,9 @@ namespace AVRGame.NetStandardLibrary
             kisschoice2.Click += Kisschoice2_Click;
             kisschoice3.Click += Kisschoice3_Click;
             kisschoice4.Click += Kisschoice4_Click;
+
+            hugchoice1.Click += Hugchoice1_Click;
+            hugchoice2.Click += Hugchoice2_Click;
 
             nextlevel.Click += Nextlevel_Click;
 
@@ -300,6 +319,12 @@ namespace AVRGame.NetStandardLibrary
                 kisschoice4
             };
 
+            hugchoice = new List<Button>
+            {
+                hugchoice1,
+                hugchoice2
+            };
+
             nextday = new List<Button>
             {
                 nextlevel
@@ -310,15 +335,40 @@ namespace AVRGame.NetStandardLibrary
             base.LoadContent();
         }
 
+        #region button click events
+        //next day
         private void Nextlevel_Click(object sender, EventArgs e)
         {
-            if (fieryTale.gameMoment == 108)
+            if (fieryTale.gameMoment == 108 || fieryTale.gameMoment == 116 && fieryTale.goroPoints <= 4 || fieryTale.gameMoment == 120 && fieryTale.goroPoints == 5 || fieryTale.gameMoment == 145 && fieryTale.goroPoints > 5)
             {
                 fieryTale.currentLevel = 9;//starts next level
                 fieryTale.gameMoment = 0;//resets the gameMoment count
                 fieryTale.soundMoment = 0;//resets soundMoment
                 MediaPlayer.Stop();//stops the chill music
                 fieryTale.choiceMoment = false;
+            }
+        }
+        
+        //Goro hug
+        private void Hugchoice2_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 111 && fieryTale.goroPoints > 4)
+            {
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
+            }
+        }
+
+        private void Hugchoice1_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 111 && fieryTale.goroPoints > 4)
+            {
+                fieryTale.goroPoints++;
+                MediaPlayer.Stop();
+                MediaPlayer.Play(sweet);
+                MediaPlayer.Volume = 0.1f;
+                fieryTale.choiceMoment = false;
+                fieryTale.gameMoment++;
             }
         }
 
@@ -350,6 +400,9 @@ namespace AVRGame.NetStandardLibrary
             if (fieryTale.gameMoment == 92)
             {
                 kissoption = 2;
+                MediaPlayer.Stop();
+                MediaPlayer.Play(sweet);
+                MediaPlayer.Volume = 0.1f;
                 fieryTale.goroPoints = -100;
                 fieryTale.choiceMoment = false;
                 fieryTale.gameMoment++;
@@ -520,12 +573,12 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.gameMoment++;
             }
         }
-
+        #endregion
         public override void Update(GameTime gameTime)
         {
             if (fieryTale.currentLevel == 8 && fieryTale.attackedSomeone == false)
             {
-                
+                #region soundeffects
                 if (fieryTale.gameMoment == 28 && fieryTale.soundMoment == 0 && simpoption == 4)
                 {
                     silence.Play();
@@ -556,6 +609,17 @@ namespace AVRGame.NetStandardLibrary
                     slash.Play();
                     fieryTale.soundMoment++;
                 }
+                if (fieryTale.gameMoment == 93 && fieryTale.soundMoment < 4 && kissoption == 1)
+                {
+                    thanatos.Play();
+                    fieryTale.soundMoment = 4;
+                }
+                if (fieryTale.gameMoment == 97 && fieryTale.soundMoment < 5 && kissoption == 1)
+                {
+                    endit.Play();
+                    fieryTale.soundMoment++;
+                }
+                #endregion
 
                 foreach (var button in spychoice)
                     button.Update(gameTime);
@@ -568,6 +632,8 @@ namespace AVRGame.NetStandardLibrary
                 foreach (var button in gunchoice)
                     button.Update(gameTime);
                 foreach (var button in kisschoice)
+                    button.Update(gameTime);
+                foreach (var button in hugchoice)
                     button.Update(gameTime);
                 foreach (var button in nextday)
                     button.Update(gameTime);
@@ -1989,19 +2055,20 @@ namespace AVRGame.NetStandardLibrary
                 {
                     fieryTale.spriteBatch.DrawString(Names, "She seems to be leaning in for a kiss. Fuck, what do I do.", new Vector2(10, 580), Color.White);
                 }
+                #region kiss convo
                 if (fieryTale.gameMoment == 92)
                 {
                     foreach (var button in kisschoice)
                         button.Draw(gameTime);
                     fieryTale.choiceMoment = true;
                 }
-                if (fieryTale.gameMoment == 93)
+                if (fieryTale.gameMoment == 93)//overreaction tbh
                 {
                     if (kissoption == 1)
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I panic and rip off my glasses, summoning forth Thanatos from the sea of my soul.", new Vector2(10, 580), Color.White);
                     }
-                    else if (kissoption == 2)
+                    else if (kissoption == 2)//Ren goes full horny. Never go full horny.
                     {
                         fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -2012,7 +2079,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "I swiftly dodge out of the way before her lips touch mine.", new Vector2(10, 580), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                     }
-                    else if (kissoption == 4)
+                    else if (kissoption == 4)//F-F-F-Friendzoned!!
                     {
                         fieryTale.spriteBatch.DrawString(Names, "As she moves in close for a kiss, I dodge her face and hug her instead.", new Vector2(10, 580), Color.White);
                     }
@@ -2023,12 +2090,12 @@ namespace AVRGame.NetStandardLibrary
                     {
                         fieryTale.spriteBatch.DrawString(Names, "Anna jumps backwards in a panic.", new Vector2(10, 580), Color.White);
                     }
-                    else if (kissoption == 2)
+                    else if (kissoption == 2)//don't judge my writing here please.
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I wrap my right arm around her waist and pull her in close.", new Vector2(10, 580), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                     }
-                    else if (kissoption == 3)
+                    else if (kissoption == 3)//ouch
                     {
                         fieryTale.spriteBatch.DrawString(Names, "She loses her balance and falls face first on the floor.", new Vector2(10, 580), Color.White);
                     }
@@ -2047,7 +2114,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "Anna:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "R-Ren?! What the fuck is that?!", new Vector2(10, 580), Color.White);
                     }
-                    else if (kissoption == 2)
+                    else if (kissoption == 2)//don't. judge.
                     {
                         fieryTale.spriteBatch.DrawString(Names, "She wraps her arms around my neck as we start to passionately make out.", new Vector2(10, 580), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -2071,7 +2138,7 @@ namespace AVRGame.NetStandardLibrary
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I hesitate, will I really attack someone for this?... yes.", new Vector2(10, 580), Color.White);
                     }
-                    else if (kissoption == 2)
+                    else if (kissoption == 2)//might have overdone it...
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I put my left hand on her ass and squeeze. She lets out a small moan.", new Vector2(10, 580), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -2098,7 +2165,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                         fieryTale.spriteBatch.DrawString(Talking, "Let us end it!", new Vector2(10, 580), Color.White);
                     }
-                    else if (kissoption == 2)
+                    else if (kissoption == 2)//oh no
                     {
                         fieryTale.spriteBatch.DrawString(Names, "My hands start exploring her body, and hers mine.", new Vector2(10, 580), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -2123,7 +2190,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.gameMoment = 0;
                         fieryTale.soundMoment = 0;
                     }
-                    else if (kissoption == 2)
+                    else if (kissoption == 2)//ah common sense returns to horny mode Ren
                     {
                         fieryTale.spriteBatch.DrawString(Names, "Wait, shit, we're still in public. I pull back.", new Vector2(10, 580), Color.White);
                     }
@@ -2209,7 +2276,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 102)
                 {
-                    if (kissoption == 2)
+                    if (kissoption == 2)//They fuck.
                     {
                         fieryTale.spriteBatch.DrawString(Names, "We explore every centimeter of eachothers bodies.", new Vector2(10, 580), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -2238,32 +2305,35 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.gameMoment = 104;
                     }
                 }
+                #endregion
                 if (fieryTale.gameMoment == 104)
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I've arrived back at my dormroom. What an eventful day.", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 105)
                 {
-                    if (kissoption == 2)
+                    if (kissoption == 2)//Goro is already home in this scenario because its later in the day.
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I quickly greet Goro and clumsily dodge his questions.", new Vector2(10, 580), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                     }
                     else
                     {
-                        fieryTale.spriteBatch.DrawString(Names, "As I walk off, I can feel her watching me.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "I seem to have arrived before Goro. Fuck what do I do?", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                     }
                 }
                 if (fieryTale.gameMoment == 106)
                 {
-                    if (kissoption == 2)
+                    if (kissoption == 2)//exhausted from all the fu-- you get the idea.
                     {
                         fieryTale.spriteBatch.DrawString(Names, "I'm exhausted from the day and excuse myself to my room.", new Vector2(10, 580), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                     }
                     else
                     {
-                        fieryTale.spriteBatch.DrawString(Names, "As I walk off, I can feel her watching me.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "I just fucking know Anna isn't going to let this go.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                     }
                 }
                 if (fieryTale.gameMoment == 107)
@@ -2275,7 +2345,17 @@ namespace AVRGame.NetStandardLibrary
                     }
                     else
                     {
-                        fieryTale.spriteBatch.DrawString(Names, "As I walk off, I can feel her watching me.", new Vector2(10, 580), Color.White);
+                        if (fieryTale.goroPoints > 4)
+                        {
+                            fieryTale.spriteBatch.DrawString(Names, "But I'm interested in someone else.", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                        }
+                        else
+                        {
+                            fieryTale.spriteBatch.DrawString(Names, "But I just don't feel the same way about her.", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+
+                        }
                     }
                 }
                 if (fieryTale.gameMoment == 108)
@@ -2286,10 +2366,329 @@ namespace AVRGame.NetStandardLibrary
                             button.Draw(gameTime);
                         fieryTale.choiceMoment = true;
                     }
+                    else//this is where the fun begins.
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "At that point, Goro comes walking in.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 109)
+                {
+                    if (fieryTale.goroPoints > 4)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "He looks at me and instantly seems to realise how I'm feeling.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                    }
                     else
                     {
-                        fieryTale.spriteBatch.DrawString(Names, "As I walk off, I can feel her watching me.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.Draw(goroneutral, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Ren? Are you alright?", new Vector2(10, 580), Color.White);
                     }
+                }
+                if (fieryTale.gameMoment == 110)
+                {
+                    if (fieryTale.goroPoints > 4)//I wish someone would take me gently into their arms... and for that someone to be Goro...
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "Without a word, he walks over to me and gently takes me in his arms.", new Vector2(10, 580), Color.White);
+                    }
+                    else//these are never good words to hear someone say.
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Goro, we need to talk.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 111)
+                {
+                    if (fieryTale.goroPoints > 4)//this is it, the final Goro romance choice. Impossible to fuck up, but still giving a way out for people who don't want the romance.
+                    {
+                        foreach (var button in hugchoice)
+                            button.Draw(gameTime);
+                        fieryTale.choiceMoment = true;
+                    }
+                    else
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "We sit down on the couch as I explain all that happened today.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 112)
+                {
+                    if (fieryTale.goroPoints > 5)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "I melt into his embrace and bury my face in the crook of his neck.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                    }
+                    else if (fieryTale.goroPoints == 5)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "I push myself away.", new Vector2(10, 580), Color.White);
+                    }
+                    else//good friend Goro
+                    {
+                        fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Don't worry Ren, I'm here for you. That's what friends are for, right?", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 113)
+                {
+                    if (fieryTale.goroPoints > 5)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "We just stand there for a while. Neither of us wanting to let go.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                    }
+                    else if (fieryTale.goroPoints == 5)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "I-I'm sorry Goro, I-I can't do this. Not right now.", new Vector2(10, 580), Color.White);
+                    }
+                    else
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Thanks, Goro, that means a lot to me.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 114)
+                {
+                    if (fieryTale.goroPoints > 5)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "Eventually, Goro pulls me over to the couch and sits me down next to him.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                    }
+                    else if (fieryTale.goroPoints == 5)//sad boy hours for my man Goro. He takes it like a champ tho.
+                    {
+                        fieryTale.spriteBatch.Draw(gorosad, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "I understand. I'm here for you if you need me.", new Vector2(10, 580), Color.White);
+                    }
+                    else
+                    {
+                        fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Don't mention it. Now, lets do something fun to take your mind off of today.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 115)
+                {
+                    if (fieryTale.goroPoints > 5)//honestly, this is like, THE dream, you know?
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "I lay down and rest my head on his lap. He gently strokes my hair.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                    }
+                    else if (fieryTale.goroPoints == 5)
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "Thank you, truly. I appreciate it, I appreciate you. I just... I'm not ready right now.", new Vector2(10, 580), Color.White);
+                    }
+                    else//just normal friend fun. get your mind out of the gutter.
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "Goro and I spend the night having fun together. When I go to bed, I feel a lot better.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 116)
+                {
+                    if (fieryTale.goroPoints > 5)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "We stay like this for a while.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                    }
+                    else if (fieryTale.goroPoints == 5)
+                    {
+                        fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "That's perfectly fine. Take your time, I'll still be here.", new Vector2(10, 580), Color.White);
+                    }
+                    else
+                    {
+                        foreach (var button in nextday)
+                            button.Draw(gameTime);
+                        fieryTale.choiceMoment = true;
+                    }
+                }
+                if (fieryTale.gameMoment == 117)
+                {
+                    if (fieryTale.goroPoints > 5)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "After what feels like an eternity, Goro speaks.", new Vector2(10, 580), Color.White);
+                    }
+                    else if (fieryTale.goroPoints == 5)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "I talk with Goro about my day. He does his best make me feel at ease.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 118)
+                {
+                    if (fieryTale.goroPoints > 5)//I believe Goro would have a hard time expressing his feelings. He lost his mother young, suicide, and his father was a cunt. He was never really loved or has loved.
+                    {
+                        fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "I've waited so long for this. R-Ren I...", new Vector2(10, 580), Color.White);
+                    }
+                    else if (fieryTale.goroPoints == 5)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "We keep talking until late into the night.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 119)
+                {
+                    if (fieryTale.goroPoints > 5)//These words must mean everything to Goro.
+                    {
+                        fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                        fieryTale.spriteBatch.DrawString(Talking, "I love you, Goro.", new Vector2(10, 580), Color.White);
+                    }
+                    else if (fieryTale.goroPoints == 5)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "When I go to bed, I feel a lot better.", new Vector2(10, 580), Color.White);
+                    }
+                }
+                if (fieryTale.gameMoment == 120)
+                {
+                    if (fieryTale.goroPoints > 5)
+                    {
+                        fieryTale.spriteBatch.DrawString(Names, "I sit up. My eyes now perfectly at level with Goro's.", new Vector2(10, 580), Color.White);
+                        fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                    }
+                    else if (fieryTale.goroPoints == 5)
+                    {
+                        foreach (var button in nextday)
+                            button.Draw(gameTime);
+                        fieryTale.choiceMoment = true;
+                    }
+                }
+                if (fieryTale.gameMoment == 121)//Goro's eyes look pretty reddish in some pictures. Maybe more like hazel or chestnut in others? I went with sanguine because it sounds cool or something idk.
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I get lost in the perfect sanguine drip of his gaze.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 122)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Suddenly, Goro pulls me in and gives me the gentlest kiss I've ever had.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 123)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "He tries to pull away, but I pull him back in. This is intoxicating.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 124)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "This is all I've ever wanted. I will never get enough of this.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 125)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I'm in love with Goro Akechi. I've never been so sure of something before.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 126)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Eventually we move to Goro's bedroom.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 127)//look I think we can all fill in the blank here...
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "We have the greatest night of our lives.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 128)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "We're laying peacefully together, wrapped in eachothers arms, catching our breaths.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 129)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I move my hand across his chest until, eventually, it stops right above his heart.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 130)//where he was shot by himself. It's complicated... Ren and Goro fought in Goro's fathers mind. Afterwards the cognitive version of Goro in his fathers mind attacked them. Real Goro put up a barrier between the Phantom thieves and both Goro's and then they killed eachother.
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I feel it, the scar. Images flash across my mind.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 131)//Goro's fathers mind was a giant cruise ship. They fought inside the engine room and that is where Goro died as well.
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Images of Goro, alone, helplessly bleeding out in that God forsaken engine room.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 132)//After Ren killed God himself, Maruki, a Persona user, took over God's place and changed reality to make everyone happy. This included reviving Goro. Ren, Goro and the PT's fought back against this fake reality and won. So Goro died again.
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Images of Goro, alone, fading away as Maruki's fake reality ceases to exist.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 133)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Goro holds me tighter and gently kisses me.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 134)
+                {
+                    fieryTale.spriteBatch.Draw(goronaked, new Rectangle(1000, 340, 380, 380), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "It's okay, Ren. I'm here now, with you, and I'm not leaving you ever again.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 135)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I bury my face in the crook of his neck and revel in his warmth.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 136)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "I'm never letting you go again. I love you.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 137)
+                {
+                    fieryTale.spriteBatch.Draw(goronaked, new Rectangle(1000, 340, 380, 380), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "I know. I love you too.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 138)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "I feel so save, in your arms like this. Can we do this more often?", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 139)
+                {
+                    fieryTale.spriteBatch.Draw(goronaked, new Rectangle(1000, 340, 380, 380), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "We can do this every night, darling.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 140)//Goro's sprites don't have freckles but I read this in a GoroxRen fanfic while searching for inspiration and put it in.
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I gently press one last slow kiss against Goro's mouth, and then his nose,", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "and then all the spots I remember freckles dusting his skin.", new Vector2(10, 610), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
+                }
+                if (fieryTale.gameMoment == 141)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Goro says nothing as I do this, he just smiles the warmest, most genuine smile", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I've ever seen him make.", new Vector2(10, 610), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
+                }
+                if (fieryTale.gameMoment == 142)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "His eyes flutter to a close.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
+                }
+                if (fieryTale.gameMoment == 143)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "I lay there, just revelling in Goro's warmth, so happy to finally be in his arms.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
+                }
+                if (fieryTale.gameMoment == 144)//fucking hell this was difficult to write, because I've never had/felt anything like this, yet wanted to make it semi-realistic.
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Soon I fall asleep as well, feeling the best I've ever felt.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 145)
+                {
+                    foreach (var button in nextday)
+                        button.Draw(gameTime);
+                    fieryTale.choiceMoment = true;
                 }
 
                 fieryTale.spriteBatch.End();
