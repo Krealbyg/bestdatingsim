@@ -98,6 +98,10 @@ namespace AVRGame.NetStandardLibrary
             Components.Add(timeSkip2);
             Day10 day10 = new Day10(this);
             Components.Add(day10);
+            TrueEnding trueEnding = new TrueEnding(this);
+            Components.Add(trueEnding);
+            NeutralEnding neutralEnding = new NeutralEnding(this);
+            Components.Add(neutralEnding);
         }
 
         /// <summary>
@@ -226,6 +230,30 @@ namespace AVRGame.NetStandardLibrary
                 MediaPlayer.Play(hell);
                 MediaPlayer.Volume = 0.1f;
                 songPlaying = false;
+            }
+
+            if (currentLevel == 9 && gameMoment <= 5 && goroRomance == true && ending == 1 && songPlaying == false)//Main chill theme
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(mask);
+                MediaPlayer.Volume = 0.1f;
+                songPlaying = true;
+            }
+
+            if (currentLevel == 9 && ending == 2 && gameMoment == 0 && songPlaying == false)//velvetroom song
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(piano);
+                MediaPlayer.Volume = 0.4f;
+                songPlaying = true;
+            }
+
+            if (currentLevel == 9 && ending == 3 && gameMoment == 0 && songPlaying == false)//velvetroom song
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(piano);
+                MediaPlayer.Volume = 0.4f;
+                songPlaying = true;
             }
 
             if (attackedSomeone == true && songPlaying == false)//velvetroom song

@@ -1752,7 +1752,7 @@ namespace AVRGame.NetStandardLibrary
                         {
                             fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                             fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
-                            fieryTale.spriteBatch.DrawString(Talking, "Well have that which you recommend most.", new Vector2(10, 580), Color.White);
+                            fieryTale.spriteBatch.DrawString(Talking, "We'll have that which you recommend most.", new Vector2(10, 580), Color.White);
                         }
                         else if (maidoption == 2)
                         {

@@ -86,7 +86,7 @@ namespace AVRGame.NetStandardLibrary
             goroshocked = fieryTale.Content.Load<Texture2D>("GoroShocked");
             classroom = fieryTale.Content.Load<Texture2D>("Classroom");
             drip = fieryTale.Content.Load<SoundEffect>("DripSound");                                                                                                                               
-            persona = fieryTale.Content.Load<SoundEffect>("Persona");
+            persona = fieryTale.Content.Load<SoundEffect>("Arsene");
             combat = fieryTale.Content.Load<Song>("Combat");
             Names = fieryTale.Content.Load<SpriteFont>("Names");
             Talking = fieryTale.Content.Load<SpriteFont>("Talking");
