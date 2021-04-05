@@ -79,7 +79,11 @@ namespace AVRGame.NetStandardLibrary
                 fieryTale.currentLevel = 0;//starts next level
                 fieryTale.gameMoment = 0;//resets the gameMoment count
                 fieryTale.soundMoment = 0;//resets soundMoment
-                MediaPlayer.Stop();//stops the chill music
+                fieryTale.gokuPoints = 0;//resets goku points
+                fieryTale.goroPoints = 0;//resets goro points
+                fieryTale.annaRomance = false;//removes romance tag
+                fieryTale.goroRomance = false;//removes romance tag
+                MediaPlayer.Stop();//stops music
                 fieryTale.choiceMoment = false;
             }
         }
