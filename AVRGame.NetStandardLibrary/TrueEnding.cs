@@ -229,7 +229,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Then we take a shower, together.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 6)
+                if (fieryTale.gameMoment == 6)//look I wouldn't do any studying on a day like this, but we need to move the plot forward
                 {
                     fieryTale.spriteBatch.DrawString(Names, "And then we decide to go to the library to study, together.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -244,7 +244,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Psst, look over there. Isn't Mr Care acting sketchy?", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 9)
+                if (fieryTale.gameMoment == 9)//Goro was a detective. He was so good they called him the detective prince. Second detective prince actually, but that's for another time.
                 {
                     fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -256,11 +256,11 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Oh shut it, just look.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 11)
+                if (fieryTale.gameMoment == 11)//god I hate myself for using the word sus here
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I look over to where Goro is looking. He's right, Mr Care is acting kinda sus.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 12)
+                if (fieryTale.gameMoment == 12)//AMOGUS! I wanna kms
                 {
                     fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -308,7 +308,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "We swiftly and quitely follow him through before it closes.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 21)
+                if (fieryTale.gameMoment == 21)//In the metaverse Ren and the gang can literally fade into the shadows and become undetectable. Actual shadows, not the monsters that are also called Shadows.
                 {
                     fieryTale.spriteBatch.DrawString(Names, "He notices something, but we are able to fade into the shadows.", new Vector2(10, 580), Color.White);
                 }
@@ -391,17 +391,17 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "We enter into a giant room filled with items.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 37)
+                if (fieryTale.gameMoment == 37)//Goku got the drip
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Adorning the room are multiple articles that contain high levels of drip.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 38)
+                if (fieryTale.gameMoment == 38)//the dragon balls
                 {
                     fieryTale.spriteBatch.DrawString(Names, "There are mutliple amber coloured balls with stars inside of them on pedestals.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 39)
+                if (fieryTale.gameMoment == 39)//the capsule that Goku came to earth in. Havent actually watched the show but Jordy has
                 {
                     fieryTale.spriteBatch.DrawString(Names, "There is also a weird capsule like object.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -422,7 +422,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "It's a treasure! We're inside of a palace! But who's?", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 43)
+                if (fieryTale.gameMoment == 43)//Ren Amamiya, ace detective
                 {
                     fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
@@ -447,7 +447,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "But, if this isn't actually Hell...", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 47)
+                if (fieryTale.gameMoment == 47)//"Nose bleeds from epiphanies I took full in the face."
                 {
                     fieryTale.spriteBatch.DrawString(Names, "The realisation hits me like a brick.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -459,7 +459,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 49)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "Before either of us can speak however, a voice rings out behind his.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Before either of us can speak however, a voice rings out behind us.", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 50)
                 {
@@ -473,7 +473,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "N-No, don't you dare!", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 52)
+                if (fieryTale.gameMoment == 52)//I added that second line to make it clear that the real Goro would act the same way as this Goro has.
                 {
                     fieryTale.spriteBatch.Draw(goku, new Vector2(990, 300), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
@@ -496,7 +496,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "You...", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 56)
+                if (fieryTale.gameMoment == 56)//Goro changes into his Metaverse outfit
                 {
                     fieryTale.spriteBatch.Draw(goromharmed, new Rectangle(1000, 340, 380, 380), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
@@ -509,7 +509,7 @@ namespace AVRGame.NetStandardLibrary
                         fieryTale.songPlaying = false;
                     }
                 }
-                if (fieryTale.gameMoment == 57)
+                if (fieryTale.gameMoment == 57)//Goro's Persona
                 {
                     fieryTale.spriteBatch.Draw(goromscowling, new Rectangle(980, 340, 400, 380), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
@@ -530,7 +530,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Their fight still raging on, I slowly get myself under control.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 61)
+                if (fieryTale.gameMoment == 61)//while Arsene is technically the weakest Persona when you get him, but he can become quite powerful through some hard work
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I rip off my mask and summon Arsene from the sea of my soul.", new Vector2(10, 580), Color.White);
                 }
@@ -586,10 +586,11 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "I believe in you... I love you, Ren.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 72)
+                if (fieryTale.gameMoment == 72)//Satanael is actually from the Fool Arcana in-game, but as Ren's ultimate Persona, I'd like to think he'd normally be world.
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Empowered by Goro's trust in me, I engage in one final act of rebellion.", new Vector2(10, 580), Color.White);
-                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I call upon the World Arcana...", new Vector2(10, 610), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 640), Color.White);
                 }
                 if (fieryTale.gameMoment == 73)
                 {
@@ -601,12 +602,12 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Satanael!", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 75)
+                if (fieryTale.gameMoment == 75)//satanael has a big-ass gun and literally shoots God in the face.
                 {
                     fieryTale.spriteBatch.DrawString(Names, "As I aim my gun at Goku, Satanael does the same. We pull the trigger.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 76)
+                if (fieryTale.gameMoment == 76)//a bullet made from the 7 deadly sins, can pierce Gods.
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Satanael's Sinful Shell pierces Goku, severely wounding him.", new Vector2(10, 580), Color.White);
                 }
@@ -636,7 +637,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Talking, "Of course you did, my love. Never a doubt in my mind.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
                 }
-                if (fieryTale.gameMoment == 80)
+                if (fieryTale.gameMoment == 80)//A treasure is the physical manifestation of a Palace rulers distorted desires. Steal it and the palace collapses
                 {
                     fieryTale.spriteBatch.Draw(goroneutral, new Rectangle(1000, 340, 380, 380), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
@@ -661,7 +662,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "I'm just happy I got to spend this time, no matter how short it was, with you.", new Vector2(10, 580), Color.White);
-                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 620), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, ">", new Vector2(10, 600), Color.White);
                 }
                 if (fieryTale.gameMoment == 84)
                 {
@@ -689,7 +690,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
                     fieryTale.spriteBatch.DrawString(Talking, "Thank you.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 89)
+                if (fieryTale.gameMoment == 89)//cognitive beings and shadows fade into nothingness when killed.
                 {
                     fieryTale.spriteBatch.DrawString(Names, "He fades away, like all cognitions after they're killed.", new Vector2(10, 580), Color.White);
                 }
@@ -719,7 +720,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "In my hand, Goku's treasure. It's... a card?", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 95)
+                if (fieryTale.gameMoment == 95)//oh my, what could that be hmmmmmmm
                 {
                     fieryTale.spriteBatch.DrawString(Names, "'For defeating me, I give you one final gift.' ~Goku", new Vector2(10, 580), Color.White);
                 }
@@ -759,7 +760,7 @@ namespace AVRGame.NetStandardLibrary
                         button.Draw(gameTime);
                     fieryTale.choiceMoment = true;
                 }
-                if (fieryTale.gameMoment == 103)
+                if (fieryTale.gameMoment == 103)//big time skip, just because
                 {
                     fieryTale.spriteBatch.DrawString(Names, "It's been over a year since Goku's palace.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -771,15 +772,15 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 105)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "I'm renting a small, but comfortable, appartment.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "I'm renting a small, but comfortable, apartment.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 106)
+                if (fieryTale.gameMoment == 106)//Morgana is a good friend, always coming with Ren
                 {
                     fieryTale.spriteBatch.DrawString(Names, "It's only me and Morgana in there, but that's fine.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 107)
+                if (fieryTale.gameMoment == 107)//simp cat
                 {
                     fieryTale.spriteBatch.DrawString(Names, "Today's Valentine's day, Morgana has gone off to try and woo Ann, again.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -789,7 +790,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "I've tried telling him she isn't interested in cats, but he never listens.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 109)
+                if (fieryTale.gameMoment == 109)//name of the Jazz Club in P5R
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I'm sitting in Jazz Jinn, alone.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -809,7 +810,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "I think about them, about him, all the time.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 113)
+                if (fieryTale.gameMoment == 113)//Goro threw his glove at Ren to challenge him to a duel.
                 {
                     fieryTale.spriteBatch.DrawString(Names, "I still have his glove. I carry it with me everywhere. A small memento.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
@@ -845,7 +846,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "I don't know how much time has passed, but something snaps me out of it.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 120)
+                if (fieryTale.gameMoment == 120)//oh my who could that be hmmmmmm.
                 {
                     fieryTale.spriteBatch.DrawString(Names, "A familiar figure sits down infront of me. A familiar voice speaks to me.", new Vector2(10, 580), Color.White);
                 }

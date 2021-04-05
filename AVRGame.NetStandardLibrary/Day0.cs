@@ -281,7 +281,7 @@ namespace AVRGame.NetStandardLibrary
                     fieryTale.spriteBatch.DrawString(Names, "But just as this thought crosses my mind, my clothes change in a flash of blue fire.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
-                if (fieryTale.gameMoment == 28)//again, Persona reference
+                if (fieryTale.gameMoment == 28)//again, Persona reference. Also foreshadowing.
                 {
                     fieryTale.spriteBatch.DrawString(Names, "It seems the rules of the Metaverse apply to Hell,", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "I don't even want to think about the implications of this.", new Vector2(10, 610), Color.White);

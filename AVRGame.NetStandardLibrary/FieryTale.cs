@@ -100,6 +100,8 @@ namespace AVRGame.NetStandardLibrary
             Components.Add(day10);
             TrueEnding trueEnding = new TrueEnding(this);
             Components.Add(trueEnding);
+            GoodEnding goodEnding = new GoodEnding(this);
+            Components.Add(goodEnding);
             NeutralEnding neutralEnding = new NeutralEnding(this);
             Components.Add(neutralEnding);
             BadEnding badEnding = new BadEnding(this);
@@ -239,6 +241,14 @@ namespace AVRGame.NetStandardLibrary
                 MediaPlayer.Stop();
                 MediaPlayer.Play(mask);
                 MediaPlayer.Volume = 0.1f;
+                songPlaying = true;
+            }
+
+            if (currentLevel == 9 && ending == 1 && goroRomance == false && gameMoment == 0 && songPlaying == false)//velvetroom song
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(piano);
+                MediaPlayer.Volume = 0.4f;
                 songPlaying = true;
             }
 

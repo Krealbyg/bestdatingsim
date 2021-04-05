@@ -272,7 +272,9 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 24)
                 {
-                    //insert witty comment from goku
+                    fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 25)
                 {

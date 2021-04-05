@@ -434,7 +434,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 30)
                 {
-                    if (fieryTale.goroRomance == true)//"no more what if's" is the name of Goro's leitmotiv. Also the song of the trueending epilogue
+                    if (fieryTale.goroRomance == true)//"no more what ifs" is the name of Goro's leitmotiv. Also the song of the trueending epilogue
                     {
                         fieryTale.spriteBatch.DrawString(Names, "We've long stopped thinking about 'what if's' of the past.", new Vector2(10, 580), Color.White);
                         fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
