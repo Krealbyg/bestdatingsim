@@ -115,6 +115,18 @@
 /processorParam:TextureFormat=Color
 /build:Cheem.png
 
+#begin Chess.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Chess.png
+
 #begin City1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -499,6 +511,12 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Names.spritefont
+
+#begin OurLight.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:OurLight.mp3
 
 #begin Persona.wav
 /importer:WavImporter

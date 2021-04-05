@@ -17,6 +17,7 @@ namespace AVRGame.NetStandardLibrary
         FieryTale fieryTale;
 
         private List<Button> epilogue;
+        private List<Button> endgame;
 
         //fonts
         private SpriteFont Names;
@@ -107,14 +108,40 @@ namespace AVRGame.NetStandardLibrary
                 ButtonText = "Epilogue"
             };
 
+            //end game button
+            var nextlevel = new Button(fieryTale.Content.Load<Texture2D>("WhiteRectangle"), fieryTale.Content.Load<SpriteFont>("Names"), fieryTale)
+            {
+                ButtonPosition = new Vector2(0, 279),
+                ButtonText = "The End"
+            };
+
             epiloguebutton.Click += Epiloguebutton_Click;
+
+            nextlevel.Click += Nextlevel_Click;
 
             epilogue = new List<Button>
             {
                 epiloguebutton
             };
 
+            endgame = new List<Button>
+            {
+                nextlevel
+            };
+
             base.LoadContent();
+        }
+
+        private void Nextlevel_Click(object sender, EventArgs e)
+        {
+            if (fieryTale.gameMoment == 131)
+            {
+                fieryTale.currentLevel = 10;//starts next level
+                fieryTale.gameMoment = 0;//resets the gameMoment count
+                fieryTale.soundMoment = 0;//resets soundMoment
+                MediaPlayer.Stop();//stops the chill music
+                fieryTale.choiceMoment = false;
+            }
         }
 
         //epilogue button
@@ -161,6 +188,8 @@ namespace AVRGame.NetStandardLibrary
                 }
 
                 foreach (var button in epilogue)
+                    button.Update(gameTime);
+                foreach (var button in endgame)
                     button.Update(gameTime);
 
                 base.Update(gameTime);
@@ -822,7 +851,7 @@ namespace AVRGame.NetStandardLibrary
                 }
                 if (fieryTale.gameMoment == 115)
                 {
-                    fieryTale.spriteBatch.DrawString(Names, "'one final gift.' I still have no idea what that means.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "'one final gift.' I hope I'm right about what he meant.", new Vector2(10, 580), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
                 }
                 if (fieryTale.gameMoment == 116)
@@ -849,6 +878,65 @@ namespace AVRGame.NetStandardLibrary
                 if (fieryTale.gameMoment == 120)//oh my who could that be hmmmmmm.
                 {
                     fieryTale.spriteBatch.DrawString(Names, "A familiar figure sits down infront of me. A familiar voice speaks to me.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "A single, ungloved hand stretched out.", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 121)
+                {
+                    fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Could I have that back now, darling?", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 122)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Sorry, this belonged to my boyfr-", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 123)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "As I look up, I am stunned in disbelieve. A smile forms on my face.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 124)
+                {
+                    fieryTale.spriteBatch.Draw(rennormal, new Rectangle(1000, 316, 380, 404), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Ren:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Took you long enough.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 125)
+                {
+                    fieryTale.spriteBatch.Draw(gorosmiling, new Rectangle(1000, 340, 380, 380), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, "Goro:", new Vector2(10, 540), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "Sorry to keep you waiting. Now then, why don't we get some drinks?", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 126)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "We spend our first Valentine's day together. The first of many to come.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 127)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "We've gotten a third chance at this. A clean chance.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 128)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "No Gods controlling things behind the scenes, no false reality.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 129)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "Just plain old normal life. Spend with the one I love most.", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Names, ">", new Vector2(10, 610), Color.White);
+                }
+                if (fieryTale.gameMoment == 130)
+                {
+                    fieryTale.spriteBatch.DrawString(Names, "There's never a wish better than this.", new Vector2(10, 580), Color.White);
+                }
+                if (fieryTale.gameMoment == 131)
+                {
+                    foreach (var button in endgame)
+                        button.Draw(gameTime);
+                    fieryTale.choiceMoment = true;
                 }
 
 

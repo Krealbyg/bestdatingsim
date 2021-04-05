@@ -40,10 +40,11 @@ namespace AVRGame.NetStandardLibrary
         MouseState oldState;
 
         //songs (decided to do music in main file instead of in the level files, thought this'd be better if centralized)
-        private Song mementos;
-        private Song piano;
-        private Song mask;
-        private Song hell;
+        private Song mementos;//song that plays in bottom of mementos in P5
+        private Song piano;//the velvet room tune
+        private Song mask;//main song from P5
+        private Song hell;//a palace song from P5
+        private Song light;//P5R true ending credits song
 
         //Universal variables
         public int gameMoment;//decides the text that shows among other things, pretty much the most important variable
@@ -106,6 +107,8 @@ namespace AVRGame.NetStandardLibrary
             Components.Add(neutralEnding);
             BadEnding badEnding = new BadEnding(this);
             Components.Add(badEnding);
+            Credits credits = new Credits(this);
+            Components.Add(credits);
         }
 
         /// <summary>
@@ -121,6 +124,7 @@ namespace AVRGame.NetStandardLibrary
             piano = Content.Load<Song>("VelvetRoomMusic");
             mask = Content.Load<Song>("BeneathTheMask");//love this song
             hell = Content.Load<Song>("HellSong");
+            light = Content.Load<Song>("OurLight");//sad song
             MediaPlayer.IsRepeating = true;//makes music repeat
         }
 
@@ -272,6 +276,14 @@ namespace AVRGame.NetStandardLibrary
             {
                 MediaPlayer.Stop();
                 MediaPlayer.Play(piano);
+                MediaPlayer.Volume = 0.4f;
+                songPlaying = true;
+            }
+
+            if (currentLevel == 10 && songPlaying == false)//velvetroom song
+            {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(light);
                 MediaPlayer.Volume = 0.4f;
                 songPlaying = true;
             }

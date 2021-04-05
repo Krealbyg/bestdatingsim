@@ -270,11 +270,11 @@ namespace AVRGame.NetStandardLibrary
                 {
                     fieryTale.spriteBatch.DrawString(Names, "As I try to get back up on my feet, Goku picks me up to look me in the eyes.", new Vector2(10, 580), Color.White);
                 }
-                if (fieryTale.gameMoment == 24)
+                if (fieryTale.gameMoment == 24)//little nod to something Goro says when shooting (congnitive) Ren in the head during P5(R)
                 {
                     fieryTale.spriteBatch.Draw(goku, new Rectangle(700, -100, 680, 830), Color.White);
                     fieryTale.spriteBatch.DrawString(Names, "Goku:", new Vector2(10, 540), Color.White);
-                    fieryTale.spriteBatch.DrawString(Talking, "", new Vector2(10, 580), Color.White);
+                    fieryTale.spriteBatch.DrawString(Talking, "This is how your injustice ends!", new Vector2(10, 580), Color.White);
                 }
                 if (fieryTale.gameMoment == 25)
                 {
