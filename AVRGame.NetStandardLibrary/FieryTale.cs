@@ -102,6 +102,8 @@ namespace AVRGame.NetStandardLibrary
             Components.Add(trueEnding);
             NeutralEnding neutralEnding = new NeutralEnding(this);
             Components.Add(neutralEnding);
+            BadEnding badEnding = new BadEnding(this);
+            Components.Add(badEnding);
         }
 
         /// <summary>
